@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="mcdonalds logo placeholder">
+  <!-- PLACEHOLDER SLOT. Replace with the official mark from the company's
+       brand or press page before launch. Used here only to label a public
+       teardown; no affiliation or endorsement is implied. -->
+  <rect x="1" y="1" width="46" height="46" rx="11" fill="none" stroke="#d6d0c4" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="24" y="30" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#8d9099">MC</text>
+</svg>

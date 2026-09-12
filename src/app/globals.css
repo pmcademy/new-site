@@ -1,0 +1,855 @@
+@import url("https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap");
+@import "tailwindcss";
+
+/* ==========================================================================
+   PMCADEMY DESIGN SYSTEM
+
+   Two rules, and every spacing bug on the old site came from breaking them:
+
+   1. Never write an arbitrary spacing value. Use the scale below.
+   2. Vertical rhythm is owned by four classes only: .section, .block,
+      .head and .stack. Nothing else sets its own top or bottom margin.
+
+   Colour lives here and nowhere else.
+   ========================================================================== */
+
+@theme {
+  /* --- Ground and ink. Warm neutrals, biased very slightly toward the blue. */
+  --color-paper: #fbfaf8;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f2ed;
+  --color-surface-3: #eceae3;
+  --color-line: #e7e3da;
+  --color-line-2: #d6d0c4;
+  --color-ink: #16181d;
+  --color-ink-2: #5b6069;
+  --color-ink-3: #8d9099;
+
+  /* --- Brand. Measured off pmcademy.com and the app icon. */
+  --color-navy: #0b2c86;
+  --color-navy-h: #08245f;
+  --color-blue: #1f67da;
+  --color-blue-soft: #e8effb;
+  --color-indigo: #100ab4;
+  --color-free: #0f7a4f;
+  --color-free-bg: #e8f3ed;
+  --color-amber: #a8631a;
+  --color-amber-bg: #fbf1e3;
+  --color-on-dark: #ffffff;
+
+  --font-sans: "Schibsted Grotesk", system-ui, -apple-system, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  --paper: #fbfaf8;
+  --surface: #ffffff;
+  --surface-2: #f4f2ed;
+  --surface-3: #eceae3;
+  --line: #e7e3da;
+  --line-2: #d6d0c4;
+  --ink: #16181d;
+  --ink-2: #5b6069;
+  --ink-3: #8d9099;
+  --navy: #0b2c86;
+  --navy-h: #08245f;
+  --blue: #1f67da;
+  --blue-soft: #e8effb;
+  --indigo: #100ab4;
+  --free: #0f7a4f;
+  --free-bg: #e8f3ed;
+  --amber: #a8631a;
+  --amber-bg: #fbf1e3;
+  --on-dark: #ffffff;
+
+  --sans: "Schibsted Grotesk", system-ui, -apple-system, sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* ------------------------------------------------------------------ */
+  /* THE SPACING SCALE. Every gap on the site is one of these.           */
+  /* ------------------------------------------------------------------ */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+
+  /* Composite rhythm tokens. Sections and blocks use these, nothing else. */
+  --sec-y: clamp(var(--s-8), 8vw, var(--s-10)); /* between page sections */
+  --block-y: clamp(var(--s-7), 5vw, var(--s-8)); /* between blocks inside one */
+  --head-gap: var(--s-7); /* section heading to its content */
+  --sub-gap: var(--s-5); /* sub-heading to its content */
+  --card-p: clamp(var(--s-5), 2.4vw, var(--s-6));
+  --stack: var(--s-4); /* default gap in a stack of cards */
+
+  --shell: 1180px;
+  --shell-narrow: 780px;
+  --gutter: clamp(var(--s-4), 4vw, var(--s-6));
+  --nav-h: 64px;
+  --r: 10px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  color-scheme: light;
+}
+
+/* Dark is opt-in via the switch. Light stays the default whatever the OS says.
+   Redefine tokens only. Never style a component inside this block. */
+:root[data-theme="dark"] {
+  --paper: #161513;
+  --surface: #1d1c19;
+  --surface-2: #252320;
+  --surface-3: #2e2b27;
+  --line: #322f29;
+  --line-2: #413d35;
+  --ink: #f4f2ed;
+  --ink-2: #a9a59c;
+  --ink-3: #7c786f;
+  --navy: #5b8cf7;
+  --navy-h: #77a1ff;
+  --blue: #8ab2ff;
+  --blue-soft: #1a2440;
+  --indigo: #a99bff;
+  --free: #55c493;
+  --free-bg: #163026;
+  --amber: #e0a45c;
+  --amber-bg: #33260f;
+  --on-dark: #12100e;
+  color-scheme: dark;
+
+  --color-paper: #161513;
+  --color-surface: #1d1c19;
+  --color-surface-2: #252320;
+  --color-surface-3: #2e2b27;
+  --color-line: #322f29;
+  --color-line-2: #413d35;
+  --color-ink: #f4f2ed;
+  --color-ink-2: #a9a59c;
+  --color-ink-3: #7c786f;
+  --color-navy: #5b8cf7;
+  --color-navy-h: #77a1ff;
+  --color-blue: #8ab2ff;
+  --color-blue-soft: #1a2440;
+  --color-indigo: #a99bff;
+  --color-free: #55c493;
+  --color-free-bg: #163026;
+  --color-amber: #e0a45c;
+  --color-amber-bg: #33260f;
+  --color-on-dark: #12100e;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+/* Wrapped in @layer base on purpose. Unlayered CSS beats every layer,
+   so a bare `p { margin: 0 }` here would silently defeat .lesson-body p + p
+   and every other component rule. Keep resets layered. */
+@layer base {
+  * {
+    box-sizing: border-box;
+    min-width: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--nav-h) + var(--s-5));
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+    transition:
+      background-color 0.3s var(--ease),
+      color 0.3s var(--ease);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    font-weight: 600;
+    letter-spacing: -0.021em;
+    line-height: 1.14;
+    text-wrap: balance;
+  }
+
+  p {
+    margin: 0;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--blue) 22%, transparent);
+  }
+}
+
+@layer components {
+  /* ========================================================================
+     RHYTHM. The four classes that own vertical space.
+     ======================================================================== */
+
+  .shell {
+    width: 100%;
+    max-width: var(--shell);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .shell-narrow {
+    width: 100%;
+    max-width: var(--shell-narrow);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* A page section. Owns its own vertical padding. Never add margin to one. */
+  .section {
+    padding-block: var(--sec-y);
+  }
+  .section-sm {
+    padding-block: var(--block-y);
+  }
+  /* First section on a page: less than a full section, more than nothing. */
+  .section-top {
+    padding-top: var(--block-y);
+    padding-bottom: var(--sec-y);
+  }
+  .section-t0 {
+    padding-top: 0;
+  }
+  .rule {
+    border-top: 1px solid var(--line);
+  }
+
+  /* A block inside a section. Owns the gap to the block before it. */
+  .block + .block {
+    margin-top: var(--block-y);
+  }
+
+  /* A section heading and its content. The gap is fixed and generous:
+     this is the exact bug from the old build, where a heading sat 20px
+     above a grid of cards and read as attached to them. */
+  .head {
+    max-width: 68ch;
+    margin-bottom: var(--head-gap);
+  }
+  .head > .eyebrow {
+    display: block;
+    margin-bottom: var(--s-3);
+  }
+  .head > h2,
+  .head > h3 {
+    font-size: clamp(1.55rem, 3vw, 2.15rem);
+  }
+  /* A page title inside a .head. Bigger than a section heading, same rhythm. */
+  .head > h1 {
+    font-size: clamp(1.8rem, 3.8vw, 2.7rem);
+    letter-spacing: -0.03em;
+  }
+  .head > p {
+    margin-top: var(--s-4);
+    color: var(--ink-2);
+    font-size: 16.5px;
+    max-width: 62ch;
+  }
+
+  /* A sub-heading inside a block. Smaller, still never touching its content. */
+  .subhead {
+    margin-bottom: var(--sub-gap);
+  }
+  .subhead > h3 {
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+  }
+  .subhead > p {
+    margin-top: var(--s-3);
+    color: var(--ink-2);
+    max-width: 62ch;
+  }
+
+  /* Vertical stacks. Use instead of per-child margins. */
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack);
+  }
+  .stack-sm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+  }
+  .stack-lg {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-5);
+  }
+
+  /* Card grids. One gap value, everywhere. */
+  .grid-cards {
+    display: grid;
+    gap: var(--stack);
+  }
+  @media (min-width: 720px) {
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (min-width: 980px) {
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  /* ========================================================================
+     TYPE
+     ======================================================================== */
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .serif-num {
+    font-family: var(--serif);
+    letter-spacing: -0.02em;
+    line-height: 0.8;
+    color: var(--ink-3);
+  }
+  .mono {
+    font-family: var(--mono);
+  }
+  .prose-w {
+    max-width: 66ch;
+  }
+
+  /* ========================================================================
+     COMPONENTS
+     ======================================================================== */
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+  }
+  .card-p {
+    padding: var(--card-p);
+  }
+  .card-quiet {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-2);
+    height: 42px;
+    padding-inline: 18px;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    font-size: 14.5px;
+    font-weight: 500;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+      background-color 0.18s var(--ease),
+      border-color 0.18s var(--ease),
+      color 0.18s var(--ease),
+      opacity 0.18s var(--ease);
+  }
+  .btn-lg {
+    height: 50px;
+    padding-inline: 26px;
+    font-size: 15.5px;
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: var(--on-dark);
+  }
+  .btn-primary:hover {
+    background: var(--navy-h);
+  }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--line-2);
+  }
+  .btn-outline:hover {
+    border-color: var(--ink-3);
+    background: var(--surface-2);
+  }
+  .btn-quiet {
+    background: transparent;
+    color: var(--ink-2);
+    padding-inline: 10px;
+  }
+  .btn-quiet:hover {
+    color: var(--ink);
+  }
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .btn svg {
+    transition: transform 0.18s var(--ease);
+  }
+  .btn:not(:disabled):hover svg {
+    transform: translateX(3px);
+  }
+
+  .icobtn {
+    width: 42px;
+    height: 42px;
+    border-radius: 9px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-2);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition:
+      background-color 0.18s var(--ease),
+      color 0.18s var(--ease);
+  }
+  .icobtn:hover {
+    background: var(--surface-2);
+    color: var(--ink);
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s-2);
+    padding: 5px 11px;
+    border-radius: 999px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    background: var(--surface-2);
+    color: var(--ink-2);
+  }
+  .tag-free {
+    background: var(--free-bg);
+    color: var(--free);
+  }
+  .tag-blue {
+    background: var(--blue-soft);
+    color: var(--blue);
+  }
+  .tag-amber {
+    background: var(--amber-bg);
+    color: var(--amber);
+  }
+
+  .kind {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 3px 8px;
+    border-radius: 5px;
+    background: var(--surface-2);
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  /* Labelled box used all through the lessons. */
+  .note {
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: var(--s-4) var(--s-5);
+    background: var(--surface);
+  }
+  .note > .eyebrow {
+    display: block;
+    margin-bottom: var(--s-2);
+  }
+  .note > p {
+    font-size: 14.5px;
+    color: var(--ink-2);
+  }
+  .note-blue {
+    border-color: color-mix(in srgb, var(--blue) 30%, transparent);
+    background: var(--blue-soft);
+  }
+  .note-blue > .eyebrow {
+    color: var(--blue);
+  }
+  .note-green {
+    border-color: color-mix(in srgb, var(--free) 30%, transparent);
+    background: var(--free-bg);
+  }
+  .note-green > .eyebrow {
+    color: var(--free);
+  }
+  .note-amber {
+    border-color: color-mix(in srgb, var(--amber) 30%, transparent);
+    background: var(--amber-bg);
+  }
+  .note-amber > .eyebrow {
+    color: var(--amber);
+  }
+
+  /* FAQ / disclosure */
+  .faq details {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq summary {
+    list-style: none;
+    cursor: pointer;
+    padding-block: var(--s-5);
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s-5);
+    font-weight: 500;
+    font-size: 16.5px;
+  }
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+  .faq summary:hover {
+    color: var(--blue);
+  }
+  .faq .pm {
+    width: 18px;
+    height: 18px;
+    flex: none;
+    position: relative;
+    margin-top: 5px;
+  }
+  .faq .pm::before,
+  .faq .pm::after {
+    content: "";
+    position: absolute;
+    background: var(--ink-3);
+    transition: transform 0.2s var(--ease);
+  }
+  .faq .pm::before {
+    left: 0;
+    top: 8px;
+    width: 18px;
+    height: 1.5px;
+  }
+  .faq .pm::after {
+    left: 8px;
+    top: 0;
+    width: 1.5px;
+    height: 18px;
+  }
+  .faq details[open] .pm::after {
+    transform: scaleY(0);
+  }
+
+  /* ========================================================================
+     LESSON
+     ======================================================================== */
+
+  /* A lesson section. Same rhythm as a page block, with a rule above. */
+  .lesson-sec {
+    padding-top: var(--block-y);
+    margin-top: var(--block-y);
+    border-top: 1px solid var(--line);
+  }
+  .lesson-sec > h2 {
+    font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+    margin-bottom: var(--sub-gap);
+  }
+
+  /* The hook. The voice of the situation, talking to the learner. */
+  .lesson-hook {
+    font-size: clamp(1.08rem, 1.6vw, 1.25rem);
+    line-height: 1.58;
+    color: var(--ink);
+    border-left: 2px solid var(--navy);
+    padding-left: var(--s-5);
+    max-width: 62ch;
+  }
+
+  /* Long-form body inside a lesson. */
+  .lesson-body p {
+    color: var(--ink-2);
+    max-width: 66ch;
+  }
+  .lesson-body p + p {
+    margin-top: var(--s-4);
+  }
+  .lesson-body strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .lesson-body a {
+    color: var(--blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .lesson-body ul {
+    margin: var(--s-4) 0 0;
+    padding-left: var(--s-5);
+    color: var(--ink-2);
+    max-width: 66ch;
+  }
+  .lesson-body li + li {
+    margin-top: var(--s-2);
+  }
+
+  /* Figure wrapper for every diagram and scene image in a lesson. */
+  .figure {
+    margin-top: var(--s-5);
+  }
+  .figure > figcaption {
+    margin-top: var(--s-3);
+    font-size: 13.5px;
+    color: var(--ink-3);
+    max-width: 62ch;
+  }
+}
+
+@layer components {
+  /* The case study screen, swapped as the reader scrolls from beat to beat. */
+  @keyframes case-in {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 10px, 0) scale(0.995);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+/* ==========================================================================
+   MOTION. One reveal, nothing else.
+   ========================================================================== */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 12px, 0);
+  transition:
+    opacity 0.55s var(--ease),
+    transform 0.55s var(--ease);
+}
+[data-reveal].in {
+  opacity: 1;
+  transform: none;
+}
+.no-js [data-reveal] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+  border-radius: 99px;
+  border: 3px solid var(--paper);
+}
+
+.footer-wordmark {
+  --wordmark-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-wordmark-main {
+  animation: footer-wordmark-enter 1.25s var(--wordmark-ease) both;
+}
+
+.footer-word {
+  display: inline-block;
+  position: relative;
+  transition:
+    transform 600ms var(--wordmark-ease),
+    letter-spacing 600ms var(--wordmark-ease);
+}
+
+.footer-word:nth-child(1) {
+  animation: footer-word-enter 900ms 80ms var(--wordmark-ease) both;
+}
+
+.footer-word:nth-child(2) {
+  animation: footer-word-enter 900ms 160ms var(--wordmark-ease) both;
+}
+
+.footer-word:nth-child(3) {
+  animation: footer-word-enter 900ms 240ms var(--wordmark-ease) both;
+}
+
+.footer-wordmark:hover .footer-word:nth-child(1) {
+  transform: translateY(-0.035em);
+}
+
+.footer-wordmark:hover .footer-word:nth-child(2) {
+  transform: translateY(0.025em);
+}
+
+.footer-wordmark:hover .footer-word:nth-child(3) {
+  transform: translateY(-0.055em);
+}
+
+.footer-word-accent {
+  background:
+    linear-gradient(
+      105deg,
+      currentColor 0%,
+      currentColor 36%,
+      color-mix(in srgb, currentColor 40%, white) 48%,
+      currentColor 60%,
+      currentColor 100%
+    );
+  background-size: 240% 100%;
+  background-position: 100% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation:
+    footer-word-enter 900ms 240ms var(--wordmark-ease) both,
+    footer-word-shimmer 7s 1.5s ease-in-out infinite;
+}
+
+.footer-wordmark-ghost {
+  opacity: 0;
+  color: transparent;
+  -webkit-text-stroke: 1px
+    color-mix(in srgb, currentColor 18%, transparent);
+  transform: translateY(0.08em) scale(1.015);
+  transition:
+    opacity 700ms var(--wordmark-ease),
+    transform 900ms var(--wordmark-ease);
+}
+
+.footer-wordmark:hover .footer-wordmark-ghost {
+  opacity: 0.5;
+  transform: translateY(0.13em) scale(1.025);
+}
+
+.footer-wordmark-line {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+.footer-wordmark-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 28%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, currentColor 80%, transparent),
+    transparent
+  );
+  transform: translateX(-150%);
+  animation: footer-line-scan 6s 1.2s ease-in-out infinite;
+}
+
+@keyframes footer-wordmark-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.22em) scaleY(0.88);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes footer-word-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes footer-word-shimmer {
+  0%,
+  72%,
+  100% {
+    background-position: 100% 50%;
+  }
+
+  86% {
+    background-position: -40% 50%;
+  }
+}
+
+@keyframes footer-line-scan {
+  0%,
+  65%,
+  100% {
+    transform: translateX(-150%);
+  }
+
+  82% {
+    transform: translateX(450%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wordmark-main,
+  .footer-word,
+  .footer-word-accent,
+  .footer-wordmark-line::after {
+    animation: none;
+  }
+
+  .footer-word,
+  .footer-wordmark-ghost {
+    transition: none;
+  }
+}

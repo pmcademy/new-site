@@ -1,0 +1,146 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+import Logo from "./Logo";
+import ThemeToggle from "./ThemeToggle";
+import Button from "@/components/ui/Button";
+import { Arrow } from "@/components/ui/Icons";
+import { primaryNav, site } from "@/lib/site";
+import { signOut, useStore } from "@/lib/progress";
+import { cn } from "@/lib/utils";
+
+export default function Nav() {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const { account, ready } = useStore();
+
+  useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
+  const isOn = (href: string) =>
+    href.startsWith("/#") ? false : pathname.startsWith(href);
+
+  const signedIn = ready && account;
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-line bg-paper">
+      <div className="shell flex h-[var(--nav-h)] items-center justify-between gap-5">
+        <Link href="/" aria-label={`${site.name} home`}>
+          <Logo />
+        </Link>
+
+        <nav className="hidden gap-1 lg:flex">
+          {primaryNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "rounded-[7px] px-3 py-1.5 text-[14.5px] transition-colors duration-200",
+                isOn(item.href)
+                  ? "font-medium text-ink"
+                  : "text-ink-2 hover:bg-surface-2 hover:text-ink"
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+
+          {signedIn ? (
+            <>
+              <button
+                onClick={signOut}
+                className="btn btn-quiet hidden sm:inline-flex"
+              >
+                Sign out
+              </button>
+              <Button href="/levels" className="hidden sm:inline-flex">
+                Keep going
+              </Button>
+            </>
+          ) : (
+            <>
+              <Link href="/signin" className="btn btn-quiet hidden sm:inline-flex">
+                Sign in
+              </Link>
+              <Button href="/levels/start" className="hidden sm:inline-flex">
+                Start free
+              </Button>
+            </>
+          )}
+
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="icobtn lg:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {/* Two bars, laid out in a flow column and moved with transforms
+                only. No absolute positioning, so nothing can escape the
+                button's box while the transition runs. */}
+            <span className="flex h-3 w-4 flex-col justify-between">
+              <span
+                className={cn(
+                  "block h-px w-4 bg-current transition-transform duration-300",
+                  open && "translate-y-[5.5px] rotate-45"
+                )}
+              />
+              <span
+                className={cn(
+                  "block h-px w-4 bg-current transition-transform duration-300",
+                  open && "-translate-y-[5.5px] -rotate-45"
+                )}
+              />
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile sheet */}
+      <div
+        className={cn(
+          "fixed inset-x-0 bottom-0 top-[var(--nav-h)] z-40 overflow-y-auto border-t border-line bg-paper transition-opacity duration-300 lg:hidden",
+          open ? "opacity-100" : "pointer-events-none opacity-0"
+        )}
+      >
+        <div className="shell flex flex-col gap-1 py-6">
+          {primaryNav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="border-b border-line py-4 text-lg font-medium"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <div className="mt-6 flex flex-col gap-2">
+            <Button href="/levels/start" size="lg">
+              Start lesson one <Arrow />
+            </Button>
+            {signedIn ? (
+              <button onClick={signOut} className="btn btn-outline btn-lg">
+                Sign out
+              </button>
+            ) : (
+              <Button href="/signin" variant="outline" size="lg">
+                Sign in
+              </Button>
+            )}
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+}
