@@ -125,7 +125,7 @@
 /* Dark is opt-in via the switch. Light stays the default whatever the OS says.
    Redefine tokens only. Never style a component inside this block. */
 :root[data-theme="dark"] {
-  --paper: #131e2a;
+  --paper: rgb(11, 15, 20);
   --surface: #1b2a38;
   --surface-2: #223342;
   --surface-3: #2c4050;
