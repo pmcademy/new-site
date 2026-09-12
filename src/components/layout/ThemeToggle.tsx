@@ -1,60 +1,40 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { Moon, Sun } from "@/components/ui/Icons";
-
+export { themeInitScript } from "./theme";
 export type Theme = "light" | "dark";
 
-/**
- * Light is the default, always. The OS preference does not override it. The
- * switch is the only thing that changes the theme, and the choice sticks.
- *
- * The matching inline script in layout.tsx applies the stored value before
- * first paint so there's never a flash of the wrong theme.
- */
-export const themeInitScript = `
-(function(){
-  try {
-    var t = localStorage.getItem("pmc-theme");
-    document.documentElement.setAttribute("data-theme", t === "dark" ? "dark" : "light");
-  } catch (e) {
-    document.documentElement.setAttribute("data-theme", "light");
-  }
-  document.documentElement.classList.remove("no-js");
-})();`;
+function getTheme(): Theme {
+  return document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+}
 
-export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>("light");
-  const [mounted, setMounted] = useState(false);
+function updateChrome() {
+  const color = getComputedStyle(document.documentElement).getPropertyValue("--paper").trim();
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", color);
+}
 
-  useEffect(() => {
-    const current =
-      (document.documentElement.getAttribute("data-theme") as Theme) ?? "light";
-    setTheme(current);
-    setMounted(true);
-  }, []);
-
-  function toggle() {
-    const next: Theme = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    document.documentElement.setAttribute("data-theme", next);
-    try {
-      localStorage.setItem("pmc-theme", next);
-    } catch {
-      /* private mode, the choice just won't persist */
+function subscribe(callback: () => void) {
+  const observer = new MutationObserver(() => { updateChrome(); callback(); });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  function sync(event: StorageEvent) {
+    if (event.key === "pmc-theme" || event.key === null) {
+      document.documentElement.dataset.theme = event.newValue === "dark" ? "dark" : "light";
     }
   }
+  window.addEventListener("storage", sync);
+  return () => { observer.disconnect(); window.removeEventListener("storage", sync); };
+}
 
-  return (
-    <button
-      onClick={toggle}
-      className="icobtn"
-      aria-label={
-        theme === "dark" ? "Switch to light theme" : "Switch to dark theme"
-      }
-    >
-      {/* Render the light icon until mounted so server and client markup match. */}
-      {mounted && theme === "dark" ? <Moon /> : <Sun />}
-    </button>
-  );
+export default function ThemeToggle() {
+  const theme = useSyncExternalStore(subscribe, getTheme, () => "light" as Theme);
+  useEffect(() => { updateChrome(); }, []);
+  function toggle() {
+    const next = getTheme() === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem("pmc-theme", next); } catch {}
+  }
+  return <button onClick={toggle} className="icobtn" aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}>
+    {theme === "dark" ? <Moon /> : <Sun />}
+  </button>;
 }

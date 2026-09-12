@@ -1,3 +1,4 @@
+import FieldArt from "@/components/art/FieldArt";
 import type { Metadata } from "next";
 
 import Reveal from "@/components/motion/Reveal";
@@ -44,6 +45,7 @@ export default function CommunityPage() {
       {/* ============================================================= INTRO */}
       <section className="section-top">
         <div className="shell">
+          <div className="atelier-heading">
           <Reveal className="head">
             <span className="eyebrow">Community</span>
             <h1>The course is free. Always.</h1>
@@ -54,6 +56,8 @@ export default function CommunityPage() {
               full of people who can refer you.
             </p>
           </Reveal>
+            <FieldArt kind="community" />
+          </div>
 
           <Reveal stagger className="grid-cards grid-2">
             {/* ------------------------------------------------------ free */}

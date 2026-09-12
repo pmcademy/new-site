@@ -3,22 +3,26 @@
 import { useState, type CSSProperties } from "react";
 import AtelierArt from "./AtelierArt";
 import styles from "./ProductAtelier.module.css";
+import Button from "../ui/Button";
+import { Arrow } from "../ui/Icons";
 
 type Props = { className?: string; title?: string; subtitle?: string; ctaLabel?: string; ctaHref?: string; artOnly?: boolean; speed?: number };
 
-export default function ProductAtelier({ className = "", title = "PRODUCT EXPLORERS", subtitle = "Learn product management. Follow your curiosity. Free for everyone.", ctaLabel = "BEGIN EXPLORING", ctaHref = "/learn", artOnly = false, speed = 1 }: Props) {
+export default function ProductAtelier({ className = "", title = "Learn Product Management", subtitle = "Follow your curiosity. Free for everyone.", ctaLabel = "START LEVEL 0", ctaHref = "/level-0", artOnly = true, speed = 1 }: Props) {
   const [paused, setPaused] = useState(false);
   const duration = Number.isFinite(speed) && speed > 0 ? 1 / speed : 1;
   return <section className={`${styles.hero} ${className}`} data-paused={paused} style={{ "--tempo": duration } as CSSProperties} aria-label="Product management learning">
     <div className={styles.content}>
       {!artOnly && <p className={styles.kicker}>THE ART OF BUILDING SOMETHING THAT MATTERS</p>}
       <div className={styles.art}><AtelierArt /></div>
-      {!artOnly && <div className={styles.copy}>
+      <div className={styles.copy}>
         <h1>{title}</h1>
         <p>{subtitle}</p>
         <a href={ctaHref} className={styles.button}><span>{ctaLabel}</span><span aria-hidden="true">↗</span></a>
-      </div>}
-      <button className={styles.pause} type="button" aria-pressed={paused} aria-label={paused ? "Play animation" : "Pause animation"} onClick={() => setPaused(!paused)}>{paused ? "PLAY MOTION ↗" : "PAUSE MOTION Ⅱ"}</button>
+        <a href={'/levels'} className={styles.button}><span>{'Explore All Levels '}</span><span aria-hidden="true">↗</span></a>
+      </div>
+      {/* <button className={styles.pause} type="button" aria-pressed={paused} aria-label={paused ? "Play animation" : "Pause animation"} onClick={() => setPaused(!paused)}>{paused ? "PLAY MOTION ↗" : "PAUSE MOTION Ⅱ"}</button> */}
+      <div className="shell mt-20 field-rule" aria-hidden="true">✦</div>
     </div>
   </section>;
 }

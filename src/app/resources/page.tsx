@@ -1,3 +1,4 @@
+import FieldArt from "@/components/art/FieldArt";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -22,6 +23,7 @@ export default function ResourcesPage() {
       {/* =============================================================== TOP */}
       <section className="section-top">
         <div className="shell">
+          <div className="atelier-heading">
           <Reveal className="head">
             <span className="eyebrow">Resource library</span>
             <h1>Free, ungated, and actually usable.</h1>
@@ -34,6 +36,8 @@ export default function ResourcesPage() {
               for anything.
             </p>
           </Reveal>
+            <FieldArt kind="library" />
+          </div>
 
           <Reveal stagger className="grid-cards grid-3">
             <Jump

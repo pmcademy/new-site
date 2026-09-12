@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
-import { themeInitScript } from "@/components/layout/ThemeToggle";
+import { themeInitScript } from "@/components/layout/theme";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -25,10 +25,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fbfaf8" },
-    { media: "(prefers-color-scheme: dark)", color: "#161513" },
-  ],
+  themeColor: "#f1eddf",
 };
 
 export default function RootLayout({

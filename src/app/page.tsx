@@ -1,7 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
 
-import HeroArt from "@/components/hero/HeroArt";
 import Reveal from "@/components/motion/Reveal";
 import LevelCard from "@/components/course/LevelCard";
 import Diagram from "@/components/course/diagrams";
@@ -10,12 +8,11 @@ import { Arrow, Check, Sparkle } from "@/components/ui/Icons";
 import {
   faq,
   levels,
-  quotes,
   totalChapters,
-  totalHours,
   totalLessons,
 } from "@/lib/course";
-import AtelierArt from "@/components/hero/AtelierArt";
+import FieldArt from "@/components/art/FieldArt";
+import CompassMotion from "@/components/art/CompassMotion";
 import ProductAtelier from "@/components/hero/ProductAtelier";
 
 export default function Home() {
@@ -23,35 +20,11 @@ export default function Home() {
 
   return (
     <>
-      {/* ================================================================ HERO */}
-      <section className="pb-[var(--block-y)] pt-[var(--s-7)]">
-        <div className=" flex flex-col items-center text-center">
-          <Reveal className="w-full ">
-            <ProductAtelier/>
-          </Reveal>
-
-          <Reveal delay={0.1} className="flex flex-col items-center">
-            <h1 className="mt-[var(--s-6)] text-[clamp(1.9rem,4.2vw,3.1rem)] tracking-[-0.035em]">
-             Learn Product Management
-            </h1>
-            <p className="mt-[var(--s-4)] text-[clamp(1rem,1.3vw,1.15rem)] text-ink-2">
-              Six levels, free forever.
-            </p>
-
-            <div className="mt-[var(--s-6)] flex flex-wrap justify-center gap-[var(--s-3)]">
-              <Button href="/level-0" size="lg">
-                <Sparkle /> Start Level 0
-              </Button>
-              <Button href="/levels" variant="outline" size="lg">
-                See the six levels
-              </Button>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <ProductAtelier />
+      
 
       {/* =============================================================== LEVEL 0 */}
-      <section className="section-sm rule">
+      <section className="section-sm">
         <div className="shell">
           <Reveal className="card card-p grid items-center gap-[var(--s-6)] lg:grid-cols-[1.15fr_0.85fr]">
             <div>
@@ -78,6 +51,7 @@ export default function Home() {
               </div>
             </div>
             <div className="card-quiet p-[var(--s-5)]">
+              <CompassMotion />
               <p className="eyebrow">You type</p>
               <p className="mt-[var(--s-2)] text-[15px] italic text-ink-2">
                 &ldquo;an app that helps freelancers chase unpaid invoices&rdquo;
@@ -166,6 +140,7 @@ export default function Home() {
       <section className="section rule" id="community">
         <div className="shell">
           <Reveal className="head">
+            <FieldArt kind="community" className="field-art-card" />
             <span className="eyebrow">Community</span>
             <h2>The course is free. Always.</h2>
             <p>
@@ -267,15 +242,6 @@ export default function Home() {
         </div>
       </section>
     </>
-  );
-}
-
-function Stat({ v, k }: { v: string; k: string }) {
-  return (
-    <div>
-      <dd className="text-[22px] font-semibold tracking-[-0.02em]">{v}</dd>
-      <dt className="text-[12.5px] text-ink-3">{k}</dt>
-    </div>
   );
 }
 

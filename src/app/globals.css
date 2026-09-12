@@ -13,56 +13,78 @@
    Colour lives here and nowhere else.
    ========================================================================== */
 
-@theme {
-  /* --- Ground and ink. Warm neutrals, biased very slightly toward the blue. */
-  --color-paper: #fbfaf8;
-  --color-surface: #ffffff;
-  --color-surface-2: #f4f2ed;
-  --color-surface-3: #eceae3;
-  --color-line: #e7e3da;
-  --color-line-2: #d6d0c4;
-  --color-ink: #16181d;
-  --color-ink-2: #5b6069;
-  --color-ink-3: #8d9099;
-
-  /* --- Brand. Measured off pmcademy.com and the app icon. */
-  --color-navy: #0b2c86;
-  --color-navy-h: #08245f;
-  --color-blue: #1f67da;
-  --color-blue-soft: #e8effb;
-  --color-indigo: #100ab4;
-  --color-free: #0f7a4f;
-  --color-free-bg: #e8f3ed;
-  --color-amber: #a8631a;
-  --color-amber-bg: #fbf1e3;
-  --color-on-dark: #ffffff;
-
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-navy: var(--navy);
+  --color-navy-h: var(--navy-h);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-indigo: var(--indigo);
+  --color-free: var(--free);
+  --color-free-bg: var(--free-bg);
+  --color-amber: var(--amber);
+  --color-amber-bg: var(--amber-bg);
+  --color-on-dark: var(--on-dark);
   --font-sans: "Schibsted Grotesk", system-ui, -apple-system, sans-serif;
   --font-serif: "Instrument Serif", Georgia, serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
 :root {
-  --paper: #fbfaf8;
-  --surface: #ffffff;
-  --surface-2: #f4f2ed;
-  --surface-3: #eceae3;
-  --line: #e7e3da;
-  --line-2: #d6d0c4;
-  --ink: #16181d;
-  --ink-2: #5b6069;
-  --ink-3: #8d9099;
-  --navy: #0b2c86;
-  --navy-h: #08245f;
-  --blue: #1f67da;
-  --blue-soft: #e8effb;
-  --indigo: #100ab4;
-  --free: #0f7a4f;
-  --free-bg: #e8f3ed;
-  --amber: #a8631a;
-  --amber-bg: #fbf1e3;
-  --on-dark: #ffffff;
-
+  --paper: #f7f5ec;
+  --surface: #faf6eb;
+  --surface-2: #e8e4d5;
+  --surface-3: #ded9c7;
+  --line: #d3cebd;
+  --line-2: #a4adab;
+  --ink: #293d51;
+  --ink-2: #536576;
+  --ink-3: #64716f;
+  --navy: #415772;
+  --navy-h: #30475f;
+  --blue: #376780;
+  --blue-soft: #dce6e7;
+  --indigo: #665a79;
+  --free: #3f6c5a;
+  --free-bg: #dce6d9;
+  --amber: #855d29;
+  --amber-bg: #f0e3c6;
+  --on-dark: #faf3e2;
+  --art-outline: #344659;
+  --art-deep: #304f75;
+  --art-forest: #405b70;
+  --art-blue: #739db0;
+  --art-blue-mid: #596e85;
+  --art-blue-light: #afc9d4;
+  --art-sage-deep: #577887;
+  --art-sage: #89ada3;
+  --art-sage-light: #b9cac0;
+  --art-ochre: #d4b862;
+  --art-ochre-light: #e5d2a7;
+  --art-coral: #c77764;
+  --art-coral-light: #dba495;
+  --art-page: #fff7df;
+  --art-page-shade: #e6c992;
+  --art-sky: #ebc0b6;
+  --art-sky-low: #f7e8d1;
+  --art-cloud: #f9f0dd;
+  --art-water: #8598bb;
+  --art-water-deep: #344f79;
+  --art-mountain: #b5bfbc;
+  --art-mountain-near: #829aa0;
+  --art-ripple: #d5e0de;
+  --art-sun: #e5ae77;
+  --art-frame: #ede5cf;
+  --texture-opacity: 0.065;
+  --shadow: color-mix(in srgb, var(--ink) 9%, transparent);
   --sans: "Schibsted Grotesk", system-ui, -apple-system, sans-serif;
   --serif: "Instrument Serif", Georgia, serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
@@ -93,9 +115,9 @@
   --shell-narrow: 780px;
   --gutter: clamp(var(--s-4), 4vw, var(--s-6));
   --nav-h: 64px;
-  --r: 10px;
-  --r-lg: 16px;
-  --r-xl: 22px;
+  --r: 6px;
+  --r-lg: 8px;
+  --r-xl: 14px;
   --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   color-scheme: light;
 }
@@ -103,46 +125,52 @@
 /* Dark is opt-in via the switch. Light stays the default whatever the OS says.
    Redefine tokens only. Never style a component inside this block. */
 :root[data-theme="dark"] {
-  --paper: #161513;
-  --surface: #1d1c19;
-  --surface-2: #252320;
-  --surface-3: #2e2b27;
-  --line: #322f29;
-  --line-2: #413d35;
-  --ink: #f4f2ed;
-  --ink-2: #a9a59c;
-  --ink-3: #7c786f;
-  --navy: #5b8cf7;
-  --navy-h: #77a1ff;
-  --blue: #8ab2ff;
-  --blue-soft: #1a2440;
-  --indigo: #a99bff;
-  --free: #55c493;
-  --free-bg: #163026;
-  --amber: #e0a45c;
-  --amber-bg: #33260f;
-  --on-dark: #12100e;
+  --paper: #131e2a;
+  --surface: #1b2a38;
+  --surface-2: #223342;
+  --surface-3: #2c4050;
+  --line: #354b59;
+  --line-2: #607682;
+  --ink: #f0e7d4;
+  --ink-2: #c1cbd0;
+  --ink-3: #a0b1b8;
+  --navy: #adc8d8;
+  --navy-h: #c7dce5;
+  --blue: #9ecbdc;
+  --blue-soft: #243e50;
+  --indigo: #c1b4d1;
+  --free: #b0ceb7;
+  --free-bg: #243e36;
+  --amber: #e0bd80;
+  --amber-bg: #443a29;
+  --on-dark: #172838;
+  --art-outline: #9bb1bc;
+  --art-deep: #233c53;
+  --art-forest: #243d49;
+  --art-blue: #557f97;
+  --art-blue-mid: #3f637c;
+  --art-blue-light: #729cad;
+  --art-sage-deep: #31565c;
+  --art-sage: #688f83;
+  --art-sage-light: #8da99a;
+  --art-ochre: #bd985c;
+  --art-ochre-light: #ad9163;
+  --art-coral: #ba8278;
+  --art-coral-light: #9e706d;
+  --art-page: #c7bfa4;
+  --art-page-shade: #99866a;
+  --art-sky: #263952;
+  --art-sky-low: #49516a;
+  --art-cloud: #66798e;
+  --art-water: #33516b;
+  --art-water-deep: #1c324a;
+  --art-mountain: #536c78;
+  --art-mountain-near: #3c5966;
+  --art-ripple: #9bbed0;
+  --art-sun: #dbcc9c;
+  --art-frame: #273b4c;
+  --texture-opacity: 0.035;
   color-scheme: dark;
-
-  --color-paper: #161513;
-  --color-surface: #1d1c19;
-  --color-surface-2: #252320;
-  --color-surface-3: #2e2b27;
-  --color-line: #322f29;
-  --color-line-2: #413d35;
-  --color-ink: #f4f2ed;
-  --color-ink-2: #a9a59c;
-  --color-ink-3: #7c786f;
-  --color-navy: #5b8cf7;
-  --color-navy-h: #77a1ff;
-  --color-blue: #8ab2ff;
-  --color-blue-soft: #1a2440;
-  --color-indigo: #a99bff;
-  --color-free: #55c493;
-  --color-free-bg: #163026;
-  --color-amber: #e0a45c;
-  --color-amber-bg: #33260f;
-  --color-on-dark: #12100e;
 }
 
 /* ==========================================================================
@@ -649,6 +677,7 @@
    MOTION. One reveal, nothing else.
    ========================================================================== */
 
+@layer components {
 [data-reveal] {
   opacity: 0;
   transform: translate3d(0, 12px, 0);
@@ -663,6 +692,8 @@
 .no-js [data-reveal] {
   opacity: 1;
   transform: none;
+}
+
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -693,6 +724,7 @@
   border: 3px solid var(--paper);
 }
 
+@layer components {
 .footer-wordmark {
   --wordmark-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -739,7 +771,7 @@
       105deg,
       currentColor 0%,
       currentColor 36%,
-      color-mix(in srgb, currentColor 40%, white) 48%,
+      color-mix(in srgb, var(--ink) 40%, var(--paper)) 48%,
       currentColor 60%,
       currentColor 100%
     );
@@ -757,7 +789,7 @@
   opacity: 0;
   color: transparent;
   -webkit-text-stroke: 1px
-    color-mix(in srgb, currentColor 18%, transparent);
+    color-mix(in srgb, var(--ink) 18%, transparent);
   transform: translateY(0.08em) scale(1.015);
   transition:
     opacity 700ms var(--wordmark-ease),
@@ -851,5 +883,44 @@
   .footer-word,
   .footer-wordmark-ghost {
     transition: none;
+  }
+}
+}
+
+@layer base {
+  input, textarea, select { accent-color: var(--blue); }
+}
+@layer components {
+  .card { box-shadow: 0 3px 0 var(--shadow); }
+  .card-quiet { box-shadow: inset 0 0 0 4px color-mix(in srgb, var(--surface) 50%, transparent); }
+  .btn { border-radius: var(--r); }
+  .btn-primary { border: 1px solid color-mix(in srgb, var(--navy) 80%, var(--ink)); box-shadow: 0 3px 0 var(--shadow); }
+  .btn-outline { background: color-mix(in srgb, var(--surface) 60%, transparent); }
+  .icobtn { border-radius: 50%; }
+  .head > h1, .head > h2, .head > h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -.025em; }
+  .head > h1 { font-size: clamp(2.4rem, 4.8vw, 4rem); }
+  .head > h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
+  .eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; }
+  .figure > svg { background: var(--surface); border-radius: var(--r-lg); }
+  .lesson-hook { border-color: var(--art-coral); }
+  .atelier-heading { display: grid; grid-template-columns: minmax(0,1fr) minmax(220px,.65fr); align-items: center; gap: var(--s-7); margin-bottom: var(--head-gap); }
+  .atelier-heading .head { margin-bottom: 0; }
+  .atelier-heading > .field-art { max-width: 380px; justify-self: end; }
+  .field-art { width: 100%; display: block; color: var(--art-outline); }
+  .field-art svg { display: block; width: 100%; height: auto; }
+  .field-art-small { max-width: 110px; }
+  .field-art-card { max-width: 150px; margin-bottom: var(--s-5); }
+  .field-art-footer { max-width: 190px; margin: 0 auto var(--s-5); }
+  .field-rule { display: flex; align-items: center; gap: var(--s-4); color: var(--art-ochre); }
+  .field-rule::before, .field-rule::after { content: ''; height: 1px; background: var(--line-2); flex: 1; }
+  .site-footer { background: var(--surface-2); border-top: 1px solid var(--line-2); }
+  .level-portrait { width: 100%; max-width: 130px; margin-bottom: var(--s-5); }
+  .home-heading { font-family: var(--serif); }
+  .lottie-accent { position: relative; max-width: 300px; width: 100%; aspect-ratio: 1; margin-inline: auto; }
+  .lottie-canvas, .lottie-fallback { position: absolute; inset: 0; }
+  .motion-toggle { display: block; margin: var(--s-2) auto 0; padding: var(--s-2); font-family: var(--mono); font-size: 10px; color: var(--ink-2); cursor: pointer; }
+  @media(max-width: 720px) {
+    .atelier-heading { grid-template-columns: 1fr; gap: var(--s-5); }
+    .atelier-heading > .field-art { max-width: 240px; justify-self: center; }
   }
 }

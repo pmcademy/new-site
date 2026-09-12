@@ -1,3 +1,4 @@
+import FieldArt from "@/components/art/FieldArt";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -37,6 +38,7 @@ export default function SignInPage() {
         </Reveal>
 
         <Reveal className="flex flex-col gap-[var(--s-4)]">
+          <FieldArt kind="library" className="max-w-[320px] self-center" />
           <div className="note">
             <span className="eyebrow">Nothing is charged</span>
             <p>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import FieldArt, { type FieldKind } from "@/components/art/FieldArt";
 
 import { Arrow, Lock } from "@/components/ui/Icons";
 import { levelHours, levelLessons, type Level } from "@/lib/course";
@@ -15,6 +16,7 @@ export default function LevelCard({ level: l }: { level: Level }) {
 
   const inner = (
     <>
+      <FieldArt className="level-portrait" kind={({ "01": "seed", "02": "compass", "03": "library", "04": "craft", "05": "telescope", "06": "community" } as Record<string, FieldKind>)[l.slug] ?? "compass"} />
       <div className="flex items-start justify-between gap-[var(--s-4)]">
         <div>
           <span className="eyebrow block">Level {l.n}</span>

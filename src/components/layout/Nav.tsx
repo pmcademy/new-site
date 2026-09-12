@@ -87,29 +87,17 @@ export default function Nav() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
-            {/* Two bars, laid out in a flow column and moved with transforms
-                only. No absolute positioning, so nothing can escape the
-                button's box while the transition runs. */}
-            <span className="flex h-3 w-4 flex-col justify-between">
-              <span
-                className={cn(
-                  "block h-px w-4 bg-current transition-transform duration-300",
-                  open && "translate-y-[5.5px] rotate-45"
-                )}
-              />
-              <span
-                className={cn(
-                  "block h-px w-4 bg-current transition-transform duration-300",
-                  open && "-translate-y-[5.5px] -rotate-45"
-                )}
-              />
-            </span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
+              <path d={open ? "M6 6l12 12M18 6L6 18" : "M4 8h16M4 16h16"} />
+            </svg>
           </button>
         </div>
       </div>
 
       {/* Mobile sheet */}
       <div
+        inert={!open}
+        aria-hidden={!open}
         className={cn(
           "fixed inset-x-0 bottom-0 top-[var(--nav-h)] z-40 overflow-y-auto border-t border-line bg-paper transition-opacity duration-300 lg:hidden",
           open ? "opacity-100" : "pointer-events-none opacity-0"

@@ -27,7 +27,7 @@ export const categories: ResourceCategory[] = [
 ];
 
 /**
- * THE RESOURCE LIBRARY — free, no email gate.
+ * THE RESOURCE LIBRARY, free, no email gate.
  * Everything here is meant to be used at work tomorrow, not bookmarked.
  */
 export const resources: Resource[] = [
@@ -36,7 +36,7 @@ export const resources: Resource[] = [
     title: "The PRD That Survives Friday",
     category: "Templates",
     blurb:
-      "A one-page PRD with the four sections engineers actually read, and the three most teams pad it with — removed.",
+      "A one-page PRD with the four sections engineers actually read, and the three most teams pad it with, removed.",
     format: "Notion",
     useIn: 30,
     featured: true,
@@ -111,7 +111,7 @@ export const resources: Resource[] = [
     title: "Teardown: Duolingo's Streak",
     category: "Teardowns",
     blurb:
-      "The retention mechanic dissected — and the two places it quietly trades user trust for DAU.",
+      "The retention mechanic dissected, and the two places it quietly trades user trust for DAU.",
     format: "PDF",
     useIn: 18,
   },
@@ -138,7 +138,7 @@ export const resources: Resource[] = [
     title: "Product Metrics Cheat Sheet",
     category: "Data",
     blurb:
-      "Activation, retention, engagement and revenue metrics — what each one hides, and the counter-metric to pair it with.",
+      "Activation, retention, engagement and revenue metrics, what each one hides, and the counter-metric to pair it with.",
     format: "PDF",
     useIn: 15,
   },
@@ -163,3 +163,5 @@ export const resources: Resource[] = [
 ];
 
 export const featured = resources.filter((r) => r.featured);
+
+export { cases, getCase, promptPacks, templates, getTemplate, getPack, resourceCounts, totalPrompts } from "./resources/index";

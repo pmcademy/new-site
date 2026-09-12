@@ -1,15 +1,15 @@
 /**
- * ProductStack — the hero diagram.
+ * ProductStack, the hero diagram.
  *
  * An isometric stack of the four layers a product manager actually works
  * across, bottom to top:
  *
- *   1. Signal    scattered, uncorrelated — what users are actually doing
+ *   1. Signal    scattered, uncorrelated, what users are actually doing
  *   2. Problem   the same field, resolved into clusters, one of them chosen
  *   3. Design    structure: a grid, and screens laid out on it
  *   4. Shipped   one product, standing up, in the world
  *
- * Hand-authored SVG on a true 2:1 isometric projection — no library, no
+ * Hand-authored SVG on a true 2:1 isometric projection, no library, no
  * WebGL, no runtime cost. Every colour comes from a theme token, so it
  * repaints correctly in light and dark.
  */
@@ -122,7 +122,7 @@ export default function ProductStack({ className }: { className?: string }) {
         strokeLinecap="round"
       />
 
-      {/* the spine — one idea travelling up through every layer */}
+      {/* the spine, one idea travelling up through every layer */}
       <line
         x1={CX}
         y1={signalY}
@@ -135,7 +135,7 @@ export default function ProductStack({ className }: { className?: string }) {
       />
 
       {/* ---------------------------------------------------------------- */}
-      {/* 1 — SIGNAL: uncorrelated noise                                     */}
+      {/* 1, SIGNAL: uncorrelated noise                                     */}
       <Plate cy={signalY}>
         {noise.map((d, i) => {
           const p = iso(d.u, d.v, signalY);
@@ -153,7 +153,7 @@ export default function ProductStack({ className }: { className?: string }) {
       </Plate>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 2 — PROBLEM: the same field, clustered. One cluster is chosen.     */}
+      {/* 2, PROBLEM: the same field, clustered. One cluster is chosen.     */}
       <Plate cy={problemY}>
         {clusterSeeds.map(([cu, cv], ci) =>
           scatter(7, 4400 + ci * 97, 0.3).map((d, i) => {
@@ -183,7 +183,7 @@ export default function ProductStack({ className }: { className?: string }) {
       </Plate>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 3 — DESIGN: structure. A grid, and three screens laid on it.       */}
+      {/* 3, DESIGN: structure. A grid, and three screens laid on it.       */}
       <Plate cy={designY}>
         {[-0.6, -0.2, 0.2, 0.6].map((t) => {
           const a = iso(t, -0.94, designY);
@@ -222,7 +222,7 @@ export default function ProductStack({ className }: { className?: string }) {
       </Plate>
 
       {/* ---------------------------------------------------------------- */}
-      {/* 4 — SHIPPED: one product, standing up, in the world.               */}
+      {/* 4, SHIPPED: one product, standing up, in the world.               */}
       <Plate cy={shipY} fill="var(--surface)">
         {/* base shadow of the standing screen */}
         <polygon
@@ -233,7 +233,7 @@ export default function ProductStack({ className }: { className?: string }) {
         />
       </Plate>
 
-      {/* the standing screen itself — the shipped product */}
+      {/* the standing screen itself, the shipped product */}
       <g>
         <polygon
           points={`${CX - 46},${shipY - 20} ${CX},${shipY - 46} ${CX},${shipY - 4} ${CX - 46},${shipY + 22}`}

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import FieldArt from "@/components/art/FieldArt";
 import { useEffect, useState } from "react";
 
 import { Check } from "@/components/ui/Icons";
@@ -22,16 +23,17 @@ export function Scene({
   caption?: string;
   notes?: { from: string; text: string }[];
 }) {
+  const [failedImage, setFailedImage] = useState<string | null>(null);
   return (
     <div className="card overflow-hidden">
       <div className="relative aspect-[16/7] bg-surface-2">
-        <Image
-          src={image}
-          alt={alt}
-          fill
-          className="object-cover"
-          sizes="(max-width: 900px) 100vw, 760px"
-        />
+        {failedImage === image ? (
+          <div className="grid h-full place-items-center" role="img" aria-label="Illustrated product field guide">
+            <FieldArt kind="library" className="h-full max-w-[300px] [&_svg]:h-full" />
+          </div>
+        ) : (
+          <Image src={image} alt={alt} fill className="object-cover" sizes="(max-width: 900px) 100vw, 760px" onError={() => setFailedImage(image)} />
+        )}
       </div>
       {caption && (
         <p className="border-t border-line px-[var(--s-5)] py-[var(--s-3)] text-[13px] text-ink-3">

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 export default function Logo({ className }: { className?: string }) {
   return (
     <span className={cn("flex items-center gap-2.5", className)}>
-      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-[7px] bg-navy">
+      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-[7px] bg-[var(--art-deep)]">
         <Image
           src="/img/mark.png"
           alt=""

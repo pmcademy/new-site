@@ -5,7 +5,7 @@ import LegacyPage from "@/components/layout/LegacyPage";
 export const metadata: Metadata = { title: "Contact Us" };
 
 /**
- * PRESERVED ROUTE — /contact
+ * PRESERVED ROUTE, /contact
  * Live on pmcademy.com today. Kept so links, ads and search results keep
  * resolving. Port the real content in by passing children to <LegacyPage>.
  */

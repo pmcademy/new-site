@@ -1,3 +1,4 @@
+import FieldArt from "@/components/art/FieldArt";
 import type { Metadata } from "next";
 
 import Reveal from "@/components/motion/Reveal";
@@ -22,6 +23,7 @@ export default function LevelsPage() {
     <>
       <section className="section-top">
         <div className="shell">
+          <div className="atelier-heading">
           <Reveal className="head">
             <span className="eyebrow">The path</span>
             <h1>Six levels, Apprentice to Principal.</h1>
@@ -32,6 +34,8 @@ export default function LevelsPage() {
               keep. Level 1 is open. Finish it and Level 2 opens.
             </p>
           </Reveal>
+            <FieldArt kind="compass" />
+          </div>
 
           <Reveal className="card card-p flex flex-wrap items-center justify-between gap-[var(--s-5)]">
             <div>

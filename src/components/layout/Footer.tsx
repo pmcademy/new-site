@@ -1,13 +1,15 @@
 import Link from "next/link";
 
 import Logo from "./Logo";
+import FieldArt from "@/components/art/FieldArt";
 import { footerNav, site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="mt-[var(--sec-y)] border-t border-line">
+    <footer className="site-footer mt-[var(--sec-y)]">
       {/* The wordmark. Big, quiet, and the last thing anyone reads. */}
-      <div className="shell pt-[var(--s-9)]">
+      <div className="shell pt-[var(--s-8)]">
+        <FieldArt kind="seed" className="field-art-footer" />
         <p
           className="select-none text-center font-semibold leading-[0.86] tracking-[-0.045em] text-ink"
           style={{ fontSize: "clamp(2.5rem, 12vw, 9rem)" }}

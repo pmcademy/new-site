@@ -1,3 +1,4 @@
+import FieldArt from "@/components/art/FieldArt";
 import type { Metadata } from "next";
 
 import IdeaPolisher from "@/components/level0/IdeaPolisher";
@@ -55,6 +56,7 @@ export default function LevelZeroPage() {
       {/* ================================================================ TOP */}
       <section className="section-top">
         <div className="shell">
+          <div className="atelier-heading">
           <Reveal className="head">
             <span className="tag tag-blue">
               <Sparkle className="h-3.5 w-3.5" /> Level 0
@@ -68,6 +70,8 @@ export default function LevelZeroPage() {
               makes the model do the research before it does the building.
             </p>
           </Reveal>
+            <FieldArt kind="seed" />
+          </div>
 
           <Reveal>
             <IdeaPolisher />

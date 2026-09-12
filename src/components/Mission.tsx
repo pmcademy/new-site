@@ -1,7 +1,7 @@
 import type { Lesson } from "@/lib/curriculum";
 
 /**
- * One mission, in full. The brief comes first, the concept last — the whole
+ * One mission, in full. The brief comes first, the concept last, the whole
  * pedagogy of the program is this ordering.
  *
  * `brief` is the only field allowed to contain markup (<em> for emphasis), and
