@@ -1,3 +1,5 @@
+import LessonIllustration from "@/components/course/LessonIllustration";
+import { lessonVisuals } from "@/lib/course/lesson-visuals";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -65,6 +67,7 @@ export default async function LessonPage({ params }: Params) {
   ];
 
   const id = `${level.slug}/${lesson.slug}`;
+  const visual = lessonVisuals[id];
 
   return (
     <div className="shell pb-[var(--sec-y)] pt-[var(--block-y)]">
@@ -130,13 +133,14 @@ export default async function LessonPage({ params }: Params) {
           {/* The concept always comes before the task. Show it, then ask. */}
           <section id="concept" className="lesson-sec scroll-mt-[var(--s-9)]">
             <h2>{lesson.explain.title}</h2>
+            {visual && <LessonIllustration visual={visual} />}
             <div className="lesson-body">
               {lesson.explain.body.map((p, k) => (
                 <p key={k}>{p}</p>
               ))}
             </div>
 
-            {lesson.explain.diagram && (
+            {lesson.explain.diagram && !visual && (
               <Diagram
                 id={lesson.explain.diagram}
                 caption={lesson.explain.caption}

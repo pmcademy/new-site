@@ -32,8 +32,8 @@ export default function Nav() {
   const signedIn = ready && account;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper">
-      <div className="shell flex h-[var(--nav-h)] items-center justify-between gap-5">
+    <header className="nav-wrap sticky top-0 z-50">
+      <div className="nav-pill flex h-[var(--nav-h)] items-center justify-between gap-5">
         <Link href="/" aria-label={`${site.name} home`}>
           <Logo />
         </Link>
@@ -44,7 +44,7 @@ export default function Nav() {
               key={item.href}
               href={item.href}
               className={cn(
-                "rounded-[7px] px-3 py-1.5 text-[14.5px] transition-colors duration-200",
+                "rounded-full px-3 py-1.5 text-[14.5px] transition-colors duration-200",
                 isOn(item.href)
                   ? "font-medium text-ink"
                   : "text-ink-2 hover:bg-surface-2 hover:text-ink"
@@ -86,6 +86,7 @@ export default function Nav() {
             className="icobtn lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
+            aria-controls="mobile-navigation"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" aria-hidden="true">
               <path d={open ? "M6 6l12 12M18 6L6 18" : "M4 8h16M4 16h16"} />
@@ -96,10 +97,11 @@ export default function Nav() {
 
       {/* Mobile sheet */}
       <div
+        id="mobile-navigation"
         inert={!open}
         aria-hidden={!open}
         className={cn(
-          "fixed inset-x-0 bottom-0 top-[var(--nav-h)] z-40 overflow-y-auto border-t border-line bg-paper transition-opacity duration-300 lg:hidden",
+          "fixed inset-x-0 bottom-0 top-[calc(var(--nav-h)+24px)] z-40 overflow-y-auto border-t border-line bg-paper transition-opacity duration-300 lg:hidden",
           open ? "opacity-100" : "pointer-events-none opacity-0"
         )}
       >

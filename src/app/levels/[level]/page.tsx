@@ -1,3 +1,4 @@
+import LevelBadge from "@/components/art/LevelBadge";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -5,7 +6,7 @@ import { notFound } from "next/navigation";
 import ChapterList from "@/components/course/ChapterList";
 import Reveal from "@/components/motion/Reveal";
 import Button from "@/components/ui/Button";
-import { Arrow, BadgeHex, Check } from "@/components/ui/Icons";
+import { Arrow, Check } from "@/components/ui/Icons";
 import {
   getLevel,
   levelHours,
@@ -47,7 +48,7 @@ export default async function LevelPage({ params }: Params) {
           <Reveal className="grid gap-[var(--block-y)] lg:grid-cols-[1.15fr_0.85fr]">
             <div>
               <div className="flex items-center gap-[var(--s-4)]">
-                <BadgeHex n={level.n} earned />
+                <LevelBadge n={level.n} />
                 <div>
                   <span className="eyebrow block">Level {level.n}</span>
                   <span className="mt-[var(--s-1)] block font-serif text-[2.4rem] leading-none tracking-[-0.02em]">

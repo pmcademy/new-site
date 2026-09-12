@@ -17,21 +17,21 @@ export default function LevelCard({ level: l }: { level: Level }) {
   const inner = (
     <>
       <FieldArt className="level-portrait" kind={({ "01": "seed", "02": "compass", "03": "library", "04": "craft", "05": "telescope", "06": "community" } as Record<string, FieldKind>)[l.slug] ?? "compass"} />
-      <div className="flex items-start justify-between gap-[var(--s-4)]">
+      <div className="flex flex-wrap items-start justify-between gap-[var(--s-4)]">
         <div>
           <span className="eyebrow block">Level {l.n}</span>
-          <span className="mt-[var(--s-1)] block font-serif text-[3.5rem] leading-none tracking-[-0.02em] text-ink italic">
+          <span className="mt-[var(--s-1)] block font-serif text-[clamp(2rem,4.5vw,3.5rem)] leading-none tracking-[-0.02em] text-ink italic">
             {l.rank}
           </span>
         </div>
         {unlocked ? (
           pct > 0 ? (
-            <span className="tag tag-blue">{pct}% done</span>
+            <span className="tag tag-blue shrink-0">{pct}% done</span>
           ) : (
-            <span className="tag tag-free">Open</span>
+            <span className="tag tag-free shrink-0">Open</span>
           )
         ) : (
-          <span className="tag">
+          <span className="tag shrink-0">
             <Lock className="h-3 w-3" /> Locked
           </span>
         )}

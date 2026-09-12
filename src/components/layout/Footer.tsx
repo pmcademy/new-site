@@ -1,22 +1,13 @@
 import Link from "next/link";
 
 import Logo from "./Logo";
-import FieldArt from "@/components/art/FieldArt";
+import FooterPanorama from "@/components/art/FooterPanorama";
 import { footerNav, site } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="site-footer mt-[var(--sec-y)]">
-      {/* The wordmark. Big, quiet, and the last thing anyone reads. */}
-      <div className="shell pt-[var(--s-8)]">
-        <FieldArt kind="seed" className="field-art-footer" />
-        <p
-          className="select-none text-center font-semibold leading-[0.86] tracking-[-0.045em] text-ink"
-          style={{ fontSize: "clamp(2.5rem, 12vw, 9rem)" }}
-        >
-          Build Great Products
-        </p>
-      </div>
+    <footer className="site-footer rule mt-[var(--sec-y)]">
+      <div className="shell pt-[var(--s-7)]"><FooterPanorama /></div>
 
       <div className="shell grid grid-cols-2 gap-x-[var(--s-5)] gap-y-[var(--s-7)] pt-[var(--s-9)] md:grid-cols-3 lg:grid-cols-5">
         <div className="col-span-2 lg:col-span-1">
@@ -60,7 +51,7 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="shell mt-[var(--s-9)] flex flex-wrap items-center justify-between gap-[var(--s-4)] border-t border-line py-[var(--s-6)] text-sm text-ink-3">
+      <div className="shell mt-[var(--s-9)] flex flex-wrap items-center justify-between gap-[var(--s-4)] rule py-[var(--s-6)] text-sm text-ink-3">
         <span>
           © {new Date().getFullYear()} {site.name}. Part of OpenBootcamp.
         </span>

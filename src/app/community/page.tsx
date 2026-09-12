@@ -1,9 +1,11 @@
+import MotionFrame from "@/components/art/MotionFrame";
+import LevelBadge from "@/components/art/LevelBadge";
 import FieldArt from "@/components/art/FieldArt";
 import type { Metadata } from "next";
 
 import Reveal from "@/components/motion/Reveal";
 import Button from "@/components/ui/Button";
-import { Arrow, BadgeHex, Check } from "@/components/ui/Icons";
+import { Arrow, Check } from "@/components/ui/Icons";
 import { levels, totalChapters, totalLessons } from "@/lib/course";
 
 export const metadata: Metadata = {
@@ -162,6 +164,7 @@ export default function CommunityPage() {
             </p>
           </Reveal>
 
+          <MotionFrame label="badge animation">
           <Reveal stagger className="grid gap-[var(--s-4)] sm:grid-cols-2 lg:grid-cols-3">
             {levels.map((l) => (
               <div
@@ -169,7 +172,7 @@ export default function CommunityPage() {
                 data-reveal
                 className="card card-p flex items-center gap-[var(--s-4)]"
               >
-                <BadgeHex n={l.n} earned />
+                <LevelBadge n={l.n} />
                 <div>
                   <span className="eyebrow block">Level {l.n}</span>
                   <span className="mt-[var(--s-1)] block font-serif text-[1.6rem] leading-none tracking-[-0.02em]">
@@ -182,6 +185,7 @@ export default function CommunityPage() {
               </div>
             ))}
           </Reveal>
+          </MotionFrame>
         </div>
       </section>
 

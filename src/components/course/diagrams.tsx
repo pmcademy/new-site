@@ -195,7 +195,7 @@ function Funnel() {
       <Label x={44} y={16} anchor="end" size={10} color={M} weight={400}>
         people
       </Label>
-      <Label x={596} y={16} anchor="start" size={10} color={M} weight={400}>
+      <Label x={584} y={16} anchor="start" size={10} color={M} weight={400}>
         step rate
       </Label>
       <Label x={60} y={294} anchor="start" size={11} color={M} weight={400}>
@@ -366,7 +366,7 @@ function Rice() {
 
 function RetentionCurve() {
   return (
-    <Frame viewBox="0 0 640 280">
+    <Frame viewBox="0 0 640 300">
       <path d="M60 30 V226 H600" stroke={M} />
       {[0, 1, 2, 3].map((i) => (
         <path key={i} d={`M60 ${226 - i * 48 - 48} H600`} stroke={M} opacity={0.18} />
@@ -401,8 +401,8 @@ function RetentionCurve() {
         weeks since signup
       </Label>
       <Label x={60} y={274} anchor="start" size={11} color={M} weight={400}>
-        A curve that flattens means some group found lasting value. A curve that
-        reaches zero means nobody did.
+        <tspan x="60">A curve that flattens means some group found lasting value.</tspan>
+        <tspan x="60" dy="16">A curve that reaches zero means nobody did.</tspan>
       </Label>
     </Frame>
   );
@@ -582,7 +582,7 @@ function RagPipeline() {
     { x: 536, label: "Answer", sub: "with citations" },
   ];
   return (
-    <Frame viewBox="0 0 640 230">
+    <Frame viewBox="0 0 640 250">
       {steps.map((s, i) => (
         <g key={s.label}>
           <rect
@@ -611,10 +611,10 @@ function RagPipeline() {
       </Label>
       <path d="M320 132 V110" stroke={M} strokeDasharray="4 4" />
       <Label x={16} y={202} anchor="start" size={11} color="var(--amber)" weight={500}>
-        The dangerous failure is here: search returns something plausible but wrong,
-        and the model answers from it fluently.
+        <tspan x="16">The dangerous failure: search returns something plausible but wrong,</tspan>
+        <tspan x="16" dy="16">and the model answers from it fluently.</tspan>
       </Label>
-      <Label x={16} y={220} anchor="start" size={11} color={M} weight={400}>
+      <Label x={16} y={238} anchor="start" size={11} color={M} weight={400}>
         Quality is mostly the search step, not the model.
       </Label>
     </Frame>
@@ -868,12 +868,12 @@ function JobsToBeDone() {
         I stop checking daily
       </Label>
       <Label x={16} y={178} anchor="start" size={11} color={M} weight={400}>
-        The job is the third box. Two apps with identical features get hired for
-        different jobs, which means they are not really competitors.
+        <tspan x="16">The job is the third box. Two apps with identical features get hired</tspan>
+        <tspan x="16" dy="16">for different jobs, which means they are not really competitors.</tspan>
       </Label>
       <Label x={16} y={212} anchor="start" size={11} color="var(--amber)" weight={500}>
-        &ldquo;Users aged 25-34 who like fintech&rdquo; is a demographic, not a job.
-        It tells you nothing about what to build.
+        <tspan x="16">&ldquo;Users aged 25-34 who like fintech&rdquo; is a demographic, not a job.</tspan>
+        <tspan x="16" dy="16">It tells you nothing about what to build.</tspan>
       </Label>
     </Frame>
   );
@@ -911,7 +911,7 @@ export default function Diagram({
   if (!D) return null;
   return (
     <figure className="figure">
-      <div className="card overflow-hidden bg-surface p-[var(--s-5)]">
+      <div className="card overflow-x-auto bg-surface p-[var(--s-5)]">
         <D />
       </div>
       {caption && <figcaption>{caption}</figcaption>}
