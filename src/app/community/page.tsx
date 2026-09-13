@@ -107,6 +107,13 @@ export default function CommunityPage() {
                   once, not a subscription
                 </span>
               </p>
+              <div>
+                <p className="eyebrow mb-2">Your six level badges</p>
+                <MotionFrame label="badge preview">
+                  <div className="paid-badges">{levels.map(level => <figure key={level.n}><LevelBadge n={level.n} /><figcaption>Level {level.n}</figcaption></figure>)}</div>
+                </MotionFrame>
+                <p className="paid-badge-note">Earn each badge when that level’s capstone passes review. Includes the Architect diamond and Principal gold badge.</p>
+              </div>
               <List
                 items={[
                   "All six badges, capstones reviewed by a practising PM",

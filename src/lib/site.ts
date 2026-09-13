@@ -98,6 +98,9 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     items: [
       { label: "About us", href: "/about" },
       { label: "Contact us", href: "/contact" },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Terms", href: "/terms" },
+      { label: "Refunds & cancellations", href: "/refunds-and-cancellations" },
       { label: "Dashboard", href: site.dashboard },
       { label: "LinkedIn", href: site.social.linkedin },
     ],

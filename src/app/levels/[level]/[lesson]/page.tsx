@@ -1,3 +1,6 @@
+import { levelOneEnrichment } from "@/lib/course/enrichment/level-one";
+import { LessonDeepDive, LessonAILab } from "@/components/course/LessonDeepDive";
+import ProjectArticle from "@/components/course/ProjectArticle";
 import LessonIllustration from "@/components/course/LessonIllustration";
 import { lessonVisuals } from "@/lib/course/lesson-visuals";
 import type { Metadata } from "next";
@@ -68,6 +71,9 @@ export default async function LessonPage({ params }: Params) {
 
   const id = `${level.slug}/${lesson.slug}`;
   const visual = lessonVisuals[id];
+  const enrichment = level.slug === "01" ? levelOneEnrichment[lesson.slug] : undefined;
+  const references = [...(lesson.references ?? []), ...(enrichment?.reading ?? [])].filter((r, i, all) => all.findIndex(x => x.url === r.url) === i);
+  const steps = [...lesson.build.steps, ...(enrichment ? [{ do: enrichment.practice, hint: enrichment.hint }] : []), ...(enrichment?.article ? [{ do: `Publish project article ${enrichment.article.number}: ${enrichment.article.title}. Include your artifact, AI-use note, and a link to pmcademy.com. Save the article URL below and in your capstone notes.` }] : [])];
 
   return (
     <div className="shell pb-[var(--sec-y)] pt-[var(--block-y)]">
@@ -164,6 +170,8 @@ export default async function LessonPage({ params }: Params) {
             )}
           </section>
 
+          {enrichment && <LessonDeepDive content={enrichment} />}
+
           {/* --------------------------------------------------------- case */}
           {lesson.case && (
             <section id="case" className="lesson-sec scroll-mt-[var(--s-9)]">
@@ -243,7 +251,8 @@ export default async function LessonPage({ params }: Params) {
                 <p>{lesson.ai.trap}</p>
               </div>
             </div>
-            {lesson.ai.prompt && <CopyPrompt text={lesson.ai.prompt} />}
+            {!enrichment && lesson.ai.prompt && <CopyPrompt text={lesson.ai.prompt} />}
+            {enrichment && <LessonAILab content={enrichment} />}
           </section>
 
           {/* -------------------------------------------------------- build */}
@@ -264,7 +273,8 @@ export default async function LessonPage({ params }: Params) {
               </p>
             )}
 
-            <BuildChecklist id={id} steps={lesson.build.steps} />
+            <BuildChecklist id={id} steps={steps} />
+            {enrichment?.article && <ProjectArticle key={id} assignment={enrichment.article} lessonId={id}/> }
           </section>
 
           {/* ----------------------------------------------------- solution */}
@@ -284,11 +294,11 @@ export default async function LessonPage({ params }: Params) {
             </p>
             <Checkpoint id={id} questions={lesson.check} />
 
-            {lesson.references && lesson.references.length > 0 && (
+            {references.length > 0 && (
               <div className="mt-[var(--s-6)]">
                 <span className="eyebrow">Go deeper</span>
                 <ul className="mt-[var(--s-3)] flex list-none flex-col gap-[var(--s-2)] p-0">
-                  {lesson.references.map((r) => (
+                  {references.map((r) => (
                     <li key={r.url} className="flex gap-[var(--s-3)]">
                       <Check className="mt-1 h-3.5 w-3.5 shrink-0 text-ink-3" />
                       <a

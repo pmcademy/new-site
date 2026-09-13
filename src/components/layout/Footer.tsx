@@ -53,7 +53,7 @@ export default function Footer() {
 
       <div className="shell mt-[var(--s-9)] flex flex-wrap items-center justify-between gap-[var(--s-4)] rule py-[var(--s-6)] text-sm text-ink-3">
         <span>
-          © {new Date().getFullYear()} {site.name}. Part of OpenBootcamp.
+          © {new Date().getFullYear()} {site.name}. OpenBootcamp / M3V Technologies Private Limited.
         </span>
         <span>{site.domain}</span>
       </div>

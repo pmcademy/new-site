@@ -31,7 +31,7 @@ export default function FooterPanorama() {
         <g className="panorama-left">
           <path fill="var(--art-blue-mid)" d="M35 345h192v41H35Z"/><path d="M49 354h164m-164 8h164m-164 8h164" stroke="var(--art-page)"/>
           <path fill="var(--art-coral)" d="m52 316 167-12 3 31-167 12Z"/><path fill="var(--art-page)" d="m66 320 146-10 1 18-146 10Z"/>
-          <g className="panorama-float"><path fill="var(--art-page)" d="m60 199 135-16 14 114-135 16Z"/><path fill="var(--art-blue-light)" d="m74 214 106-12 5 37-106 12Z"/><path fill="none" d="m83 240 18-13 23 3 20-16 28 6m-87 44 96-12m-94 22 65-8m-63 18 80-10"/><path fill="var(--art-ochre)" d="m158 176 19-2 4 35-19 2Z"/></g>
+          <g className="panorama-float"><path className="panorama-notes" fill="var(--art-page)" d="m60 199 135-16 14 114-135 16Z"/><path fill="var(--art-blue-light)" d="m74 214 106-12 5 37-106 12Z"/><path className="panorama-note-ink" fill="none" d="m83 240 18-13 23 3 20-16 28 6m-87 44 96-12m-94 22 65-8m-63 18 80-10"/><path fill="var(--art-ochre)" d="m158 176 19-2 4 35-19 2Z"/></g>
           <circle cx="221" cy="322" r="40" fill="var(--art-ochre-light)"/><circle cx="221" cy="322" r="33" fill="var(--art-deep)"/><g className="panorama-needle"><path fill="var(--art-coral)" d="m221 294 8 28-8 28-8-28Z"/><path fill="var(--art-page)" d="m221 294-8 28h8Z"/></g><circle cx="221" cy="322" r="3" fill="var(--art-page)"/>
           <Frond x={48} y={385}/><Frond x={290} y={389} flip/>
           <path fill="var(--art-coral)" d="M7 353h60l-8 33H16Z"/>
@@ -39,7 +39,7 @@ export default function FooterPanorama() {
         <g className="panorama-right">
           <path fill="var(--art-blue-mid)" d="m958 278 126-18 8 93-126 18Z"/><path fill="var(--art-page)" d="m968 286 106-15 6 72-106 15Z"/>
           <path fill="var(--art-blue-light)" d="m980 302 37-5 3 24-37 5Zm50-7 35-5 3 24-35 5Z"/><path d="m985 340 67-10m-26 39 3 15m-25 2h51" fill="none"/>
-          <g className="panorama-float reverse"><path fill="var(--art-ochre-light)" d="m1008 158 111 47-11 25-111-47Z"/><path fill="var(--art-blue-light)" d="m998 151 25 11-16 37-25-11Z"/><ellipse fill="var(--art-deep)" cx="999" cy="169" rx="9" ry="20" transform="rotate(24 999 169)"/><path d="m1067 206-39 70m39-70 22 52m-22-52-3 65" fill="none" strokeWidth="3"/></g>
+          <g className="panorama-float reverse panorama-telescope"><path fill="var(--art-ochre-light)" d="m1008 158 111 47-11 25-111-47Z"/><path fill="var(--art-blue-light)" d="m998 151 25 11-16 37-25-11Z"/><ellipse fill="var(--art-deep)" cx="999" cy="169" rx="9" ry="20" transform="rotate(24 999 169)"/><path d="m1067 206-39 70m39-70 22 52m-22-52-3 65" fill="none" strokeWidth="3"/></g>
           <Frond x={1160} y={386} flip/><Frond x={927} y={388}/>
           <path fill="var(--art-coral)" d="M1130 350h64l-12 36h-43Z"/>
         </g>

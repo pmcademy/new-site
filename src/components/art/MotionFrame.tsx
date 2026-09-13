@@ -15,6 +15,6 @@ export default function MotionFrame({ children, className = "", label = "illustr
   }, []);
   return <div ref={ref} className={`motion-frame ${className}`} data-paused={paused} data-active="false">
     {children}
-    <button className="art-pause" type="button" onClick={() => setPaused(v => !v)} aria-pressed={paused}>{paused ? "Play" : "Pause"} {label}</button>
+    {/* <button className="art-pause" type="button" onClick={() => setPaused(v => !v)} aria-pressed={paused}>{paused ? "Play" : "Pause"} {label}</button> */}
   </div>;
 }

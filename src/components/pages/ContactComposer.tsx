@@ -1,0 +1,9 @@
+"use client";
+import { useId, useState } from "react";
+import { company } from "@/lib/company";
+export default function ContactComposer() {
+ const id=useId();const [topic,setTopic]=useState("Course question"),[message,setMessage]=useState(""),[notice,setNotice]=useState("");
+ const href=`mailto:${company.email}?subject=${encodeURIComponent(`PMcademy: ${topic}`)}&body=${encodeURIComponent(message)}`;
+ async function copy(){try{await navigator.clipboard.writeText(`To: ${company.email}\nSubject: PMcademy: ${topic}\n\n${message}`);setNotice("Email draft copied. Paste it into your email app and send when ready.");}catch{setNotice("Copy is unavailable. Select your message and email hello@pmcademy.com directly.");}}
+ return <section className="contact-composer"><span className="eyebrow">Start a conversation</span><h2>What can we help with?</h2><label htmlFor={`${id}-topic`}>Topic</label><select id={`${id}-topic`} value={topic} onChange={e=>setTopic(e.target.value)}>{["Course question","Enrolment or payment","Capstone review","Technical issue","Community conduct","Privacy request","Partnership or press"].map(t=><option key={t}>{t}</option>)}</select><label htmlFor={`${id}-message`}>Your message</label><textarea id={`${id}-message`} rows={7} maxLength={3000} value={message} onChange={e=>setMessage(e.target.value)} placeholder="Tell us what you need. For a technical issue, include the page URL and what happened."/><p>This opens your email app. Nothing is submitted from this page. Do not include passwords, card details, or confidential project information.</p><div className="page-actions"><a className="btn btn-primary" href={href}>Open email draft ↗</a><button type="button" className="btn btn-outline" onClick={copy}>Copy draft</button></div><p role="status">{notice}</p></section>;
+}

@@ -13,9 +13,9 @@ export const cases: CaseStudy[] = [
   {
     slug: "duolingo-streak",
     brand: "Duolingo",
-    title: "The streak is the product",
+    title: "One lesson. A reason to return.",
     blurb:
-      "How a number next to a flame did more for retention than any lesson, and the three mechanics that keep it from breaking people.",
+      "Explore Duolingo's published streak redesign, the trade-off behind the reported retention lift, and an experiment for your own product.",
     sector: "Consumer, education",
     year: "2013 to now",
     readIn: 9,

@@ -1,14 +1,5 @@
 import type { Metadata } from "next";
-
-import LegacyPage from "@/components/layout/LegacyPage";
-
-export const metadata: Metadata = { title: "Case Studies" };
-
-/**
- * PRESERVED ROUTE: /case-studies
- * Live on pmcademy.com today. Kept so links, ads and search results keep
- * resolving. Port the real content in by passing children to <LegacyPage>.
- */
-export default function Page() {
-  return <LegacyPage href="/case-studies" />;
-}
+import PageIntro from "@/components/pages/PageIntro";
+import CaseLibrary from "@/components/case-studies/CaseLibrary";
+export const metadata: Metadata = { title: "Product case studies", description: "Explore product decisions through interactive visual stories and carefully selected company sources." };
+export default function CaseStudiesPage(){return <div className="shell page-wrap"><PageIntro eyebrow="The product observation room" title="Good products are full of decisions." description="Look past the polished screen. Explore the rule, the trade-off, and the evidence behind it, then bring the lesson into your own work." art="telescope"/><CaseLibrary/><aside className="case-editorial-note"><h2>Learn from the decision, not just the result.</h2><p>Our visual stories are original educational analyses of public sources. Company-reported facts, our interpretation, and hypothetical exercises are labelled separately. We link the sources so you can inspect the evidence yourself. No affiliation with featured companies is implied.</p></aside></div>;}

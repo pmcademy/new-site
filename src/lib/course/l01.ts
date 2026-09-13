@@ -39,6 +39,7 @@ export const l01: Level = {
       "A one-page memo, published to your portfolio",
       "The evidence log behind every claim in it",
       "A five minute walkthrough you record yourself giving",
+      "Three project articles: your flow teardown, retention analysis, and final case study",
     ],
   },
 
@@ -55,7 +56,7 @@ export const l01: Level = {
           slug: "your-first-monday",
           title: "Your first Monday",
           kind: "Case study",
-          minutes: 55,
+          minutes: 75,
           legacy: "Module 2.1, Product Management 101",
           hook: "The founder forwards you 200 app store reviews with the message “what should we fix?” and nothing else. No brief, no context, no meeting. It is 9:40am on your first day.",
           scene: {
@@ -179,7 +180,7 @@ export const l01: Level = {
           slug: "three-chairs",
           title: "Who owns what, and what you cannot order anyone to do",
           kind: "Concept",
-          minutes: 45,
+          minutes: 65,
           legacy: "Module 2.2, Role of Product",
           hook: "You have picked a problem. The designer says the fix needs a full flow redesign, the engineer says the flow is fine and it is a data bug, and support says both are missing the point. You have authority over none of them.",
           explain: {
@@ -260,7 +261,7 @@ export const l01: Level = {
           slug: "the-decision-meeting",
           title: "Running the meeting where it gets decided",
           kind: "Workshop",
-          minutes: 50,
+          minutes: 70,
           legacy: "Modules 2.3 and 9.4",
           hook: "Thirty minutes, six people, and a decision that has been drifting for two weeks. Two of them will not have read the document.",
           explain: {
@@ -331,7 +332,7 @@ export const l01: Level = {
           slug: "reading-an-interface",
           title: "Reading intent off an interface",
           kind: "Teardown",
-          minutes: 50,
+          minutes: 70,
           legacy: "Modules 5.1 and 8.1",
           hook: "Open any app you use daily and look at the single most prominent button on the home screen. Somebody fought for that. Somebody else lost.",
           explain: {
@@ -390,7 +391,7 @@ export const l01: Level = {
           slug: "drawing-the-flow",
           title: "Drawing the flow",
           kind: "Build",
-          minutes: 55,
+          minutes: 120,
           legacy: "Modules 5.1 and 8.2",
           hook: "Signup is “four simple steps”. Most people who start it never finish. Nobody can tell you which step loses them, because nobody has drawn it.",
           explain: {
@@ -448,7 +449,7 @@ export const l01: Level = {
           slug: "finding-the-drop",
           title: "Finding the drop",
           kind: "Drill",
-          minutes: 50,
+          minutes: 70,
           hook: "You have the flow. Now you need the numbers, and the data team's queue is eleven days long.",
           explain: {
             title: "A funnel is a multiplication, which is why it is brutal",
@@ -503,7 +504,7 @@ export const l01: Level = {
           slug: "jobs-not-demographics",
           title: "Jobs, not demographics",
           kind: "Concept",
-          minutes: 45,
+          minutes: 65,
           legacy: "Module 4.5, Uncovering Personas and Segments",
           hook: "Marketing hands you a persona: “Ananya, 29, urban professional, loves brunch and fintech”. You have to build something on Monday and this tells you nothing.",
           explain: {
@@ -557,7 +558,7 @@ export const l01: Level = {
           slug: "talking-to-users",
           title: "Ten conversations you do not have yet",
           kind: "Workshop",
-          minutes: 70,
+          minutes: 90,
           legacy: "Modules 3.5 and 4.4",
           hook: "You need to talk to real users. You have no research panel, no budget, and a founder who is nervous about you emailing customers.",
           explain: {
@@ -607,7 +608,7 @@ export const l01: Level = {
           slug: "segments-with-evidence",
           title: "Segments you can defend",
           kind: "Build",
-          minutes: 55,
+          minutes: 75,
           hook: "Support says users are confused. Which users? The founder thinks students, sales thinks freelancers. Both are guessing, and the roadmap depends on the answer.",
           explain: {
             title: "A segment is only real if it behaves differently",
@@ -650,7 +651,7 @@ export const l01: Level = {
           slug: "where-money-comes-from",
           title: "Where the money actually comes from",
           kind: "Teardown",
-          minutes: 55,
+          minutes: 75,
           legacy: "Module 3.2, Business Models",
           hook: "The founder wants a premium tier. You have no idea whether that is a good idea, because you have never looked at how the company actually makes money.",
           explain: {
@@ -695,7 +696,7 @@ export const l01: Level = {
           slug: "unit-economics",
           title: "Does this feature make money?",
           kind: "Build",
-          minutes: 60,
+          minutes: 80,
           legacy: "Module 19.2, Profit and Loss",
           hook: "The AI assistant costs about nine rupees per user per month in model calls. The subscription is one hundred and ninety nine. Finance wants a number, not an opinion.",
           explain: {
@@ -742,7 +743,7 @@ export const l01: Level = {
           slug: "what-your-company-optimises",
           title: "What your company is actually optimising for",
           kind: "Case study",
-          minutes: 45,
+          minutes: 65,
           legacy: "Module 3.4, OKRs",
           hook: "Two teams are both certain they are doing the right thing, and their work directly cancels out. Nobody is wrong. Nobody has read the same goal.",
           explain: {
@@ -781,7 +782,7 @@ export const l01: Level = {
           slug: "metric-and-counter",
           title: "A metric that cannot be gamed",
           kind: "Drill",
-          minutes: 50,
+          minutes: 70,
           legacy: "Module 3.3, Metrics",
           hook: "You propose increasing weekly active users by 20 percent. Your engineer says, deadpan, “I can do that by Thursday with a push notification saying your account has a problem”. He is not wrong.",
           explain: {
@@ -834,19 +835,19 @@ export const l01: Level = {
 
         {
           slug: "retention-is-the-number",
-          title: "Retention is the only number",
+          title: "Retention reveals repeated value",
           kind: "Concept",
-          minutes: 50,
+          minutes: 115,
           hook: "Signups are up 40 percent this month and the founder is delighted. Week two retention is 9 percent and nobody has looked at it.",
           explain: {
             title: "Read the shape, not the level",
             body: [
-              "A cohort retention curve either flattens or it goes to zero. A curve that flattens at 25 percent means a quarter of users found lasting value, and you have something to grow. A curve that keeps falling means you have a leaky bucket that no amount of growth spend will fill.",
-              "Which is why retention is the first chart to look at and the last one to fake. Everything else, signups, downloads, page views, can be bought.",
+              "A cohort retention curve shows how a defined group returns over time. A curve that appears to flatten at 25 percent suggests a subset may be finding repeated value, but the interpretation depends on the return event, observation window, and sample size. Continued decline is a reason to investigate repeated value, not a diagnosis by itself.",
+              "Read retention alongside activation, the natural usage rhythm, and your business model. More signups can hide weak repeat usage; a short retention chart can also hide uncertainty. Keep the event definition and cohort counts beside the curve.",
             ],
             diagram: "retention-curve",
             caption:
-              "Two products with identical signup numbers. Only one of them is a business.",
+              "Two hypothetical return patterns for the same starting cohort. The pattern prompts investigation; it does not establish a cause.",
           },
           ai: {
             move: "Cluster your churned users by behaviour in their first session and find the one action that separates the ones who stayed from the ones who did not.",
@@ -872,7 +873,7 @@ export const l01: Level = {
           slug: "instrumenting-a-question",
           title: "Instrument for questions, not for completeness",
           kind: "Build",
-          minutes: 50,
+          minutes: 70,
           legacy: "Module 20.3, Google Analytics",
           hook: "Launch day is the worst possible time to discover you cannot answer “did anyone use it”.",
           explain: {
@@ -913,7 +914,7 @@ export const l01: Level = {
           slug: "extraction-not-summary",
           title: "Extraction beats summarisation",
           kind: "Build",
-          minutes: 70,
+          minutes: 90,
           hook: "Four thousand support tickets, eight hundred reviews and sixty sales calls, sitting in three different tools. None of it has ever been read systematically.",
           explain: {
             title: "A summary is lossy and unfalsifiable",
@@ -964,7 +965,7 @@ export const l01: Level = {
           slug: "sizing-without-a-data-team",
           title: "Numbers without a data team",
           kind: "Drill",
-          minutes: 45,
+          minutes: 65,
           hook: "“How big is this?” Nobody will run a query for you this quarter.",
           explain: {
             title: "Estimate out loud, so people argue with the assumption",
@@ -993,7 +994,7 @@ export const l01: Level = {
           slug: "prioritising-honestly",
           title: "Which one is worth a quarter?",
           kind: "Drill",
-          minutes: 55,
+          minutes: 75,
           legacy: "Module 9.2, Prioritization",
           hook: "Five real problems, one team, twelve weeks. The founder wants all five and has said so in front of the team.",
           explain: {
@@ -1039,7 +1040,7 @@ export const l01: Level = {
           slug: "the-one-pager",
           title: "The one page a busy founder finishes",
           kind: "Build",
-          minutes: 55,
+          minutes: 75,
           legacy: "Module 2.4, Crafting a Presentation",
           hook: "Your lead has ninety seconds. Everything you have learned in six chapters has to survive that.",
           explain: {
@@ -1100,7 +1101,7 @@ export const l01: Level = {
           slug: "scope-cuts",
           title: "Saying no in writing",
           kind: "Drill",
-          minutes: 45,
+          minutes: 65,
           hook: "Engineering says two months. You have three weeks and you do not know enough to argue.",
           explain: {
             title: "Decide the appetite, then design to fit",
@@ -1129,7 +1130,7 @@ export const l01: Level = {
           slug: "the-states-you-forgot",
           title: "Every empty, error and edge",
           kind: "Drill",
-          minutes: 50,
+          minutes: 70,
           legacy: "Module 8.6, Forms",
           hook: "The happy path is four screens. The unhappy paths are nineteen, and QA will find them for you in front of the CTO.",
           explain: {
@@ -1170,7 +1171,7 @@ export const l01: Level = {
           slug: "the-hard-questions",
           title: "The three questions you will always be asked",
           kind: "Simulation",
-          minutes: 50,
+          minutes: 70,
           legacy: "Module 2.5, Presenting Your Research",
           hook: "Eight minutes and one page. The founder has read half of it and has already decided they disagree.",
           explain: {
@@ -1213,7 +1214,7 @@ export const l01: Level = {
           slug: "disagree-and-commit",
           title: "When the decision goes against you",
           kind: "Simulation",
-          minutes: 45,
+          minutes: 65,
           hook: "You made the case. It was a good case. They are doing the other thing.",
           explain: {
             title: "Say it plainly, then back it fully",
@@ -1242,7 +1243,7 @@ export const l01: Level = {
           slug: "deliver-the-memo",
           title: "Deliver it",
           kind: "Workshop",
-          minutes: 60,
+          minutes: 125,
           legacy: "Module 2.6, Delivering a Presentation",
           hook: "Friday. The founder is in the room. You have one page and eight minutes.",
           explain: {

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import Reveal from "@/components/motion/Reveal";
 import LevelCard from "@/components/course/LevelCard";
-import Diagram from "@/components/course/diagrams";
+import LessonJourney from "@/components/art/LessonJourney";
 import Button from "@/components/ui/Button";
 import { Arrow, Check, Sparkle } from "@/components/ui/Icons";
 import {
@@ -16,7 +16,6 @@ import CompassMotion from "@/components/art/CompassMotion";
 import ProductAtelier from "@/components/hero/ProductAtelier";
 
 export default function Home() {
-  const first = levels[0].chapters[0].lessons[0];
 
   return (
     <>
@@ -89,53 +88,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============================================================== EXAMPLE */}
-      <section className="section rule">
-        <div className="shell">
-          <Reveal className="head">
-            <span className="eyebrow">Inside a lesson</span>
-            <h2>See the idea, then build with it.</h2>
-            <p>
-              Every lesson shows you what the concept actually is before it asks
-              for anything. Then a real company that faced it, then the thing you
-              make. Here is the diagram from lesson one.
-            </p>
-          </Reveal>
+      <LessonJourney />
 
-          <Reveal>
-            <Diagram
-              id="signal-to-claim"
-              caption="From lesson 1.1. The move you will make in every discovery task for the rest of your career."
-            />
-          </Reveal>
-
-          <Reveal className="mt-[var(--s-6)] grid-cards grid-3">
-            <div data-reveal className="note note-blue">
-              <span className="eyebrow">The AI move</span>
-              <p>{first.ai.move}</p>
-            </div>
-            <div data-reveal className="note note-amber">
-              <span className="eyebrow">Where it lets you down</span>
-              <p>{first.ai.trap}</p>
-            </div>
-            <div data-reveal className="note note-green">
-              <span className="eyebrow">What you build</span>
-              <p>{first.build.artefact}</p>
-            </div>
-          </Reveal>
-
-          <Reveal className="mt-[var(--s-6)]">
-            <Link
-              href="/levels/01/your-first-monday"
-              className="inline-flex items-center gap-2 text-[15px] font-medium text-blue"
-            >
-              Open lesson 1.1 <Arrow className="h-4 w-4" />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
-
-  
       {/* ============================================================ COMMUNITY */}
       <section className="section rule" id="community">
         <div className="shell">

@@ -64,7 +64,8 @@ function writeAccount(a: Account | null) {
 function readProgress(): Progress {
   try {
     const raw = localStorage.getItem(PROGRESS_KEY);
-    return raw ? (JSON.parse(raw) as Progress) : { done: [] };
+    const parsed = raw ? JSON.parse(raw) : null;
+    return { done: Array.isArray(parsed?.done) ? parsed.done.filter((id: unknown): id is string => typeof id === "string") : [] };
   } catch {
     return { done: [] };
   }
@@ -137,8 +138,8 @@ export function levelComplete(slug: string, done: string[]) {
 
 export function levelUnlocked(slug: string, done: string[]) {
   const i = levels.findIndex((l) => l.slug === slug);
-  if (i <= 0) return true;
-  return levelComplete(levels[i - 1].slug, done);
+  if (i < 0) return false;
+  return levels.slice(0, i).every(level => levelComplete(level.slug, done));
 }
 
 export function levelPercent(slug: string, done: string[]) {

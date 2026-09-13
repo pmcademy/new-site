@@ -27,39 +27,30 @@ export default function LegacyPage({
     <section className="sec">
       <div className="shell">
         <Reveal className="head">
-          <span className="eyebrow">Existing programme</span>
+          <span className="eyebrow">Archived programme</span>
           <h2>{route?.label ?? "PMcademy"}</h2>
           {route?.note && <p>{route.note}</p>}
-          <div className="mt-7 flex flex-wrap items-center gap-3">
+          
+          <div className="mt-7 ">
+            <div className="mb-2">
+            <Tag>This page does not exist</Tag>
+          </div>
             <Button href="/levels" size="lg">
-              See the new program <Arrow />
+              See our new program <Arrow />
             </Button>
-            <Tag>This page is being rebuilt</Tag>
+          
           </div>
         </Reveal>
 
         {children ?? (
           <Reveal className="card max-w-2xl p-7">
             <h3 className="text-[20px]">
-              Content coming across from the current site.
+              You're looking at a url from our older website version
             </h3>
             <p className="mt-3 text-[15px] text-ink-2">
-              This route is preserved exactly as it is today so nothing breaks.
-              The existing copy for{" "}
-              <span className="text-ink">{route?.label}</span> gets ported into
-              this shell in a later phase. The URL stays the same either way.
+             If you are a paid member of our older program, please reach out to <span className="text-ink">hello@pmcademy.com</span> and our team will grant you access free of cost to the newer version. You can still continue to learn from the older version <a href="https://dashboard.pmcademy.com" className="text-ink underline">here</a>
             </p>
-            <p className="mt-3 text-[13.5px] text-ink-3">
-              Developer note: pass children to{" "}
-              <code className="rounded bg-surface-2 px-1.5 py-0.5 text-xs">
-                &lt;LegacyPage&gt;
-              </code>{" "}
-              in{" "}
-              <code className="rounded bg-surface-2 px-1.5 py-0.5 text-xs">
-                src/app{href}/page.tsx
-              </code>
-              .
-            </p>
+            
           </Reveal>
         )}
 

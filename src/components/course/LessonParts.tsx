@@ -71,7 +71,10 @@ export function BuildChecklist({ id, steps }: { id: string; steps: BuildStep[] }
       const raw = localStorage.getItem(`pmc-build:${id}`);
       if (raw) {
         const saved = JSON.parse(raw) as boolean[];
-        if (Array.isArray(saved) && saved.length === steps.length) setDone(saved);
+        if (Array.isArray(saved) && saved.every(value => typeof value === "boolean")) {
+          // New build steps are appended; retain the learner's existing checked items.
+          setDone(Array.from({ length: steps.length }, (_, i) => saved[i] === true));
+        }
       }
     } catch {
       /* private mode */

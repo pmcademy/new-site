@@ -1,5 +1,5 @@
 import { useId } from "react";
-export default function AtelierArt(){const id=useId();return (<svg viewBox="0 0 1200 670"  fill="none" stroke="var(--art-outline)" strokeWidth="1.3" strokeLinejoin="round" strokeLinecap="round" role="img" aria-label="An illustrated product explorer’s garden: a floating open book, product blueprints, botanical panels, mountains and rippling water">
+export default function AtelierArt(){const id=useId();return (<svg className="atelier-illustration" viewBox="0 0 1200 670"  fill="none" stroke="var(--art-outline)" strokeWidth="1.3" strokeLinejoin="round" strokeLinecap="round" role="img" aria-label="An illustrated product explorer’s garden: a floating open book, product blueprints, botanical panels, mountains and rippling water">
 <defs>
 <linearGradient id={`${id}-sky`} x2="0" y2="1"><stop stopColor="var(--art-sky)"/><stop offset="1" stopColor="var(--art-sky-low)"/></linearGradient>
 <linearGradient id={`${id}-water`} x2="0" y2="1"><stop stopColor="var(--art-water)"/><stop offset="1" stopColor="var(--art-water-deep)"/></linearGradient>
@@ -7,15 +7,15 @@ export default function AtelierArt(){const id=useId();return (<svg viewBox="0 0 
 <linearGradient id={`${id}-blue`} x2="1" y2="1"><stop stopColor="var(--art-blue-light)"/><stop offset="1" stopColor="var(--art-sage-deep)"/></linearGradient>
 <pattern id={`${id}-hatch`} width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><path d="M0 0V7" stroke="var(--art-outline)" strokeWidth=".6" opacity=".22"/></pattern>
 <filter id={`${id}-grain`}><feTurbulence type="fractalNoise" baseFrequency=".73" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".14"/></feComponentTransfer><feBlend in="SourceGraphic" mode="multiply"/></filter>
-<clipPath id={`${id}-arch`}><path d="M306 579V334C306 169 433 40 592 40C754 40 894 164 894 334V579Z"/></clipPath>
+<clipPath id={`${id}-arch`}><path className="art-outer-frame" d="M306 579V334C306 169 433 40 592 40C754 40 894 164 894 334V579Z"/></clipPath>
 <clipPath id={`${id}-left`}><path d="M80 145L282 123V582H80Z"/></clipPath>
 <clipPath id={`${id}-right`}><path d="M918 123L1120 145V582H918Z"/></clipPath>
 </defs>
 <g data-part="printed">
-<path d="M299 586V333C299 164 427 31 592 31C757 31 902 157 902 333V586Z" fill="var(--art-frame)"/>
-<path d="M306 579V334C306 169 433 40 592 40C754 40 894 164 894 334V579Z"/>
+<path className="art-outer-frame" d="M299 586V333C299 164 427 31 592 31C757 31 902 157 902 333V586Z" fill="var(--art-frame)"/>
+<path className="art-outer-frame" d="M306 579V334C306 169 433 40 592 40C754 40 894 164 894 334V579Z"/>
 <g clipPath={`url(#${id}-arch)`}><path d="M300 30H900V590H300Z" fill={`url(#${id}-sky)`}/>
-<circle cx="697" cy="197" r="91" fill="var(--art-sun)" stroke="var(--art-coral)"/>
+<circle className="art-sun" cx="697" cy="197" r="91" fill="var(--art-sun)" stroke="var(--art-coral)"/>
 <circle cx="697" cy="197" r="81" stroke="var(--art-ochre-light)"/>
 <g data-part="clouds" fill="var(--art-cloud)"><path d="M298 261Q329 224 353 244Q366 186 408 218Q444 190 461 233Q482 221 506 250Q524 256 546 261Z"/><path d="M661 162Q688 132 711 146Q723 99 757 128Q797 104 813 150Q837 138 862 162Z"/><path d="M760 292Q790 270 815 280Q831 251 858 274Q884 251 923 289Z"/></g>
 <path d="M295 404L352 314L401 362L464 285L521 352L567 325L621 386L687 302L755 369L818 300L909 405Z" fill="var(--art-mountain)"/>
@@ -30,8 +30,8 @@ export default function AtelierArt(){const id=useId();return (<svg viewBox="0 0 
 <path d="M428 337L589 381L758 332L768 428L600 489L426 442Z" fill="var(--art-coral-light)"/>
 <path d="M426 330Q507 315 597 368Q679 311 755 329L760 419Q680 423 600 479Q518 431 428 431Z" fill={`url(#${id}-page)`} strokeWidth="2"/>
 <path d="M597 368L600 479M435 437L598 486L764 426M433 445L598 495L769 435"/>
-<path d="M438 345Q518 334 588 375L590 459Q507 420 439 417Z" fill="var(--art-sky-low)" stroke="var(--art-coral-light)"/>
-<path d="M609 376Q679 330 746 342L750 407Q682 422 611 461Z" fill="var(--art-frame)" stroke="var(--art-mountain)"/>
+<path className="art-book-page" d="M438 345Q518 334 588 375L590 459Q507 420 439 417Z" fill="var(--art-sky-low)" stroke="var(--art-coral-light)"/>
+<path className="art-book-page" d="M609 376Q679 330 746 342L750 407Q682 422 611 461Z" fill="var(--art-frame)" stroke="var(--art-mountain)"/>
 <path d="M592 383Q597 368 606 377L611 469L603 477L596 472Z" fill="var(--art-coral)" opacity=".5"/>
 <path d="M620 472L631 464L646 508L630 501L619 513Z" fill="var(--art-coral)"/>
 <g transform="matrix(1 .24 0 1 456 354)">

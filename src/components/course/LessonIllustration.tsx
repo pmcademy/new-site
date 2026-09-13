@@ -20,7 +20,7 @@ export default function LessonIllustration({ visual }: { visual: LessonVisual })
   const id = useId().replace(/:/g, "");
   const {kind, nodes} = visual;
   const defs = <marker id={`${id}-arrow`} markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="m1 1 5 3-5 3" stroke="var(--art-outline)" fill="none"/></marker>;
-  const arrow = { stroke: "var(--art-outline)", fill: "none", markerEnd: `url(#${id}-arrow)` };
+  const arrow = { stroke: "var(--art-rim)", fill: "none", markerEnd: `url(#${id}-arrow)` };
   const card = (i: number, x: number, y: number, w = 144) => <g key={i}>
     <path d={`M${x-w/2+3} ${y+3}h${w}v118h-${w}Z`} fill="var(--art-blue-mid)" opacity=".18"/>
     <rect x={x-w/2} y={y} width={w} height="118" rx="8" fill="var(--surface)" stroke="var(--line-2)"/>

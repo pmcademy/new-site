@@ -1,3 +1,4 @@
+import OnlineLearners from "@/components/layout/OnlineLearners";
 import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
@@ -48,6 +49,7 @@ export default function RootLayout({
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <OnlineLearners />
       </body>
     </html>
   );

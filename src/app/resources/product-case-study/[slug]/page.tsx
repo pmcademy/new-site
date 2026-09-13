@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 
 import CaseReader from "@/components/resources/CaseReader";
 import Reveal from "@/components/motion/Reveal";
@@ -23,6 +23,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function CaseStudyPage({ params }: Params) {
   const { slug } = await params;
+  if (slug === "duolingo-streak") permanentRedirect("/case-studies/duolingo-streak");
   const c = getCase(slug);
   if (!c) notFound();
 

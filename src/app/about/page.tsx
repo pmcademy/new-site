@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-
-import LegacyPage from "@/components/layout/LegacyPage";
-
-export const metadata: Metadata = { title: "About Us" };
-
-/**
- * PRESERVED ROUTE: /about
- * Live on pmcademy.com today. Kept so links, ads and search results keep
- * resolving. Port the real content in by passing children to <LegacyPage>.
- */
-export default function Page() {
-  return <LegacyPage href="/about" />;
+import Link from "next/link";
+import PageIntro from "@/components/pages/PageIntro";
+import CompanyDetails from "@/components/pages/CompanyDetails";
+import FieldArt from "@/components/art/FieldArt";
+import { totalLessons, totalChapters } from "@/lib/course";
+export const metadata: Metadata = { title: "About PMcademy", description: "Free product management learning, built by the team at OpenBootcamp." };
+export default function AboutPage() {
+ return <div className="shell page-wrap"><PageIntro eyebrow="Built for curious people" title="Learn the job. Make something that matters." description="PMcademy is a place to practise product management before someone hands you the title. We believe a useful education should leave you with work you can explain, question, and improve." art="seed"/>
+ <section className="about-manifesto"><span className="eyebrow">Our starting point</span><h2>Good judgment grows through practice.</h2><div><p>Reading about prioritisation is useful. Choosing what to cut from your own project is where it becomes real. Our lessons move from a situation to a concept, then into evidence, a decision, and something you build.</p><p>The curriculum is free. The optional paid offer adds capstone review, badges earned through that review, and a community to learn with. Paying is not a shortcut through the work.</p></div></section>
+ <div className="about-numbers"><div><strong>6</strong><span>progressive levels</span></div><div><strong>{totalChapters}</strong><span>chapters to explore</span></div><div><strong>{totalLessons}</strong><span>lessons with a build</span></div></div>
+ <section className="about-principles">{[{art:"library",title:"Evidence before opinions",body:"Understand a real situation, keep the source visible, and say what you still do not know. A confident sentence is not a substitute for evidence."},{art:"craft",title:"AI in the workflow",body:"Use AI to organise, prototype, and challenge your work. Learn to check its output, protect private information, and make the final decision yourself."},{art:"community",title:"Generous, rigorous feedback",body:"Respect the person and question the work. Share relevant ideas, give useful feedback, and help colleagues build their own judgment."}].map(x=><article key={x.title}><FieldArt kind={x.art as "library"|"craft"|"community"}/><h3>{x.title}</h3><p>{x.body}</p></article>)}</section>
+ <section className="about-team"><div><span className="eyebrow">OpenBootcamp × PMcademy</span><h2>A learning community with a real team behind it.</h2><p>PMcademy is run by the team at OpenBootcamp, registered as M3V Technologies Private Limited in Pune, Maharashtra, India. For questions about the course, community, your enrolment, or our policies, you can reach us directly.</p><div className="page-actions"><Link className="btn btn-primary" href="/levels">Explore the six levels</Link><Link className="btn btn-outline" href="/contact">Talk to the team</Link></div></div><CompanyDetails/></section>
+ </div>;
 }
