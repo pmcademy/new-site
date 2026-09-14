@@ -1,8 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { levels } from "./course";
+import { getLesson, levels } from "./course";
 import { levelLessons } from "./course/types";
+import { recordActivity } from "./workspace/store";
 
 /**
  * Account, progress and level gating.
@@ -117,10 +118,41 @@ export function setDomain(domain: string) {
 export function markDone(levelSlug: string, lessonSlug: string, done: boolean) {
   const key = `${levelSlug}/${lessonSlug}`;
   const p = readProgress();
+  const already = p.done.includes(key);
   const next = done
     ? { done: Array.from(new Set([...p.done, key])) }
     : { done: p.done.filter((k) => k !== key) };
   writeProgress(next);
+
+  /* Finishing a lesson is the single most common thing a learner does, so it
+     is what most of the workspace is built from. Recorded once: unmarking and
+     re-marking a lesson does not manufacture a second day of activity, which
+     would otherwise be the easiest way to fake a streak. */
+  if (done && !already) {
+    const found = getLesson(levelSlug, lessonSlug);
+    recordActivity({
+      type: "lesson_completed",
+      label: found?.lesson.title ?? lessonSlug,
+      entityId: key,
+      minutes: found?.lesson.minutes,
+      dedupeKey: `lesson:${key}`,
+    });
+
+    const level = levels.find((l) => l.slug === levelSlug);
+    if (level) {
+      const all = levelLessons(level);
+      const complete = all.every((x) => next.done.includes(`${levelSlug}/${x.slug}`));
+      if (complete) {
+        recordActivity({
+          type: "level_completed",
+          label: `Level ${level.n}, ${level.rank}`,
+          entityId: levelSlug,
+          dedupeKey: `level:${levelSlug}`,
+        });
+      }
+    }
+  }
+
   emit();
 }
 

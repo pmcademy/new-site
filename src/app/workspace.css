@@ -1,0 +1,435 @@
+/* ==========================================================================
+   THE LEARNER WORKSPACE
+
+   Imported by globals.css. Everything here lives in @layer components, for
+   the same reason as the rest of the system: unlayered CSS beats Tailwind
+   utilities, and the day that rule is broken a responsive class stops working
+   somewhere far away from the change that broke it.
+   ========================================================================== */
+
+@layer components {
+  /* ---------------------------------------------------------------- stage */
+
+  .ws-scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    border-radius: var(--r-xl);
+    border: 1px solid var(--line);
+    background: var(--surface-2);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .ws-stage {
+    position: relative;
+    width: 100%;
+    min-width: 760px; /* below this the room is panned, never squashed */
+    isolation: isolate;
+  }
+
+  .ws-room {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* Scenery never eats a click meant for the object behind it. Only the
+     hotspots take pointer events, which is why the lamp can overlap the
+     shelf without stealing it. */
+  .ws-object:not(.ws-hit),
+  .ws-object:not(.ws-hit) * {
+    pointer-events: none;
+  }
+
+  .ws-object {
+    position: absolute;
+    display: block;
+    padding: 0;
+    border: 0;
+    background: none;
+    line-height: 0;
+  }
+
+  .ws-art {
+    display: block;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* --------------------------------------------------------------- hits */
+
+  .ws-hit {
+    cursor: pointer;
+    border-radius: 8px;
+    transition:
+      transform 0.22s var(--ease),
+      filter 0.22s var(--ease);
+  }
+  .ws-hit::after {
+    /* A generous target that does not change the drawing's own size. */
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 12px;
+  }
+  .ws-hit:hover,
+  .ws-hit:focus-visible {
+    transform: translateY(-2px) scale(1.015);
+    filter: drop-shadow(0 6px 14px color-mix(in srgb, var(--ink) 26%, transparent));
+  }
+  .ws-hit:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 6px;
+  }
+
+  .ws-tip {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 10px);
+    z-index: 40;
+    display: grid;
+    gap: 2px;
+    width: max-content;
+    max-width: 220px;
+    padding: var(--s-2) var(--s-3);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+    box-shadow: 0 8px 22px color-mix(in srgb, var(--ink) 16%, transparent);
+    opacity: 0;
+    transform: translate(-50%, 4px);
+    transition:
+      opacity 0.18s var(--ease),
+      transform 0.18s var(--ease);
+    pointer-events: none;
+    line-height: 1.35;
+    text-align: left;
+  }
+  .ws-tip b {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .ws-tip i {
+    font-size: 12px;
+    font-style: normal;
+    color: var(--ink-3);
+  }
+  .ws-hit:hover .ws-tip,
+  .ws-hit:focus-visible .ws-tip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  /* ------------------------------------------------------------- ambient */
+
+  .ws-dust {
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20% 30%, color-mix(in srgb, var(--on-dark) 55%, transparent), transparent),
+      radial-gradient(1.5px 1.5px at 62% 22%, color-mix(in srgb, var(--on-dark) 40%, transparent), transparent),
+      radial-gradient(1.5px 1.5px at 78% 54%, color-mix(in srgb, var(--on-dark) 35%, transparent), transparent),
+      radial-gradient(1.5px 1.5px at 38% 66%, color-mix(in srgb, var(--on-dark) 30%, transparent), transparent);
+    opacity: 0.5;
+    animation: ws-drift 26s linear infinite;
+  }
+  .ws-stage[data-time="night"] .ws-dust {
+    opacity: 0.25;
+  }
+
+  @keyframes ws-drift {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-22px, -14px, 0);
+    }
+  }
+
+  .ws-pan-hint {
+    position: absolute;
+    left: 50%;
+    bottom: var(--s-4);
+    transform: translateX(-50%);
+    padding: var(--s-2) var(--s-4);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--ink) 78%, transparent);
+    color: var(--on-dark);
+    font-size: 12.5px;
+    pointer-events: none;
+  }
+
+  .ws-empty {
+    position: absolute;
+    left: var(--s-5);
+    bottom: var(--s-5);
+    z-index: 20;
+    max-width: 40ch;
+    padding: var(--s-4) var(--s-5);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: color-mix(in srgb, var(--surface) 92%, transparent);
+    backdrop-filter: blur(3px);
+  }
+
+  /* ---------------------------------------------------------------- time */
+
+  .ws-time {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--s-2);
+    margin-top: var(--s-3);
+  }
+  .ws-time-btn {
+    padding: 3px var(--s-3);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink-3);
+    font-size: 12.5px;
+    text-transform: capitalize;
+    cursor: pointer;
+    transition: all 0.18s var(--ease);
+  }
+  .ws-time-btn:hover {
+    color: var(--ink);
+  }
+  .ws-time-btn[data-on] {
+    border-color: var(--navy);
+    background: var(--blue-soft);
+    color: var(--ink);
+  }
+
+  /* --------------------------------------------------------------- index */
+
+  .ws-index {
+    display: grid;
+    gap: var(--s-2);
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .ws-index-btn {
+    display: flex;
+    width: 100%;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--s-3);
+    padding: var(--s-3) var(--s-4);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.18s var(--ease);
+  }
+  .ws-index-btn:hover {
+    border-color: var(--line-2);
+  }
+
+  /* -------------------------------------------------------------- panels */
+
+  .ws-panel-root {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: grid;
+    place-items: end center;
+  }
+  @media (min-width: 700px) {
+    .ws-panel-root {
+      place-items: center;
+    }
+  }
+
+  .ws-scrim {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--ink) 46%, transparent);
+    animation: ws-fade 0.2s var(--ease) both;
+  }
+
+  .ws-panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    max-height: 86vh;
+    width: min(560px, 100%);
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xl) var(--r-xl) 0 0;
+    background: var(--paper);
+    box-shadow: 0 24px 60px color-mix(in srgb, var(--ink) 30%, transparent);
+    animation: ws-sheet 0.26s var(--ease) both;
+  }
+  .ws-panel-wide {
+    width: min(760px, 100%);
+  }
+  @media (min-width: 700px) {
+    .ws-panel {
+      border-radius: var(--r-xl);
+      animation: ws-pop 0.22s var(--ease) both;
+    }
+  }
+
+  .ws-panel-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--s-4);
+    padding: var(--s-5) var(--s-5) var(--s-4);
+    border-bottom: 1px solid var(--line);
+  }
+  .ws-panel-body {
+    overflow-y: auto;
+    padding: var(--s-5);
+  }
+
+  @keyframes ws-fade {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes ws-sheet {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+  @keyframes ws-pop {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+  }
+
+  /* --------------------------------------------------------------- parts */
+
+  .ws-input {
+    width: 100%;
+    padding: var(--s-3) var(--s-4);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-size: 14.5px;
+  }
+  .ws-input:focus {
+    border-color: var(--blue);
+    outline: none;
+  }
+
+  .ws-cal-cell {
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border: 0;
+    border-radius: 3px;
+    background: var(--surface-3);
+    cursor: pointer;
+  }
+  .ws-cal-cell[data-level="1"] {
+    background: color-mix(in srgb, var(--free) 45%, var(--surface-3));
+  }
+  .ws-cal-cell[data-level="2"] {
+    background: color-mix(in srgb, var(--free) 70%, var(--surface-3));
+  }
+  .ws-cal-cell[data-level="3"] {
+    background: var(--free);
+  }
+  .ws-cal-cell[data-selected] {
+    outline: 2px solid var(--blue);
+    outline-offset: 1px;
+  }
+
+  .ws-rarity {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+  }
+  .ws-rarity[data-rarity="rare"] {
+    color: var(--blue);
+  }
+  .ws-rarity[data-rarity="legendary"] {
+    color: var(--amber);
+  }
+
+  .ws-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .ws-list li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--s-4);
+    font-size: 14.5px;
+    color: var(--ink-2);
+  }
+  .ws-list a {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .ws-list span:last-child {
+    font-size: 12.5px;
+    color: var(--ink-3);
+  }
+
+  .ws-read {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-4);
+    margin-top: var(--block-y);
+    padding: var(--s-5);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: var(--surface-2);
+  }
+
+  .ws-skeleton {
+    height: 420px;
+    border-radius: var(--r-xl);
+    background: var(--surface-2);
+    animation: ws-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes ws-pulse {
+    50% {
+      opacity: 0.62;
+    }
+  }
+}
+
+/* The room is a place, not a performance. Nothing here needs to move. */
+@media (prefers-reduced-motion: reduce) {
+  .ws-dust {
+    animation: none;
+    opacity: 0.2;
+  }
+  .ws-hit:hover,
+  .ws-hit:focus-visible {
+    transform: none;
+  }
+  .ws-panel,
+  .ws-scrim {
+    animation: none;
+  }
+}

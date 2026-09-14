@@ -17,6 +17,7 @@ export const site = {
 export type NavItem = { label: string; href: string };
 
 export const primaryNav: NavItem[] = [
+  { label: "Workspace", href: "/workspace" },
   { label: "Levels", href: "/levels" },
   { label: "Level 0", href: "/level-0" },
   { label: "Resources", href: "/resources" },

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 
 import CaseReader from "@/components/resources/CaseReader";
+import ReadTracker from "@/components/workspace/ReadTracker";
 import Reveal from "@/components/motion/Reveal";
 import { Arrow, Check } from "@/components/ui/Icons";
 import { cases, getCase } from "@/lib/resources";
@@ -152,6 +153,17 @@ export default async function CaseStudyPage({ params }: Params) {
               screenshots, and nothing internal is claimed.
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* The book only appears once the teardown has actually been read. */}
+      <section className="section-sm">
+        <div className="shell">
+          <ReadTracker
+            id={c.slug}
+            title={`${c.brand}: ${c.title}`}
+            href={`/resources/product-case-study/${c.slug}`}
+          />
         </div>
       </section>
 
