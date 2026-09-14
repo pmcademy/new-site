@@ -19,7 +19,7 @@ export const l04: Level = {
     "Understand how software actually works, answer your own data questions, write a spec an engineer does not have to rewrite, and put a real product on a real URL without waiting for anyone.",
   arc: "Still Sona. Engineering is booked for two quarters and you have a problem nobody will schedule. So you stop being the person who asks for things. You learn the machine well enough to argue with it, you build the thing yourself, you put it on the internet, and you let ten real users make the argument for you.",
   scene: {
-    image: "/img/scenes/domain-fintech.webp",
+    image: "/scenes/domain-fintech.webp",
     alt: "The Sona product floor: dashboards on one wall, a whiteboard covered in boxes and arrows on the other.",
     caption:
       "Sona, week one of the quarter. The roadmap is full and your problem is not on it.",
@@ -59,7 +59,7 @@ export const l04: Level = {
           legacy: "Module 14.1, 14.4. Core Functionality, APIs, Frontend-Backend",
           hook: "An engineer says “it is slow because of an N+1 on the transactions endpoint”. You nod. You have no idea what was just said, and the decision you make in the next ten minutes depends on it.",
           scene: {
-            image: "/img/scenes/domain-fintech.webp",
+            image: "/scenes/domain-fintech.webp",
             alt: "A standup in front of a monitor showing a dashboard with a red latency spike.",
             caption: "Tuesday standup. The p95 chart has a cliff in it.",
             notes: [
@@ -344,7 +344,7 @@ export const l04: Level = {
           legacy: "Module 14.3. Reading Code",
           hook: "Dev sends you a link to a file and says “the logic you are asking about is here”. It is 240 lines. You have never opened a code file in your life and you are about to say “looks good” to something you cannot see.",
           scene: {
-            image: "/img/scenes/domain-b2b.webp",
+            image: "/scenes/domain-b2b.webp",
             alt: "A laptop showing a code file with a diff view open beside a chat window.",
             caption: "Thursday afternoon. A file, a diff, and nobody to translate.",
             notes: [
@@ -618,7 +618,7 @@ export const l04: Level = {
           legacy: "Module 15.1. Data Models",
           hook: "You ask Ana for “active users by plan”. She asks which of the three plan fields you mean. You did not know there were three, and now you understand why every number you have ever been given came with a caveat.",
           scene: {
-            image: "/img/scenes/domain-commerce.webp",
+            image: "/scenes/domain-commerce.webp",
             alt: "A screen showing a database schema diagram with tables joined by lines.",
             caption: "Ana's schema diagram, printed and pinned up because it is faster than asking.",
             notes: [
@@ -999,7 +999,7 @@ export const l04: Level = {
           legacy: "Module 13.1. Product Requirements",
           hook: "Dev opens your document, reads two pages, and opens a blank one to write what he thinks you meant. That rewrite is the real spec and you are no longer the author of it.",
           scene: {
-            image: "/img/scenes/office-wide.webp",
+            image: "/scenes/office-wide.webp",
             alt: "A meeting room with a long document on the screen and two people reading it in silence.",
             caption: "Spec review. Ten minutes of silent reading, then the questions.",
             notes: [
@@ -1279,7 +1279,7 @@ export const l04: Level = {
           minutes: 40,
           hook: "You have an evening, a free tier, and an idea with nine features in it. Eight of them are why this will not exist by Sunday.",
           scene: {
-            image: "/img/scenes/domain-health.webp",
+            image: "/scenes/domain-health.webp",
             alt: "A single laptop on a kitchen table at night with a notebook showing one sentence circled.",
             caption: "Friday, 9pm. One sentence, circled, and everything else crossed out.",
             notes: [
@@ -1612,7 +1612,7 @@ export const l04: Level = {
           minutes: 50,
           hook: "The product works on the URL the host gave you. You buy a domain, point it at the app, and now the form submits to nowhere, the browser says not secure, and the emails go to spam.",
           scene: {
-            image: "/img/scenes/domain-commerce.webp",
+            image: "/scenes/domain-commerce.webp",
             alt: "A laptop showing a DNS settings panel with several records listed.",
             caption: "The DNS panel. Four records, and each one breaks something different.",
             notes: [
@@ -1877,7 +1877,7 @@ export const l04: Level = {
           legacy: "Module 13.4. Backlogs & Sprints",
           hook: "Dev says two weeks. It takes five. Nobody lied, nobody slacked, and you have already told the founder two weeks in writing.",
           scene: {
-            image: "/img/scenes/office-wide.webp",
+            image: "/scenes/office-wide.webp",
             alt: "A sprint board with more cards in the in-progress column than in done.",
             caption: "End of sprint. Four cards moved, nine did not.",
             notes: [

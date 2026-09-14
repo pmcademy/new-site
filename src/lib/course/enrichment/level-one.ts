@@ -5,6 +5,7 @@ export type LessonEnrichment = {
   intro: string; teaching: { title: string; body: string }[];
   example: { title: string; body: string }; prompt: string; verify: string[];
   hint: string; practice: string; visual: LessonVisual;
+  researchLab?: "sampling"|"recruitment"|"questions"|"coding"|"agreement"|"usability"|"sizing"|"pmf"|"cohorts"|"experiment";
   reading: { label: string; url: string }[]; lab?: LabKind; article?: ArticleAssignment;
 };
 // Explicitly reviewed lesson-by-lesson. Additional examples are fictional, not research findings.

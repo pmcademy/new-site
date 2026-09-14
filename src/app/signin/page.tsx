@@ -22,8 +22,7 @@ export default function SignInPage() {
             Save your progress.
           </h1>
           <p className="mt-[var(--s-3)] text-[15px] text-ink-2">
-            The course is free. You sign in so your builds, your checkpoints and
-            your place in the ladder stay with you.
+            The course is free. Sign in to save completed lessons to your account and continue on another device.
           </p>
 
           <div className="mt-[var(--s-6)]">
@@ -50,19 +49,10 @@ export default function SignInPage() {
           <div className="note note-blue">
             <span className="eyebrow">What is stored</span>
             <p>
-              Which lessons you finished, your build checklists and your
-              checkpoint notes. Nothing is emailed to you unless you ask for it.
+              Completed lessons sync to your account. Build checklists, article links and project notes stay in this browser. Keep a copy with your project.
             </p>
           </div>
-          <div className="note note-amber">
-            <span className="eyebrow">Note for this preview</span>
-            <p>
-              Sign in currently runs locally in your browser so the whole flow
-              can be used before the auth provider is connected. Swap the four
-              adapter functions in lib/progress.ts for the real provider and
-              nothing else in the app changes.
-            </p>
-          </div>
+
         </Reveal>
       </div>
     </section>

@@ -1,3 +1,4 @@
+import CapstoneSubmission from "@/components/course/CapstoneSubmission";
 import LevelBadge from "@/components/art/LevelBadge";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -47,11 +48,11 @@ export default async function LevelPage({ params }: Params) {
         <div className="shell">
           <Reveal className="grid gap-[var(--block-y)] lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <div className="flex items-center gap-[var(--s-4)]">
+              <div className="flex flex-wrap items-center gap-[var(--s-4)]">
                 <LevelBadge n={level.n} />
                 <div>
                   <span className="eyebrow block">Level {level.n}</span>
-                  <span className="mt-[var(--s-1)] block font-serif text-[2.4rem] leading-none tracking-[-0.02em]">
+                  <span className="mt-[var(--s-1)] block font-serif text-[clamp(1.65rem,7vw,2.4rem)] leading-none tracking-[-0.02em]">
                     {level.rank}
                   </span>
                 </div>
@@ -207,6 +208,7 @@ export default async function LevelPage({ params }: Params) {
             </div>
           </Reveal>
         </div>
+      <div className="shell"><CapstoneSubmission level={level.slug}/></div>
       </section>
     </>
   );

@@ -1,3 +1,4 @@
+import ResearchLab from "./ResearchLab";
 import type { LessonEnrichment } from "@/lib/course/enrichment/level-one";
 import LessonIllustration from "./LessonIllustration";
 import ConceptLab from "./ConceptLab";
@@ -9,6 +10,7 @@ export function LessonDeepDive({ content }: { content: LessonEnrichment }) {
     {content.teaching.map((part,i)=><div className="deep-step" key={part.title}><span className="deep-number" aria-hidden="true">0{i+1}</span><div><h3>{part.title}</h3><p>{part.body}</p></div></div>)}
     <LessonIllustration visual={content.visual}/>
     <aside className="deep-example"><span className="eyebrow">Worked example</span><h3>{content.example.title}</h3><p>{content.example.body}</p></aside>
+    {content.researchLab && <ResearchLab kind={content.researchLab}/>}
     {content.lab && <ConceptLab key={content.lab} kind={content.lab}/>}
   </div>;
 }

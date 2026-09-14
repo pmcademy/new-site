@@ -9,7 +9,8 @@ import ThemeToggle from "./ThemeToggle";
 import Button from "@/components/ui/Button";
 import { Arrow } from "@/components/ui/Icons";
 import { primaryNav, site } from "@/lib/site";
-import { signOut, useStore } from "@/lib/progress";
+import ProfileMenu from "@/components/auth/ProfileMenu";
+import { useStore } from "@/lib/progress";
 import { cn } from "@/lib/utils";
 
 export default function Nav() {
@@ -35,7 +36,7 @@ export default function Nav() {
     <header className="nav-wrap sticky top-0 z-50">
       <div className="nav-pill flex h-[var(--nav-h)] items-center justify-between gap-5">
         <Link href="/" aria-label={`${site.name} home`}>
-          <Logo />
+          <Logo className={signedIn ? "[&>span:last-child]:hidden min-[380px]:[&>span:last-child]:inline" : undefined} />
         </Link>
 
         <nav className="hidden gap-1 lg:flex">
@@ -59,17 +60,7 @@ export default function Nav() {
           <ThemeToggle />
 
           {signedIn ? (
-            <>
-              <button
-                onClick={signOut}
-                className="btn btn-quiet hidden sm:inline-flex"
-              >
-                Sign out
-              </button>
-              <Button href="/levels" className="hidden sm:inline-flex">
-                Keep going
-              </Button>
-            </>
+            <ProfileMenu account={account} />
           ) : (
             <>
               <Link href="/signin" className="btn btn-quiet hidden sm:inline-flex">
@@ -120,9 +111,7 @@ export default function Nav() {
               Start lesson one <Arrow />
             </Button>
             {signedIn ? (
-              <button onClick={signOut} className="btn btn-outline btn-lg">
-                Sign out
-              </button>
+              <Button href="/levels" variant="outline" size="lg">Continue learning</Button>
             ) : (
               <Button href="/signin" variant="outline" size="lg">
                 Sign in

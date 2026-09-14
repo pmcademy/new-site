@@ -1,0 +1,2 @@
+export function authConfig(){const url=process.env.NEXT_PUBLIC_SUPABASE_URL,key=process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;return url&&key?{url,key}:null;}
+export function safeNext(value:string|null){if(!value?.startsWith('/')||value.startsWith('//')||/[\\\r\n]/.test(value))return '/levels';try{const url=new URL(value,'https://pmcademy.com');return url.origin==='https://pmcademy.com'?url.pathname+url.search+url.hash:'/levels';}catch{return '/levels';}}

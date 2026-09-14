@@ -20,7 +20,7 @@ export const l01: Level = {
     "Walk into a company with no product process and produce something useful in your first week.",
   arc: "You are the first product hire. Nobody hands you a brief. There are app store reviews, a support inbox, an engineer who is busy, and a founder who wants an answer on Friday. Everything in this level happens inside that building.",
   scene: {
-    image: "/img/scenes/office-wide.webp",
+    image: "/scenes/office-wide.webp",
     alt: "The Sona office: an open-plan room with a whiteboard covered in sticky notes and a bank of monitors.",
     caption:
       "Placeholder. Swap for the real Sona office renders in /public/img/scenes.",
@@ -60,7 +60,7 @@ export const l01: Level = {
           legacy: "Module 2.1, Product Management 101",
           hook: "The founder forwards you 200 app store reviews with the message “what should we fix?” and nothing else. No brief, no context, no meeting. It is 9:40am on your first day.",
           scene: {
-            image: "/img/scenes/desk-day-one.webp",
+            image: "/scenes/desk-day-one.webp",
             alt: "A desk on the first day: a laptop, a lanyard, an unopened notebook and a cold coffee.",
             caption: "Your desk, 9:40am.",
             notes: [

@@ -1,0 +1,3 @@
+import {serverAuth} from '@/lib/supabase/server';
+import {safeNext} from '@/lib/supabase/config';
+export async function GET(request:Request){const url=new URL(request.url),token_hash=url.searchParams.get('token_hash');try{if(token_hash&&url.searchParams.get('type')==='email'){const db=await serverAuth();const {error}=await db.auth.verifyOtp({token_hash,type:'email'});if(!error)return new Response(null,{status:303,headers:{Location:`/signin?next=${encodeURIComponent(safeNext(url.searchParams.get('next')))}`,'Cache-Control':'private, no-store'}});}}catch{}return new Response(null,{status:303,headers:{Location:'/signin?error=expired','Cache-Control':'private, no-store'}});}

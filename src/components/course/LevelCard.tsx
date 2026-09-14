@@ -40,19 +40,7 @@ export default function LevelCard({ level: l }: { level: Level }) {
       <h3 className="mt-[var(--s-4)] text-[18px]">{l.title}</h3>
       <p className="mt-[var(--s-2)] text-[14.5px] text-ink-2 mb-4">{l.promise}</p>
 
-      {/* <ul className="mt-[var(--s-4)] flex list-none flex-col gap-[var(--s-2)] p-0">
-        {l.chapters.slice(0, 4).map((ch) => (
-          <li key={ch.slug} className="flex gap-[var(--s-3)] text-[13.5px] text-ink-3">
-            <span className="tabular-nums">{ch.n}.</span>
-            <span>{ch.title}</span>
-          </li>
-        ))}
-        {l.chapters.length > 4 && (
-          <li className="text-[13.5px] text-ink-3">
-            and {l.chapters.length - 4} more chapters
-          </li>
-        )}
-      </ul> */}
+
 
       {pct > 0 && (
         <div className="mt-[var(--s-4)] h-1.5 overflow-hidden rounded-full bg-line">
@@ -85,7 +73,7 @@ export default function LevelCard({ level: l }: { level: Level }) {
 
   if (!unlocked) {
     return (
-      <div data-reveal className={cn(base, "opacity-60")} aria-disabled="true">
+      <div className={cn(base, "opacity-60")} aria-disabled="true">
         {inner}
       </div>
     );
@@ -94,7 +82,7 @@ export default function LevelCard({ level: l }: { level: Level }) {
   return (
     <Link
       href={`/levels/${l.slug}`}
-      data-reveal
+     
       className={cn(base, "hover:-translate-y-0.5 hover:border-line-2")}
     >
       {inner}

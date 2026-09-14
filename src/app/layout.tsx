@@ -1,3 +1,4 @@
+import AccountSyncStatus from "@/components/auth/AccountSyncStatus";
 import OnlineLearners from "@/components/layout/OnlineLearners";
 import type { Metadata, Viewport } from "next";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <Nav />
+        <AccountSyncStatus />
         <main id="main">{children}</main>
         <Footer />
         <OnlineLearners />

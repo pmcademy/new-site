@@ -20,7 +20,7 @@ export const l05: Level = {
     "Ship an AI feature you can defend: a versioned prompt, an eval suite that turns “feels better” into a number, a cost per interaction, and an interface designed for the times the model is wrong.",
   arc: "Sona wants an assistant that answers money questions from a user's own transactions. Maya has already told the board it ships this quarter. This is where AI stops being a tool you use and starts being the thing you are accountable for when it tells someone the wrong balance.",
   scene: {
-    image: "/img/scenes/domain-fintech.webp",
+    image: "/scenes/domain-fintech.webp",
     alt: "A dashboard of transactions, categories and balances, with a chat panel open beside it.",
     caption:
       "Sona's assistant, three weeks into the prototype. It demos beautifully.",
@@ -61,7 +61,7 @@ export const l05: Level = {
           minutes: 65,
           hook: "You are about to commit a quarter of engineering time to a system you cannot currently describe in a sentence. Dev asks, in standup, what actually happens when a user presses send. You do not know.",
           scene: {
-            image: "/img/scenes/domain-fintech.webp",
+            image: "/scenes/domain-fintech.webp",
             alt: "A transaction list with a chat panel open beside it, mid conversation.",
             caption: "The prototype. It has never been measured.",
             notes: [
@@ -364,7 +364,7 @@ export const l05: Level = {
           minutes: 50,
           hook: "Maya wants the assistant to answer “how much did I spend on coffee last month”. That is a SQL query. It costs nothing, it is right every time, and it returns in 40 milliseconds. The model costs money, is right most of the time, and takes two seconds.",
           scene: {
-            image: "/img/scenes/office-wide.webp",
+            image: "/scenes/office-wide.webp",
             alt: "The Sona office, a whiteboard covered in feature ideas with AI written next to most of them.",
             caption: "The whiteboard after the offsite. Fourteen ideas, eleven of them with AI written beside them.",
             notes: [
@@ -1023,7 +1023,7 @@ export const l05: Level = {
           minutes: 75,
           hook: "Users want answers about their own transactions. The model has never seen them, cannot be trained on them, and would be a privacy incident if it were.",
           scene: {
-            image: "/img/scenes/domain-commerce.webp",
+            image: "/scenes/domain-commerce.webp",
             alt: "A long list of merchant names and transaction descriptors, many of them cryptic.",
             caption:
               "The raw data the assistant has to answer from. SQ *BLUE BOTTLE 4471 is a coffee.",
@@ -1841,7 +1841,7 @@ export const l05: Level = {
           minutes: 70,
           hook: "Sona's assistant just told a user their rent was categorised as entertainment, confidently, with no citation, no way to correct it and no way to see what it looked at.",
           scene: {
-            image: "/img/scenes/domain-b2b.webp",
+            image: "/scenes/domain-b2b.webp",
             alt: "A meeting room with a security questionnaire open on a laptop and a printed list of questions.",
             caption:
               "The enterprise deal that arrived this week, and the 90 question security review attached to it.",

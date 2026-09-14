@@ -6,10 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "art:workspace": "node scripts/build-workspace-art.mjs"
+    "lint": "eslint"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.116.0",
     "clsx": "^2.1.1",
     "lottie-web": "^5.13.0",
     "next": "16.3.3",

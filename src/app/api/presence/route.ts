@@ -1,3 +1,4 @@
+import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
 import { createHmac, randomUUID, timingSafeEqual } from "node:crypto";
 
@@ -7,20 +8,6 @@ const COOKIE = "pmc_presence";
 const COOKIE_AGE = 86400;
 const ACTIVE_SECONDS = 90;
 const headers = { "Cache-Control": "no-store, max-age=0", "Vary": "Cookie, Origin" };
-
-// Redis provides a shared clock and one atomic operation across application instances.
-// The set expires after the final heartbeat. No account ID, IP, or URL is stored.
-const heartbeat = `
-local clock = redis.call('TIME')
-local now = tonumber(clock[1])
-redis.call('ZREMRANGEBYSCORE', KEYS[1], '-inf', now - tonumber(ARGV[2]))
-local last = redis.call('ZSCORE', KEYS[1], ARGV[1])
-if not last or now - tonumber(last) >= 15 then
-  redis.call('ZADD', KEYS[1], now, ARGV[1])
-end
-redis.call('EXPIRE', KEYS[1], tonumber(ARGV[2]) * 2)
-return redis.call('ZCARD', KEYS[1])
-`;
 
 function signature(value: string, secret: string) {
   return createHmac("sha256", secret).update(value).digest("base64url");
@@ -41,34 +28,57 @@ function identity(cookie: string | undefined, secret: string) {
 }
 
 export async function POST(request: NextRequest) {
-  // Browser heartbeats are same-origin. This endpoint is not a cross-origin API.
-  if (request.headers.get("origin") !== request.nextUrl.origin || request.headers.get("sec-fetch-site") === "cross-site") {
-    return NextResponse.json({ error: "origin" }, { status: 403, headers });
-  }
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
-  const secret = process.env.PRESENCE_SIGNING_SECRET;
-  const prefix = process.env.PRESENCE_NAMESPACE || "pmcademy:production";
-  if (!url || !token || !secret || secret.length < 32 || !/^[a-zA-Z0-9:_-]{1,80}$/.test(prefix)) {
-    return NextResponse.json({ available: false }, { status: 503, headers });
-  }
   try {
+    const origin = new URL(process.env.NEXT_PUBLIC_SITE_URL || request.url).origin;
+    if (request.headers.get("origin") !== origin || request.headers.get("sec-fetch-site") === "cross-site") {
+      return NextResponse.json({ error: "origin" }, { status: 403, headers });
+    }
+
+    const url = process.env.SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+    const secret = process.env.PRESENCE_SIGNING_SECRET;
+    const namespace = process.env.PRESENCE_NAMESPACE || "pmcademy:production";
+    if (!url || !key || !secret || secret.length < 32 || !/^[a-zA-Z0-9:_-]{1,80}$/.test(namespace)) {
+      return NextResponse.json({ available: false }, { status: 503, headers });
+    }
+
     const endpoint = new URL(url);
-    if (endpoint.protocol !== "https:") throw new Error("Invalid Redis endpoint");
+    const local = process.env.NODE_ENV !== "production" && ["localhost", "127.0.0.1", "[::1]"].includes(endpoint.hostname);
+    if (endpoint.protocol !== "https:" && !(local && endpoint.protocol === "http:")) {
+      return NextResponse.json({ available: false }, { status: 503, headers });
+    }
+
     const visitor = identity(request.cookies.get(COOKIE)?.value, secret);
-    const result = await fetch(endpoint, {
-      method: "POST", cache: "no-store", signal: AbortSignal.timeout(5000),
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      body: JSON.stringify(["EVAL", heartbeat, 1, `${prefix}:presence:v1`, visitor.id, ACTIVE_SECONDS]),
+    const database = createClient(url, key, {
+      auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+      global: {
+        fetch: (input, init) => fetch(input, {
+          ...init,
+          cache: "no-store",
+          signal: AbortSignal.timeout(5000),
+        }),
+      },
     });
-    if (!result.ok) throw new Error("Presence backend unavailable");
-    const data: unknown = await result.json();
-    if (!data || typeof data !== "object" || !("result" in data) || "error" in data || !Number.isSafeInteger(data.result) || Number(data.result) < 1) throw new Error("Invalid count");
-    const response = NextResponse.json({ available: true, count: data.result, activeSeconds: ACTIVE_SECONDS }, { headers });
-    if (visitor.cookie) response.cookies.set(COOKIE, visitor.cookie, { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: COOKIE_AGE });
+    const { data, error } = await database.rpc("pmc_presence_heartbeat", {
+      p_namespace: namespace,
+      p_visitor: visitor.id,
+    });
+    if (error || !Number.isSafeInteger(data) || Number(data) < 1) {
+      return NextResponse.json({ available: false }, { status: 503, headers });
+    }
+
+    const response = NextResponse.json({ available: true, count: Number(data), activeSeconds: ACTIVE_SECONDS }, { headers });
+    if (visitor.cookie) {
+      response.cookies.set(COOKIE, visitor.cookie, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+        path: "/",
+        maxAge: COOKIE_AGE,
+      });
+    }
     return response;
   } catch {
-    // Never return stale or fabricated social proof, or leak backend credentials/errors.
     return NextResponse.json({ available: false }, { status: 503, headers });
   }
 }

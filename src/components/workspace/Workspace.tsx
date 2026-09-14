@@ -77,8 +77,7 @@ export default function Workspace() {
       <div className="card card-p text-center">
         <h1 className="text-[22px]">Your workspace is behind sign in.</h1>
         <p className="mx-auto mt-[var(--s-3)] max-w-[46ch] text-ink-2">
-          It has to be, or it could not remember anything. Nothing is charged
-          and the course stays free.
+          Login now and see how far you've come in the course. It's free.
         </p>
         <Link href="/signin?next=/workspace" className="btn btn-primary mt-[var(--s-5)]">
           Sign in

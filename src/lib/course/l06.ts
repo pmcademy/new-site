@@ -21,7 +21,7 @@ export const l06: Level = {
     "Get it in front of people, tell the difference between a win and noise, and turn everything you have built into a job.",
   arc: "The assistant you built in Level 05 works. Sona now has to put it in front of 60,000 people without breaking the ones who already pay, and you have to be able to say afterwards whether it worked. Then, in the second half of the level, you leave the building. Six capstones, a live product and a hiring manager who will give you ninety seconds.",
   scene: {
-    image: "/img/scenes/office-wide.webp",
+    image: "/scenes/office-wide.webp",
     alt: "The Sona office in launch week: two monitors showing dashboards, a whiteboard with a rollout ladder drawn on it.",
     caption: "Launch week. The whiteboard says 1, 10, 50, everyone.",
   },
@@ -61,7 +61,7 @@ export const l06: Level = {
           legacy: "Module 9.1, Roadmaps",
           hook: "Sales has a spreadsheet of 61 features promised to named customers. Maya wants the roadmap on one slide by Thursday because the board deck is due. Every version you draw is a list of dates that will be wrong by March.",
           scene: {
-            image: "/img/scenes/office-wide.webp",
+            image: "/scenes/office-wide.webp",
             alt: "The Sona office with a whiteboard showing three columns and a row of sticky notes below them.",
             caption: "Thursday, 9am. Three columns on the board and nothing in them yet.",
             notes: [
@@ -432,7 +432,7 @@ export const l06: Level = {
           legacy: "Module 19.1, Product Marketing",
           hook: "The assistant is done. Dev asks when you want it on, and you realise “on” is not one thing. Sona has 60,000 users, 900 of whom pay, and the paying ones are the least tolerant of a bad answer about their own money.",
           scene: {
-            image: "/img/scenes/domain-fintech.webp",
+            image: "/scenes/domain-fintech.webp",
             alt: "A dashboard screen showing a transaction feed and an assistant panel, with a rollout percentage control at the top.",
             caption: "The flag is at 0 percent. Everything after this is a decision about blast radius.",
             notes: [
@@ -1777,7 +1777,7 @@ export const l06: Level = {
           legacy: "Module 11, Professional Persona, Module 24, Your PM Career",
           hook: "You have six capstones, a live product with real users, an eval suite and a launch readout. A hiring manager will give the whole thing ninety seconds, on a phone, between two meetings. Right now none of it is visible.",
           scene: {
-            image: "/img/scenes/desk-day-one.webp",
+            image: "/scenes/desk-day-one.webp",
             alt: "A desk with a laptop showing a portfolio page, a notebook of six project names, and a phone.",
             caption: "Everything you made in six levels, and a page that does not exist yet.",
             notes: [

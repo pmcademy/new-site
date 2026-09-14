@@ -20,7 +20,7 @@ export const l03: Level = {
     "Design a real interface yourself, critique one without being annoying, and prototype fast enough that arguments end.",
   arc: "Sona's onboarding loses 62% of the people who start it. Tom, the product's one designer, is heads-down on the dashboard rebuild for six weeks and can't touch it. You're going to diagnose it, design the fix yourself, prototype it, and test it on five real people before he's back.",
   scene: {
-    image: "/img/scenes/domain-fintech.webp",
+    image: "/scenes/domain-fintech.webp",
     alt: "A phone screen showing a half-finished bank-connection flow next to a laptop with a spreadsheet of drop-off numbers.",
     caption: "Sona's onboarding funnel, and the 62% nobody has explained yet.",
   },
@@ -60,7 +60,7 @@ export const l03: Level = {
           legacy: "Module 8.1. Interaction Design, Module 8.3. Design Psychology",
           hook: "You look at a screen and know it's bad. You say \"it feels cluttered\". The designer, reasonably, ignores you.",
           scene: {
-            image: "/img/scenes/domain-fintech.webp",
+            image: "/scenes/domain-fintech.webp",
             alt: "A phone screen showing four onboarding steps for a finance app, with a hand-drawn red circle around a crowded form field.",
             caption: "Sona's onboarding, screen two of four.",
             notes: [
@@ -865,7 +865,7 @@ export const l03: Level = {
           minutes: 50,
           hook: "Design shows you four screens for onboarding. The engineer building it will need roughly four times that many, because every screen has at least three ways to arrive at it that aren't the happy path.",
           scene: {
-            image: "/img/scenes/office-wide.webp",
+            image: "/scenes/office-wide.webp",
             alt: "A whiteboard covered in a flowchart, with most boxes on the happy path in one colour and a handful of hastily added boxes for error paths in another.",
             caption: "The whiteboard after someone finally asked \"what happens if this fails\".",
             notes: [
@@ -1131,7 +1131,7 @@ export const l03: Level = {
           legacy: "Module 8.4. Sketching & Wireframing, Module 8.6. Forms",
           hook: "You have a redesign in your head. Nobody else can see it, so every conversation about it goes in circles.",
           scene: {
-            image: "/img/scenes/desk-day-one.webp",
+            image: "/scenes/desk-day-one.webp",
             alt: "A desk with a notebook open to a rough pencil sketch of a phone screen, next to a laptop showing a blank Figma file.",
             caption: "Paper first, then Figma. In that order.",
             notes: [

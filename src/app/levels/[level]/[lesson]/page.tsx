@@ -1,3 +1,4 @@
+import {levelTwoEnrichment} from "@/lib/course/enrichment/level-two";
 import { levelOneEnrichment } from "@/lib/course/enrichment/level-one";
 import { LessonDeepDive, LessonAILab } from "@/components/course/LessonDeepDive";
 import ProjectArticle from "@/components/course/ProjectArticle";
@@ -71,7 +72,7 @@ export default async function LessonPage({ params }: Params) {
 
   const id = `${level.slug}/${lesson.slug}`;
   const visual = lessonVisuals[id];
-  const enrichment = level.slug === "01" ? levelOneEnrichment[lesson.slug] : undefined;
+  const enrichment = level.slug === "01" ? levelOneEnrichment[lesson.slug] : level.slug === "02" ? levelTwoEnrichment[lesson.slug] : undefined;
   const references = [...(lesson.references ?? []), ...(enrichment?.reading ?? [])].filter((r, i, all) => all.findIndex(x => x.url === r.url) === i);
   const steps = [...lesson.build.steps, ...(enrichment ? [{ do: enrichment.practice, hint: enrichment.hint }] : []), ...(enrichment?.article ? [{ do: `Publish project article ${enrichment.article.number}: ${enrichment.article.title}. Include your artifact, AI-use note, and a link to pmcademy.com. Save the article URL below and in your capstone notes.` }] : [])];
 

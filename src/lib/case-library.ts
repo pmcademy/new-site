@@ -1,10 +1,6 @@
-export type CaseCard = { brand: string; title: string; category: string; summary: string; href: string; format: "Visual case study" | "Source reading"; art: "streak" | "research" | "form" | "collaboration" };
-export const caseLibrary: CaseCard[] = [
- {brand:"Duolingo",title:"One lesson. A better reason to return.",category:"Retention",summary:"Explore the product decision behind a more forgiving streak, then test the trade-offs yourself.",href:"/case-studies/duolingo-streak",format:"Visual case study",art:"streak"},
- {brand:"Superhuman",title:"Find the people who need you most.",category:"Discovery",summary:"A founder's account of using a product-market-fit survey to sharpen a target audience and guide product work.",href:"https://review.firstround.com/how-superhuman-built-an-engine-to-find-product-market-fit/",format:"Source reading",art:"research"},
- {brand:"GOV.UK",title:"Give each question room to breathe.",category:"Onboarding",summary:"The official question-page pattern explains how to focus a form on the information a user needs to provide.",href:"https://design-system.service.gov.uk/patterns/question-pages/",format:"Source reading",art:"form"},
- {brand:"Figma",title:"When everyone edits at once.",category:"Systems",summary:"Figma's engineering account of multiplayer editing connects a collaborative experience with the system that supports it.",href:"https://www.figma.com/blog/how-figmas-multiplayer-technology-works/",format:"Source reading",art:"collaboration"},
-];
+import {caseStories} from "./case-stories";
+export type CaseCard={brand:string;title:string;category:string;summary:string;href:string;format:"Visual case study"|"Source reading";art:"streak"|"form"|"research"|"collaboration"|"priority"|"cinema"|"music"|"travel"};
+export const caseLibrary:CaseCard[]=[{brand:"Duolingo",title:"One lesson. A better reason to return.",category:"Retention",summary:"Explore the product decision behind a more forgiving streak, then test the trade-offs yourself.",href:"/case-studies/duolingo-streak",format:"Visual case study",art:"streak"},...caseStories.map(s=>({brand:s.brand,title:s.title,category:s.category,summary:s.dek,href:`/case-studies/${s.slug}`,format:"Visual case study" as const,art:s.art}))];
 export const streakSources = {
  rule:{label:"Duolingo: Improving the streak",url:"https://blog.duolingo.com/improving-the-streak/"},
  design:{label:"Duolingo: Animating the streak",url:"https://blog.duolingo.com/streak-milestone-design-animation/"},

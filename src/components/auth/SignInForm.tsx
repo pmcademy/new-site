@@ -1,93 +1,15 @@
-"use client";
-
-import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-
-import { AppleMark, Arrow, GoogleMark, MailMark } from "@/components/ui/Icons";
-import { signIn, signOut, useStore } from "@/lib/progress";
-
-/**
- * Sign in.
- *
- * The provider buttons call `signIn` in lib/progress, which is the adapter
- * boundary. Replacing it with NextAuth means changing that file and nothing
- * here: Google and Apple both need a developer account and a redirect URI
- * registered before they will issue credentials.
- */
-export default function SignInForm() {
-  const router = useRouter();
-  const params = useSearchParams();
-  const { account, ready } = useStore();
-  const [email, setEmail] = useState("");
-
-  const back = params.get("next") ?? "/levels";
-
-  function go(provider: "google" | "apple" | "email", value?: string) {
-    signIn(provider, value);
-    router.push(back);
-  }
-
-  if (ready && account) {
-    return (
-      <div className="flex flex-col gap-[var(--s-4)]">
-        <div className="note note-green">
-          <span className="eyebrow">Signed in</span>
-          <p>
-            {account.email}. Your progress is being saved.
-          </p>
-        </div>
-        <button onClick={() => router.push(back)} className="btn btn-primary btn-lg">
-          Continue <Arrow />
-        </button>
-        <button onClick={signOut} className="btn btn-quiet">
-          Sign out
-        </button>
-      </div>
-    );
-  }
-
-  return (
-    <div className="flex flex-col gap-[var(--s-3)]">
-      <button onClick={() => go("google")} className="btn btn-outline btn-lg">
-        <GoogleMark /> Continue with Google
-      </button>
-      <button onClick={() => go("apple")} className="btn btn-outline btn-lg">
-        <AppleMark /> Continue with Apple
-      </button>
-
-      <div className="my-[var(--s-3)] flex items-center gap-[var(--s-4)]">
-        <span className="h-px flex-1 bg-line" />
-        <span className="text-[12.5px] text-ink-3">or</span>
-        <span className="h-px flex-1 bg-line" />
-      </div>
-
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (email.includes("@")) go("email", email.trim());
-        }}
-        className="flex flex-col gap-[var(--s-3)]"
-      >
-        <label htmlFor="email" className="eyebrow">
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@work.com"
-          className="w-full rounded-[10px] border border-line bg-paper p-[var(--s-4)] text-[15.5px] text-ink outline-none placeholder:text-ink-3 focus:border-blue"
-        />
-        <button type="submit" className="btn btn-primary btn-lg">
-          <MailMark /> Send me a link
-        </button>
-      </form>
-
-      <p className="mt-[var(--s-2)] text-[12.5px] text-ink-3">
-        No password to remember. No card, now or later.
-      </p>
-    </div>
-  );
-}
+'use client';
+import {useState} from 'react';
+import {useRouter,useSearchParams} from 'next/navigation';
+import Link from 'next/link';
+import {browserAuth} from '@/lib/supabase/client';
+import {authConfig,safeNext} from '@/lib/supabase/config';
+import {importGuestProgress,refreshAccount,useStore} from '@/lib/progress';
+export default function SignInForm(){const router=useRouter(),params=useSearchParams();const {account,ready}=useStore();const [email,setEmail]=useState(''),[name,setName]=useState(''),[code,setCode]=useState(''),[sent,setSent]=useState(false),[busy,setBusy]=useState(false),[message,setMessage]=useState(''),[bring,setBring]=useState(false);const next=safeNext(params.get('next'));
+async function send(e:React.FormEvent){e.preventDefault();setBusy(true);setMessage('');try{const {error}=await browserAuth().auth.signInWithOtp({email:email.trim(),options:{data:{full_name:name.trim()},emailRedirectTo:`${location.origin}/auth/callback?next=${encodeURIComponent(next)}`}});if(error)throw error;setSent(true);setMessage('Check your inbox for your sign-in link or code.');}catch{setMessage('We could not send your sign-in email. Please wait a minute and retry.');}finally{setBusy(false);}}
+async function verify(e:React.FormEvent){e.preventDefault();setBusy(true);try{const {error}=await browserAuth().auth.verifyOtp({email:email.trim(),token:code.trim(),type:'email'});if(error)throw error;await refreshAccount();}catch{setMessage('That code could not be verified. Check it or request a new email.');}finally{setBusy(false);}}
+async function oauth(provider:'google'|'apple'){setBusy(true);try{const {error}=await browserAuth().auth.signInWithOAuth({provider,options:{redirectTo:`${location.origin}/auth/callback?next=${encodeURIComponent(next)}`}});if(error)throw error;}catch{setMessage('Sign in could not start. Please try email instead.');setBusy(false);}}
+async function finish(){setBusy(true);try{if(bring)await importGuestProgress();router.push(next);router.refresh();}catch(e){setMessage(e instanceof Error?e.message:'Please retry.');}finally{setBusy(false);}}
+if(ready&&account)return <div className="auth-form"><p>Signed in as <strong>{account.email}</strong>.</p><label className="auth-check"><input type="checkbox" checked={bring} onChange={e=>setBring(e.target.checked)}/>Add lessons completed on this browser to my account</label><button className="btn btn-primary" disabled={busy} onClick={finish}>{busy?'Saving…':'Continue learning'}</button><p role="status">{message}</p></div>;
+if(!authConfig())return <div className="note"><p>Sign in is temporarily unavailable. You can still learn for free.</p><Link href="/levels">Browse the course ↗</Link></div>;
+return <div className="auth-form">{params.get('error')&&<p role="alert">This sign-in link could not be verified. Request a new one below.</p>}{process.env.NEXT_PUBLIC_AUTH_GOOGLE==='true'&&<button className="btn btn-outline" disabled={busy} onClick={()=>oauth('google')}>Continue with Google</button>}{process.env.NEXT_PUBLIC_AUTH_APPLE==='true'&&<button className="btn btn-outline" disabled={busy} onClick={()=>oauth('apple')}>Continue with Apple</button>}{!sent?<form onSubmit={send}><label htmlFor="auth-name">Your name</label><input id="auth-name" required autoComplete="name" maxLength={100} value={name} onChange={e=>setName(e.target.value)}/><label htmlFor="auth-email">Email address</label><input id="auth-email" type="email" required autoComplete="email" value={email} onChange={e=>setEmail(e.target.value)}/><button disabled={busy} className="btn btn-primary">{busy?'Sending…':'Send sign-in email'}</button></form>:<form onSubmit={verify}><p>Open the link in your email, or enter its code if provided.</p><label htmlFor="auth-code">Email code</label><input id="auth-code" required autoComplete="one-time-code" inputMode="numeric" pattern="[0-9]{6,8}" maxLength={8} value={code} onChange={e=>setCode(e.target.value)}/><button disabled={busy} className="btn btn-primary">{busy?'Checking…':'Verify and sign in'}</button><button type="button" className="btn btn-quiet" disabled={busy} onClick={()=>{setSent(false);setMessage('');}}>Change email or request a new link</button></form>}<p role="status">{message}</p><p className="auth-legal">By continuing, you agree to our <Link href="/terms">Terms</Link> and acknowledge our <Link href="/privacy">Privacy Policy</Link>.</p></div>;}

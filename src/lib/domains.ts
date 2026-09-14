@@ -33,7 +33,7 @@ export const domains: Domain[] = [
       "A signup funnel that loses 6 in 10",
       "A bank connection that fails silently",
     ],
-    scene: "/img/scenes/domain-fintech.webp",
+    scene: "/scenes/domain-fintech.webp",
     ready: true,
   },
   {
@@ -49,7 +49,7 @@ export const domains: Domain[] = [
       "A returns rate nobody can explain",
       "Photography that varies wildly by seller",
     ],
-    scene: "/img/scenes/domain-commerce.webp",
+    scene: "/scenes/domain-commerce.webp",
     ready: true,
   },
   {
@@ -65,7 +65,7 @@ export const domains: Domain[] = [
       "Users who cannot install anything",
       "A ten second window to be useful",
     ],
-    scene: "/img/scenes/domain-health.webp",
+    scene: "/scenes/domain-health.webp",
     ready: false,
   },
   {
@@ -81,7 +81,7 @@ export const domains: Domain[] = [
       "A churn spike at renewal",
       "An onboarding that needs a human every time",
     ],
-    scene: "/img/scenes/domain-b2b.webp",
+    scene: "/scenes/domain-b2b.webp",
     ready: false,
   },
 ];

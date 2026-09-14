@@ -18,7 +18,7 @@ export const l02: Level = {
     "Find problems worth solving in a product that already has users, and prove one of them before anyone writes code.",
   arc: "Sona has 40,000 users, a roadmap that is a wishlist, and a board meeting in eight weeks. Maya wants to know whether the product actually fits anyone. Your job this level is to replace opinion with evidence, at a volume nobody could process by hand two years ago, and then to bet on one thing in writing.",
   scene: {
-    image: "/img/scenes/domain-fintech.webp",
+    image: "/scenes/domain-fintech.webp",
     alt: "A wall of screens showing Sona's support queue, app store reviews and a cohort table nobody has read.",
     caption:
       "Everything you need is already in the building. None of it has been read.",
@@ -36,7 +36,8 @@ export const l02: Level = {
     body: "One pack that someone else could act on without you in the room: the evidence log, the problems ranked with counts, the single problem you would bet the quarter on, the cheapest test that could kill it, and the list of what you decided not to build with the criteria that would revive each item.",
     ship: [
       "An evidence log of 200 or more coded rows, every one carrying its verbatim quote",
-      "Three recorded interviews and five watched sessions, with a synthesis",
+      "Three consented interviews and five observed sessions, with a synthesis",
+      "Three published project articles with artifact links, AI-use notes and a link to pmcademy.com",
       "An opportunity solution tree with evidence counts on every node",
       "A pre-registered test of your top bet, and a kill list with revival criteria",
     ],
@@ -55,10 +56,10 @@ export const l02: Level = {
           slug: "who-to-talk-to",
           title: "Who you actually need to talk to",
           kind: "Concept",
-          minutes: 45,
+          minutes: 75,
           hook: "Maya says go talk to users, and forwards you a list of the ten friendliest customers Sona has. Every one of them loves the product. It is Tuesday and you have already noticed the problem with that list.",
           scene: {
-            image: "/img/scenes/office-wide.webp",
+            image: "/scenes/office-wide.webp",
             alt: "The Sona office, mid morning, with a whiteboard listing customer names and a sales dashboard on the far screen.",
             caption: "The names on the whiteboard are the ones who reply.",
             notes: [
@@ -152,7 +153,7 @@ export const l02: Level = {
           slug: "recruiting-without-a-panel",
           title: "Getting strangers to talk to you",
           kind: "Build",
-          minutes: 50,
+          minutes: 80,
           hook: "You need six conversations by Friday. You have no research panel, no budget for incentives, and a founder who is nervous about you emailing customers directly.",
           explain: {
             title: "Recruiting is a funnel, so treat it like one",
@@ -245,7 +246,7 @@ export const l02: Level = {
           slug: "research-cadence",
           title: "A habit, not a project",
           kind: "Workshop",
-          minutes: 45,
+          minutes: 75,
           hook: "The research you did in March is already stale, and the team has started saying users want as if it were a fact rather than a memory of six conversations.",
           explain: {
             title: "One hour a week beats one project a quarter",
@@ -312,11 +313,11 @@ export const l02: Level = {
           slug: "the-interview",
           title: "Ten conversations you do not have yet",
           kind: "Workshop",
-          minutes: 70,
+          minutes: 100,
           legacy: "Module 3.5 Finding Users, Module 4.4 Interviewing Users",
           hook: "First call is at 11. You have a page of questions, a recorder you have not tested, and a strong opinion about what they are going to say.",
           scene: {
-            image: "/img/scenes/desk-day-one.webp",
+            image: "/scenes/desk-day-one.webp",
             alt: "A desk set up for a call: headphones, a notebook open to a list of questions, a laptop showing a waiting room.",
             caption: "Eleven o'clock. The waiting room is empty for another minute.",
             notes: [
@@ -417,7 +418,7 @@ export const l02: Level = {
           slug: "leading-the-witness",
           title: "The questions that answer themselves",
           kind: "Drill",
-          minutes: 40,
+          minutes: 70,
           hook: "Your guide has eight questions. Four of them will get a yes from any polite adult, regardless of whether the problem exists.",
           explain: {
             title: "Four ways a question answers itself",
@@ -467,7 +468,7 @@ export const l02: Level = {
           slug: "the-transcript",
           title: "Reading a transcript for what is actually there",
           kind: "Build",
-          minutes: 55,
+          minutes: 85,
           hook: "Three transcripts, roughly 12,000 words. The temptation is to ask for a summary. Do that and the finding disappears in the first paragraph.",
           explain: {
             title: "Code it, do not condense it",
@@ -549,11 +550,11 @@ export const l02: Level = {
           slug: "extraction-pipeline",
           title: "You already have the data",
           kind: "Build",
-          minutes: 70,
+          minutes: 100,
           legacy: "Module 7.7 Additional Research Methods",
           hook: "Sona has 4,000 support tickets, 800 app store reviews and 60 recorded sales calls sitting in three different tools. None of it has ever been read systematically, and Priya has been saying it is all the same three things for a year.",
           scene: {
-            image: "/img/scenes/domain-fintech.webp",
+            image: "/scenes/domain-fintech.webp",
             alt: "Three screens: a support queue, an app store review list, and a call recording tool, none of them talking to each other.",
             caption: "Nobody owns this. Which is why nobody has read it.",
             notes: [
@@ -637,7 +638,7 @@ export const l02: Level = {
           slug: "clusters-that-are-real",
           title: "Clusters that are real",
           kind: "Drill",
-          minutes: 50,
+          minutes: 80,
           hook: "The model returned five clean clusters. You asked for five. It would have returned nine if you had asked for nine, and it would have looked just as convincing.",
           explain: {
             title: "A cluster is a claim about what happens next",
@@ -688,7 +689,7 @@ export const l02: Level = {
           slug: "lost-deals-and-cancellations",
           title: "Sales calls, churn notes and cancellations",
           kind: "Build",
-          minutes: 55,
+          minutes: 85,
           hook: "Sixty recorded sales calls, and a cancellation flow whose top reason is Other, at 44 percent. Ana says the dropdown has not been changed since 2022.",
           explain: {
             title: "The exit interview you already ran and never read",
@@ -760,11 +761,11 @@ export const l02: Level = {
           slug: "say-vs-do",
           title: "Watch what they do instead",
           kind: "Case study",
-          minutes: 50,
+          minutes: 80,
           legacy: "Module 7.1 User Experience, Module 10.1 Usability Tests",
           hook: "Users told you in interviews that the export feature is critical. Ana pulls the numbers. 1.2 percent of accounts have ever opened it.",
           scene: {
-            image: "/img/scenes/domain-commerce.webp",
+            image: "/scenes/domain-commerce.webp",
             alt: "A screen split between a heatmap of an interface and an interview transcript, showing different stories.",
             caption: "Two datasets about the same people, disagreeing.",
             notes: [
@@ -842,7 +843,7 @@ export const l02: Level = {
           slug: "five-people-failing",
           title: "Watch five people fail",
           kind: "Workshop",
-          minutes: 55,
+          minutes: 85,
           hook: "You have a prototype and a theory about why people stall at bank connection. Five people, one task each, forty minutes total. You are not allowed to help.",
           explain: {
             title: "Give a task, then stop talking",
@@ -892,7 +893,7 @@ export const l02: Level = {
               "Write the task as an outcome the person would actually want. Find out whether you overspent last month beats test the connection flow.",
               "Log time to first doubt for all five. The mean is less useful than the spread. If four hesitate at the same second and one does not, ask what is different about the one.",
               "Separate problems where people recovered from problems where they did not. Recovered problems cost trust. Unrecovered problems cost the user.",
-              "Rank by hit rate first, severity second. A problem four of five hit and recovered from beats a catastrophic one that only one person found, unless that one person is your core segment.",
+              "Rank by consequence, frequency and recovery together. A rare catastrophic issue can outrank a frequent minor hesitation. Five sessions cannot establish population prevalence.",
             ],
           },
           check: [
@@ -906,7 +907,7 @@ export const l02: Level = {
           slug: "locating-the-moment",
           title: "Locating the moment in the data",
           kind: "Drill",
-          minutes: 50,
+          minutes: 80,
           hook: "You know what goes wrong and roughly where. Now you need it as a number, split by segment, before Thursday, and the data team's queue is eleven days long.",
           explain: {
             title: "Every claim has an event that would prove it",
@@ -971,7 +972,7 @@ export const l02: Level = {
           slug: "problem-statement",
           title: "A problem worth solving, written down",
           kind: "Concept",
-          minutes: 45,
+          minutes: 75,
           hook: "You write we need a better onboarding flow on the whiteboard. Dev asks what better means. You do not have an answer that survives the question.",
           explain: {
             title: "Five parts, and the solution is not one of them",
@@ -1049,7 +1050,7 @@ export const l02: Level = {
           slug: "sizing-the-problem",
           title: "How big is this, actually",
           kind: "Drill",
-          minutes: 45,
+          minutes: 75,
           hook: "Maya asks how big it is. You have 34 coded rows. Thirty four is not an answer, and neither is a lot.",
           explain: {
             title: "Your evidence pile is not a random sample",
@@ -1102,7 +1103,7 @@ export const l02: Level = {
           slug: "opportunity-tree",
           title: "From 200 quotes to five problems",
           kind: "Build",
-          minutes: 70,
+          minutes: 100,
           legacy: "Module 7.2 Design Thinking, Module 7.4 Information Architecture",
           hook: "You have 200 coded quotes, three interview transcripts, five watched sessions and a PMF score. Maya wants to know what you are doing next quarter, and she wants it on one picture.",
           explain: {
@@ -1188,11 +1189,11 @@ export const l02: Level = {
           slug: "measuring-pmf",
           title: "Measuring the thing everyone talks about",
           kind: "Build",
-          minutes: 60,
+          minutes: 90,
           legacy: "Module 4.1 What is PMF",
           hook: "Maya tells investors Sona has product-market fit. You have read the retention curve. You are not sure that is true, and you have to decide whether to say so before the board deck goes out on Friday.",
           scene: {
-            image: "/img/scenes/domain-b2b.webp",
+            image: "/scenes/domain-b2b.webp",
             alt: "A board deck slide reading strong product-market fit, next to a laptop showing a retention curve that has not flattened.",
             caption: "Two documents about the same company.",
             notes: [
@@ -1281,7 +1282,7 @@ export const l02: Level = {
           slug: "reading-cohorts",
           title: "Reading a cohort table without fooling yourself",
           kind: "Drill",
-          minutes: 50,
+          minutes: 80,
           hook: "Ana sends you a cohort table with twenty rows and twelve columns. The bottom right corner looks fantastic. It is fantastic because it is empty.",
           explain: {
             title: "Down a column, across a row",
@@ -1346,7 +1347,7 @@ export const l02: Level = {
           slug: "fit-is-a-segment",
           title: "Fit is a property of a segment",
           kind: "Case study",
-          minutes: 45,
+          minutes: 75,
           hook: "Your overall score is 24 percent. Your score among one group is 61 percent. Which of those is the true number, and which one goes in the deck?",
           explain: {
             title: "Narrow until the number is true",
@@ -1419,7 +1420,7 @@ export const l02: Level = {
           slug: "mvp",
           title: "The MVP that is not a worse version of your product",
           kind: "Build",
-          minutes: 65,
+          minutes: 95,
           legacy: "Module 4.3 MVP, Module 4.2 Lean Customer Development",
           hook: "The team wants six weeks to build a minimum version. You suspect the same question can be answered in three days, and you have to make that case without sounding like you are cutting corners.",
           explain: {
@@ -1485,7 +1486,7 @@ export const l02: Level = {
           slug: "experiment-that-can-fail",
           title: "An experiment that can fail",
           kind: "Build",
-          minutes: 60,
+          minutes: 90,
           hook: "Dev will give you one week of one engineer. You get one test. If you write the success criteria after you see the numbers, you will pass it, and you will have learned nothing.",
           explain: {
             title: "Pre-register, then run",
@@ -1563,7 +1564,7 @@ export const l02: Level = {
           slug: "kill-your-favourite",
           title: "Kill your favourite",
           kind: "Simulation",
-          minutes: 50,
+          minutes: 80,
           legacy: "Module 5.5 Strategy",
           hook: "The idea you are most excited about has the thinnest evidence on the tree. You have known this for a week. You have not said it out loud.",
           explain: {
@@ -1634,7 +1635,7 @@ export const l02: Level = {
           slug: "the-discovery-pack",
           title: "A pack someone else can act on",
           kind: "Workshop",
-          minutes: 60,
+          minutes: 90,
           hook: "You leave for a week. Everything you learned this level has to keep working while you are gone, in the hands of people who were not in any of the interviews.",
           explain: {
             title: "The handoff test",
