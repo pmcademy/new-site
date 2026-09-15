@@ -3,6 +3,7 @@ import OnlineLearners from "@/components/layout/OnlineLearners";
 import type { Metadata, Viewport } from "next";
 
 import "./globals.css";
+import "./workspace.css";
 import Nav from "@/components/layout/Nav";
 import Footer from "@/components/layout/Footer";
 import { themeInitScript } from "@/components/layout/theme";

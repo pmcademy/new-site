@@ -119,6 +119,7 @@ export type Referral = {
 export type WorkspaceVisibility = "private" | "community" | "public";
 
 export type WorkspaceProfile = {
+  timezone?: string;
   username: string;
   displayName: string;
   bio?: string;
@@ -137,6 +138,8 @@ export type TimeOfDay = "morning" | "afternoon" | "evening" | "night";
 /* -------------------------------------------------------------------------- */
 
 export type WorkspaceRecord = {
+  referralCode?: string;
+  notes?: string;
   version: 1;
   profile: WorkspaceProfile;
   activity: LearningActivity[];
@@ -156,6 +159,7 @@ export type WorkspaceRecord = {
 export type WorkspaceState = {
   profile: WorkspaceProfile;
   progress: {
+    completedChapters?: {id:string;title:string;levelSlug:string}[];
     lessonsCompleted: number;
     levelsCompleted: number;
     currentLevelSlug?: string;

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function WorkspacePage() {
   return (
     <section className="section-top">
-      <div className="shell">
+      <div>
         <Workspace />
       </div>
     </section>

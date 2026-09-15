@@ -47,13 +47,13 @@ export default function Bookshelf({
   const perRow = Math.ceil(n / ROWS.length) || 1;
   const width = Math.max(7, Math.min(17, (W - PAD * 2) / Math.max(perRow, 9) - 3));
 
-  let index = 0;
+
 
   return (
     <svg viewBox={`0 0 ${W} 210`} className="ws-art" aria-hidden="true">
       {ROWS.map((row, r) => {
-        const slice = caseStudies.slice(index, index + perRow);
-        index += perRow;
+        const slice = caseStudies.slice(r * perRow, (r + 1) * perRow);
+
         let x = PAD;
 
         return (

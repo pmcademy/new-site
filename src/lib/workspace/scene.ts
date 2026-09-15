@@ -21,7 +21,9 @@ export type PanelId =
   | "published"
   | "badges"
   | "streak"
-  | "share";
+  | "share"
+  | "notes"
+  | "explore";
 
 export type SceneObject = {
   id: string;

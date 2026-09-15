@@ -19,6 +19,8 @@ export default function WorkspaceIndex({
   onOpen: (panel: PanelId) => void;
 }) {
   const items: { panel: PanelId; label: string; value: string }[] = [
+{panel:"notes",label:"Personal notebook",value:"Private notes"},
+{panel:"explore",label:"Explore the course",value:"Six levels"},
     {
       panel: "mentor",
       label: "Continue learning",

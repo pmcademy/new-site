@@ -1,42 +1,13 @@
-import type { Metadata } from "next";
-import { Suspense } from "react";
-
-import PublicWorkspace from "@/components/workspace/PublicWorkspace";
-
-type Params = {
-  params: Promise<{ username: string }>;
-  searchParams: Promise<{ s?: string }>;
-};
-
-/**
- * A learner's public workspace.
- *
- * Not indexed while workspaces live in the browser: there is nothing on the
- * server for a crawler to read, and a page that renders differently for every
- * visitor should not be in an index. When the store moves server side, switch
- * `robots` to follow the learner's own visibility setting, which is already in
- * the profile as `visibility`.
- */
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { username } = await params;
-  return {
-    title: `${username} on PMcademy`,
-    description: `A product management workspace built by doing the work: projects, case studies, published writing and achievements.`,
-    robots: { index: false, follow: true },
-  };
+import type {Metadata} from 'next';
+import {notFound} from 'next/navigation';
+import PublicWorkspace from '@/components/workspace/PublicWorkspace';
+import {publicWorkspace} from '@/lib/workspace/server';
+export const dynamic='force-dynamic';
+type Props={params:Promise<{username:string}>};
+export async function generateMetadata({params}:Props):Promise<Metadata>{
+ const {username}=await params;const state=await publicWorkspace(username);
+ if(!state)return {title:'Workspace unavailable',robots:{index:false,follow:false}};
+ const index=state.profile.visibility==='public';
+ return {title:`${state.profile.displayName}'s product workspace`,description:state.profile.bio||'Projects, reading and product management practice at PMcademy.',robots:{index,follow:index},alternates:index?{canonical:`/u/${username}`}:undefined,openGraph:index?{title:`${state.profile.displayName}'s workspace`,images:['/workspace/study-interior.webp']}:undefined};
 }
-
-export default async function PublicWorkspacePage({ params, searchParams }: Params) {
-  const { username } = await params;
-  const { s } = await searchParams;
-
-  return (
-    <section className="section-top">
-      <div className="shell">
-        <Suspense fallback={<div className="ws-skeleton" />}>
-          <PublicWorkspace username={username} snapshotParam={s} />
-        </Suspense>
-      </div>
-    </section>
-  );
-}
+export default async function Page({params}:Props){const {username}=await params;const state=await publicWorkspace(username);if(!state)notFound();return <section className="section-top"><PublicWorkspace state={state}/></section>;}
