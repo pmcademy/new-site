@@ -52,7 +52,7 @@ export default function RootLayout({
         <AccountSyncStatus />
         <main id="main">{children}</main>
         <Footer />
-        <OnlineLearners />
+        {/* <OnlineLearners /> */}
       </body>
     </html>
   );

@@ -4,14 +4,6 @@ import { useMemo, useState } from "react";
 
 import { Sparkle } from "@/components/ui/Icons";
 
-/**
- * Level 0, step one.
- *
- * The learner types an idea in plain language. We hand back a brief that makes
- * the model research the market BEFORE it writes a line of code, then build a
- * single page site. No network call: the value here is the structure of the
- * brief, and it works offline, instantly, and for free.
- */
 
 function clean(input: string) {
   const s = input.trim().replace(/\s+/g, " ").replace(/[.]+$/, "");

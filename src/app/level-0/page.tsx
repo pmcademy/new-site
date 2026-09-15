@@ -7,7 +7,7 @@ import Button from "@/components/ui/Button";
 import { Arrow, Sparkle } from "@/components/ui/Icons";
 
 export const metadata: Metadata = {
-  title: "Level 0, idea to something on the internet",
+  title: "Test yourself, with an idea to something on the internet",
   description:
     "Type an idea in one sentence. We turn it into a brief that makes the model research the market first, then build you a single page MVP. Then we help you put it on a real domain.",
 };

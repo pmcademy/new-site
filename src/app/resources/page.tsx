@@ -55,7 +55,7 @@ export default function ResourcesPage() {
               n={resourceCounts.prompts}
             />
             <Jump
-              href="#cases"
+              href="/case-studies"
               eyebrow="Teardowns"
               title="Case studies you scroll"
               body="One beat at a time, with the screen pinned beside the writing and the principle named."

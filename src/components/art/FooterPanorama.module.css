@@ -1,0 +1,39 @@
+.root {
+  --footer-boat-duration: 65s;
+  --footer-boat-delay: -18s;
+}
+.root .day { display: inline; }
+.root .night { display: none; }
+:global([data-theme="dark"]) .root .day,
+:global(.dark) .root .day { display: none; }
+:global([data-theme="dark"]) .root .night,
+:global(.dark) .root .night { display: inline; }
+.boatTravel {
+  transform: translateX(347px);
+  animation: crossing var(--footer-boat-duration) linear var(--footer-boat-delay) infinite;
+}
+.boatBob {
+  transform-origin: 250px 180px;
+  animation: bob 5.5s ease-in-out infinite;
+}
+.moonHalo {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: halo 7s ease-in-out infinite alternate;
+}
+@keyframes crossing {
+  from { transform: translateX(120px); }
+  to { transform: translateX(940px); }
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(1px) rotate(-.5deg); }
+  50% { transform: translateY(-2px) rotate(.5deg); }
+}
+@keyframes halo {
+  from { opacity: .6; transform: scale(.94); }
+  to { opacity: 1; transform: scale(1.05); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .root .boatTravel { animation: none; transform: translateX(460px); }
+  .root .boatBob, .root .moonHalo { animation: none; }
+}

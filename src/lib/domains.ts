@@ -17,12 +17,13 @@ export type Domain = {
   artefacts: string[];
   scene: string;
   ready: boolean;
+  logo: {light:string, dark:string};
 };
 
 export const domains: Domain[] = [
   {
     slug: "fintech",
-    company: "Sona",
+    company: "RampUp",
     category: "Personal finance",
     blurb:
       "An app that reads your bank transactions and tells you what is actually spendable this month.",
@@ -35,10 +36,14 @@ export const domains: Domain[] = [
     ],
     scene: "/scenes/domain-fintech.webp",
     ready: true,
+    logo: {
+      light: "/logos/rampup-light.webp",
+      dark: "/logos/rampup-dark.webp",
+    },
   },
   {
     slug: "commerce",
-    company: "Aisle",
+    company: "Blink",
     category: "Ecommerce",
     blurb:
       "A furniture marketplace where the hard part is not browsing, it is believing the sofa fits.",
@@ -51,10 +56,14 @@ export const domains: Domain[] = [
     ],
     scene: "/scenes/domain-commerce.webp",
     ready: true,
+    logo: {
+      light: "/logos/blink-light.webp",
+      dark: "/logos/blink-dark.webp",
+    },
   },
   {
     slug: "health",
-    company: "Ward",
+    company: "AstroCare",
     category: "Healthcare",
     blurb:
       "A handover tool for hospital staff, where the constraint is twelve minutes and a shared screen.",
@@ -67,6 +76,10 @@ export const domains: Domain[] = [
     ],
     scene: "/scenes/domain-health.webp",
     ready: false,
+    logo: {
+      light: "/logos/astrocare-light.webp",
+      dark: "/logos/astrocare-dark.webp",
+    },
   },
   {
     slug: "b2b",
@@ -83,6 +96,10 @@ export const domains: Domain[] = [
     ],
     scene: "/scenes/domain-b2b.webp",
     ready: false,
+    logo: {
+      light: "/logos/ledgerly-light.webp",
+      dark: "/logos/ledgerly-dark.webp",
+    },
   },
 ];
 

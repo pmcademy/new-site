@@ -22,7 +22,7 @@ export default function SignInPage() {
             Save your progress.
           </h1>
           <p className="mt-[var(--s-3)] text-[15px] text-ink-2">
-            The course is free. Sign in to save completed lessons to your account and continue on another device.
+            The course is free. Sign in to save your progress and view your <a href="/workspace" className="underline">workspace</a> grow.
           </p>
 
           <div className="mt-[var(--s-6)]">

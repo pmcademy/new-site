@@ -1,6 +1,7 @@
 export const site = {
   name: "PMcademy",
   domain: "pmcademy.com",
+  innerCircle: 'https://buy.stripe.com/3cI5kFdL27GR7yXd2O1gs0S',
   url: "https://www.pmcademy.com",
   tagline: "Learn product management by doing the job",
   description:
@@ -19,9 +20,9 @@ export type NavItem = { label: string; href: string };
 export const primaryNav: NavItem[] = [
   { label: "Workspace", href: "/workspace" },
   { label: "Levels", href: "/levels" },
-  { label: "Level 0", href: "/level-0" },
+  { label: "Roadmap", href: "/roadmap" },
   { label: "Resources", href: "/resources" },
-  { label: "Community", href: "/community" },
+  { label: "Inner Circle", href: "/community" },
 ];
 
 /**
@@ -71,39 +72,38 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
   {
     title: "Course",
     items: [
-      { label: "The six levels", href: "/levels" },
-      { label: "Level 0, idea to MVP", href: "/level-0" },
-      { label: "Start lesson one", href: "/levels/start" },
-      { label: "Badge and community", href: "/community" },
+      { label: "All Levels", href: "/levels" },
+      { label: "Test Yourself", href: "/level-0" },
+      { label: "Start Learning", href: "/levels/start" },
+      { label: "Badge & Community", href: "/community" },
     ],
   },
   {
-    title: "Free",
+    title: "Free Stuff",
     items: [
-      { label: "Resource library", href: "/resources" },
-      { label: "AI + Tech PM Roadmap", href: "/roadmap" },
-      { label: "Case studies", href: "/case-studies" },
+      { label: "Resources", href: "/resources" },
+      { label: "PM Roadmap", href: "/roadmap" },
+      { label: "Case Studies", href: "/case-studies" },
       { label: "Curriculum", href: "/curriculum" },
     ],
   },
-  {
-    title: "Existing programmes",
+   {
+    title: "Company",
     items: [
-      { label: "Product Manager Foundations", href: "/product-manager-foundations" },
-      { label: "Core Product Management", href: "/core-product-management" },
-      { label: "AI + Tech Product Management", href: "/tech-product-management" },
-    ],
-  },
-  {
-    title: "PMcademy",
-    items: [
-      { label: "About us", href: "/about" },
-      { label: "Contact us", href: "/contact" },
+      { label: "About Us", href: "/about" },
+      { label: "Contact Us", href: "/contact" },
       { label: "Privacy", href: "/privacy" },
       { label: "Terms", href: "/terms" },
-      { label: "Refunds & cancellations", href: "/refunds-and-cancellations" },
-      { label: "Dashboard", href: site.dashboard },
+      { label: "Refunds & Cancellations", href: "/refunds-and-cancellations" },
+      { label: "Archived Dashbaord", href: site.dashboard },
+    ],
+  },
+
+  {
+    title: "Socials",
+    items: [
       { label: "LinkedIn", href: site.social.linkedin },
+      { label: "Instagram", href: site.social.instagram },
     ],
   },
 ];

@@ -40,10 +40,10 @@ export default function LevelsPage() {
           <Reveal className="card card-p flex flex-wrap items-center justify-between gap-[var(--s-5)]">
             <div>
               <span className="tag tag-blue">
-                <Sparkle className="h-3.5 w-3.5" /> Start here
+                <Sparkle className="h-3.5 w-3.5" /> Test Yourself
               </span>
               <h2 className="mt-[var(--s-3)] text-[clamp(1.2rem,2.2vw,1.5rem)]">
-                Level 0 takes an afternoon and puts something of yours online.
+                It takes an afternoon and puts something of yours online.
               </h2>
               <p className="mt-[var(--s-3)] max-w-[58ch] text-[15px] text-ink-2">
                 Before the ladder, one idea of yours, researched and shipped as
@@ -52,7 +52,7 @@ export default function LevelsPage() {
               </p>
             </div>
             <Button href="/level-0" size="lg">
-              Open Level 0 <Arrow />
+              Test Yourself<Arrow />
             </Button>
           </Reveal>
         </div>

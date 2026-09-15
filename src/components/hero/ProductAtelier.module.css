@@ -29,7 +29,7 @@
     position: relative;
     width: 100%;
     max-width: var(--shell);
-    margin: auto
+    margin: auto;
 }
 
 .kicker {
@@ -82,6 +82,7 @@
     position: relative;
     display: inline-flex;
     gap: 30px;
+    margin-right: 30px;
     align-items: center;
     justify-content: center;
     min-width: 236px;
@@ -91,21 +92,23 @@
     border: 1px solid var(--navy-h);
     border-radius: 0 0 28px 28px;
     padding: 19px 24px;
-    font: 10px ui-monospace, monospace;
-    letter-spacing: .12em;
+    font-family: var(--font-sans);
+    font: 12px;
+    font-weight: 800;
+    letter-spacing: .06em;
     outline: 1px solid var(--line-2);
     outline-offset: 5px;
     transition: background .25s, transform .25s
 }
 
-.button:before,
+/* .button:before,
 .button:after {
     content: "✧";
     position: absolute;
     bottom: 1px;
     color: var(--art-ochre);
     font-size: 18px
-}
+} */
 
 .button:before {
     left: 5px
@@ -383,9 +386,8 @@
     }
 
     .art {
-        width: 150%;
+        width: 100%;
         max-width: none;
-        margin-left: -25%
     }
 
     .copy {
@@ -406,7 +408,9 @@
     .button {
         min-width: 205px;
         padding: 17px 18px;
-        font-size: 9px
+        font-size: 14px;
+        margin-top: 30px;
+        margin-right: 0;
     }
 
     .pause {

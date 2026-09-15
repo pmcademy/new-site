@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+// import Link from "next/link";
 import Reveal from "@/components/motion/Reveal";
 import LevelCard from "@/components/course/LevelCard";
 import LessonJourney from "@/components/art/LessonJourney";
@@ -14,10 +13,12 @@ import {
 import FieldArt from "@/components/art/FieldArt";
 import CompassMotion from "@/components/art/CompassMotion";
 import ProductAtelier from "@/components/hero/ProductAtelier";
+import { site } from "@/lib/site";
 
-export default function Home() {
-
-  return (
+export default async function Home() {
+ 
+  
+return (
     <>
       <ProductAtelier />
       
@@ -95,7 +96,7 @@ export default function Home() {
         <div className="shell">
           <Reveal className="head">
             <FieldArt kind="community" className="field-art-card" />
-            <span className="eyebrow">Community</span>
+            <span className="eyebrow">Circle</span>
             <h2>The course is free. Always.</h2>
             <p>
               Two options, and one of them costs nothing. You only pay if you
@@ -107,7 +108,7 @@ export default function Home() {
           <Reveal stagger className="grid-cards grid-2">
             <div data-reveal className="card card-p flex flex-col gap-[var(--s-4)]">
               <span className="tag tag-free self-start">Free forever</span>
-              <h3 className="text-[20px]">The whole course</h3>
+              <h3 className="text-[20px]">The Learning</h3>
               <p className="text-[32px] font-semibold tracking-[-0.03em]">
                 $0{" "}
                 <span className="text-sm font-normal tracking-normal text-ink-3">
@@ -118,7 +119,7 @@ export default function Home() {
                 items={[
                   `All 6 levels, ${totalChapters} chapters, ${totalLessons} lessons`,
                   "Every dataset, template and prompt pack",
-                  "Level 0, the idea to MVP flow",
+                  "Test yourself, with an idea to MVP flow",
                   "Progress saved to your account",
                 ]}
               />
@@ -128,8 +129,8 @@ export default function Home() {
             </div>
 
             <div data-reveal className="card card-p flex flex-col gap-[var(--s-4)] border-navy">
-              <span className="tag tag-blue self-start">Badge and community</span>
-              <h3 className="text-[20px]">Everything, for life</h3>
+              <span className="tag tag-blue self-start">Inner Circle</span>
+              <h3 className="text-[20px]">Supercharge Your Career</h3>
               <p className="text-[32px] font-semibold tracking-[-0.03em]">
                 $119{" "}
                 <span className="text-sm font-normal tracking-normal text-ink-3">
@@ -138,15 +139,15 @@ export default function Home() {
               </p>
               <PriceList
                 items={[
-                  "All six badges, capstones reviewed by a practising PM",
-                  "The closed community of working product managers",
-                  "Job referrals from members who are hiring",
+                  "Project's reviewed by practising PM's",
+                  "Join a closed community of working PM's for life",
+                  "Referrals from members",
                   "Feedback on your builds before you ship them",
-                  "Live teardowns and office hours",
+                  "Live teardowns, meetups & office hours",
                 ]}
               />
-              <Button href="/community" size="lg" className="mt-auto">
-                Join Now <Arrow />
+              <Button href='/community' size="lg" className="mt-auto">
+                Know More<Arrow />
               </Button>
             </div>
           </Reveal>
@@ -188,7 +189,7 @@ export default function Home() {
               </p>
             </div>
             <div className="flex flex-wrap gap-[var(--s-3)]">
-              <Button href="/levels/01/your-first-monday" size="lg">
+              <Button href="/levels/start" size="lg">
                 Start lesson one <Arrow />
               </Button>
             </div>

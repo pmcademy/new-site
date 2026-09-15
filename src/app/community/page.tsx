@@ -7,9 +7,11 @@ import Reveal from "@/components/motion/Reveal";
 import Button from "@/components/ui/Button";
 import { Arrow, Check } from "@/components/ui/Icons";
 import { levels, totalChapters, totalLessons } from "@/lib/course";
+import { site } from "@/lib/site";
+import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Community",
+  title: "Inner Circle",
   description:
     "The course is free forever. One payment of $119, once, for life, gets your badges reviewed and puts you in a closed room of working product managers.",
 };
@@ -48,16 +50,16 @@ export default function CommunityPage() {
       <section className="section-top">
         <div className="shell">
           <div className="atelier-heading">
-          <Reveal className="head">
-            <span className="eyebrow">Community</span>
-            <h1>The course is free. Always.</h1>
-            <p>
-              All six levels, {totalChapters} chapters, {totalLessons} lessons,
-              every dataset and every template. No card, no trial, no chapter
-              held back. You pay only if you want your work reviewed and a room
-              full of people who can refer you.
-            </p>
-          </Reveal>
+            <Reveal className="head">
+              <span className="eyebrow">Community</span>
+              <h1>The course is free. Always.</h1>
+              <p>
+                All six levels, {totalChapters} chapters, {totalLessons} lessons,
+                every dataset and every template. No card, no trial, no chapter
+                held back. You pay only if you want your work reviewed and a room
+                full of people who can refer you.
+              </p>
+            </Reveal>
             <FieldArt kind="community" />
           </div>
 
@@ -68,7 +70,7 @@ export default function CommunityPage() {
               className="card card-p flex flex-col gap-[var(--s-4)]"
             >
               <span className="tag tag-free self-start">Free forever</span>
-              <h2 className="text-[20px]">The whole course</h2>
+              <h2 className="text-[20px]">The Learning</h2>
               <p className="text-[38px] font-semibold tracking-[-0.03em]">
                 $0{" "}
                 <span className="text-sm font-normal tracking-normal text-ink-3">
@@ -97,36 +99,100 @@ export default function CommunityPage() {
             {/* ------------------------------------------------------- paid */}
             <div
               data-reveal
-              className="card card-p flex flex-col gap-[var(--s-4)] border-navy"
+              className="card card-p relative flex flex-col gap-[var(--s-4)] overflow-hidden border-navy shadow-[0_0_0_1px_rgba(122,196,255,0.08),0_24px_70px_rgba(0,0,0,0.18)]"
             >
-              <span className="tag tag-blue self-start">Badge and community</span>
-              <h2 className="text-[20px]">Everything, for life</h2>
-              <p className="text-[38px] font-semibold tracking-[-0.03em]">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 top-0 h-100 bg-[radial-gradient(circle_at_75%_0%,rgba(111,193,255,0.10),transparent_62%)]"
+              />
+
+              <div className="relative flex items-start justify-between gap-4">
+                <span className="tag tag-blue self-start">Inner Circle</span>
+                <span className="rounded-full border border-line px-3 py-1 text-[11px] font-medium text-ink-2">
+                  Most popular
+                </span>
+              </div>
+
+              <h2 className="relative text-[20px]">Supercharge Your Career</h2>
+
+              <p className="relative text-[38px] font-semibold tracking-[-0.03em]">
                 $119{" "}
                 <span className="text-sm font-normal tracking-normal text-ink-3">
                   once, not a subscription
                 </span>
               </p>
-              <div>
-                <p className="eyebrow mb-2">Your six level badges</p>
-                <MotionFrame label="badge preview">
-                  <div className="paid-badges">{levels.map(level => <figure key={level.n}><LevelBadge n={level.n} /><figcaption>Level {level.n}</figcaption></figure>)}</div>
-                </MotionFrame>
-                <p className="paid-badge-note">Earn each badge when that level’s capstone passes review. Includes the Architect diamond and Principal gold badge.</p>
-              </div>
+
               <List
                 items={[
-                  "All six badges, capstones reviewed by a practising PM",
-                  "The closed community of working product managers",
-                  "Job referrals from members who are hiring",
-                  "Feedback on your builds before you ship them",
-                  "Live teardowns and monthly office hours",
-                  "Everything in the free tier, obviously",
+                  "Projects reviewed by practising PMs",
+                  "Join a closed community of working PMs for life",
+                  "Referrals from members",
                 ]}
               />
-              <Button href="/signin?next=/community" size="lg" className="mt-auto">
-                Join the community <Arrow />
+
+              <div className="border-t border-line pt-[var(--s-4)]">
+                <p className="max-w-[34rem] text-[15px] font-medium leading-6 text-ink">
+                  Get your work reviewed by people who actually build products.
+                </p>
+                <p className="mt-1 text-[13px] text-ink-3">
+                  Working PMs, founders and product leaders.
+                </p>
+
+                <div className="relative mt-[var(--s-3)] overflow-hidden rounded-[18px] border border-line bg-[color:var(--surface)]">
+                  <div className="relative h-[220px] sm:h-[170px]">
+                    <Image
+                      src="/img/innercircle.png"
+                      alt="Members of the Inner Circle community"
+                      fill
+                      className="object-cover object-top px-3 pt-0 sm:px-5"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[color:var(--surface)] to-transparent"
+                    />
+
+                    <div className="absolute right-3 top-2 hidden max-w-[90px] rotate-[-12deg] text-right font-serif text-[16px] italic leading-[1.15] text-ink sm:block">
+                      Close circle.
+                      <br />
+                      Real feedback.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <List
+                items={[
+                  "Live teardowns, meetups & office hours",
+                  "Badges and certificates for your work",
+                ]}
+              />
+
+              {/* <div className="pt-[var(--s-1)]">
+                <p className="eyebrow mb-2">Your six level badges</p>
+                <MotionFrame label="badge preview">
+                  <div className="paid-badges">
+                    {levels.map((level) => (
+                      <figure key={level.n}>
+                        <LevelBadge n={level.n} />
+                        <figcaption>{level.n}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </MotionFrame>
+                <p className="paid-badge-note">
+                  Earn each badge when a level’s capstone passes review.
+                </p>
+              </div> */}
+
+              <Button href={site.innerCircle} size="lg" className="mt-auto">
+                Join Now <Arrow />
               </Button>
+
+              {/* <p className="-mt-1 text-center text-[12px] text-ink-3">
+                A one-time payment. Lifetime access.
+              </p> */}
             </div>
           </Reveal>
         </div>
@@ -172,26 +238,26 @@ export default function CommunityPage() {
           </Reveal>
 
           <MotionFrame label="badge animation">
-          <Reveal stagger className="grid gap-[var(--s-4)] sm:grid-cols-2 lg:grid-cols-3">
-            {levels.map((l) => (
-              <div
-                key={l.slug}
-                data-reveal
-                className="card card-p flex items-center gap-[var(--s-4)]"
-              >
-                <LevelBadge n={l.n} />
-                <div>
-                  <span className="eyebrow block">Level {l.n}</span>
-                  <span className="mt-[var(--s-1)] block font-serif text-[1.6rem] leading-none tracking-[-0.02em]">
-                    {l.rank}
-                  </span>
-                  <span className="mt-[var(--s-2)] block text-[13px] text-ink-3">
-                    {l.capstone.title}
-                  </span>
+            <Reveal stagger className="grid gap-[var(--s-4)] sm:grid-cols-2 lg:grid-cols-3">
+              {levels.map((l) => (
+                <div
+                  key={l.slug}
+                  data-reveal
+                  className="card card-p flex items-center gap-[var(--s-4)]"
+                >
+                  <LevelBadge n={l.n} />
+                  <div>
+                    <span className="eyebrow block">Level {l.n}</span>
+                    <span className="mt-[var(--s-1)] block font-serif text-[1.6rem] leading-none tracking-[-0.02em]">
+                      {l.rank}
+                    </span>
+                    <span className="mt-[var(--s-2)] block text-[13px] text-ink-3">
+                      {l.capstone.title}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </Reveal>
+              ))}
+            </Reveal>
           </MotionFrame>
         </div>
       </section>

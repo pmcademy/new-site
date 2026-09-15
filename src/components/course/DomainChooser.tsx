@@ -2,19 +2,13 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
+import Image from "next/image";
 import { Arrow, Check, Lock } from "@/components/ui/Icons";
 import { domains } from "@/lib/domains";
 import { setDomain, useStore } from "@/lib/progress";
 import { cn } from "@/lib/utils";
 
-/**
- * The world the course happens in.
- *
- * Every scene, dataset and build in Level 1 is set inside the company you pick
- * here. The lessons are identical; the building is different. Sona is the
- * default because its datasets are written and checked.
- */
+
 export default function DomainChooser({ next }: { next: string }) {
   const router = useRouter();
   const { account } = useStore();
@@ -44,12 +38,34 @@ export default function DomainChooser({ next }: { next: string }) {
                     : "cursor-not-allowed opacity-55"
                 )}
               >
+                
                 <div className="flex items-start justify-between gap-[var(--s-4)]">
                   <div>
                     <span className="eyebrow block">{d.category}</span>
-                    <span className="mt-[var(--s-1)] block font-serif text-[1.9rem] leading-none tracking-[-0.02em]">
+                    
+                    <div className="mb-[var(--s-3)] flex items-center">
+                  <div className="relative h-32 w-32 mt-4 overflow-hidden rounded-xl">
+                    <Image
+                      src={d.logo.light}
+                      alt={`${d.company} logo`}
+                      fill
+                      className="object-contain dark:hidden"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                    />
+
+                    <Image
+                      src={d.logo.dark}
+                      alt=""
+                      fill
+                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                      className="hidden object-contain dark:block"
+                      aria-hidden="true"
+                    />
+                    <span className="mt-[var(--s-1)] ml-6 block font-serif text-[1.9rem] leading-none tracking-[-0.02em]">
                       {d.company}
                     </span>
+                  </div>
+                </div>
                   </div>
                   {d.ready ? (
                     <span

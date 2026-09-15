@@ -12,20 +12,6 @@ export default function Footer() {
       <div className="shell grid grid-cols-2 gap-x-[var(--s-5)] gap-y-[var(--s-7)] pt-[var(--s-9)] md:grid-cols-3 lg:grid-cols-5">
         <div className="col-span-2 lg:col-span-1">
           <Logo />
-          <p className="mt-[var(--s-4)] max-w-[28ch] text-sm leading-relaxed text-ink-3">
-            Six free levels. Every lesson ends with something you built.
-          </p>
-          <p className="mt-[var(--s-4)] text-sm text-ink-3">
-            PMcademy by{" "}
-            <a
-              href="https://theopenbootcamp.com"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium text-ink-2 underline decoration-line-2 underline-offset-4 transition-colors hover:text-ink"
-            >
-              OpenBootcamp
-            </a>
-          </p>
         </div>
 
         {footerNav.map((group) => (
@@ -53,9 +39,17 @@ export default function Footer() {
 
       <div className="shell mt-[var(--s-9)] flex flex-wrap items-center justify-between gap-[var(--s-4)] rule py-[var(--s-6)] text-sm text-ink-3">
         <span>
-          © {new Date().getFullYear()} {site.name}. OpenBootcamp / M3V Technologies Private Limited.
+          © {new Date().getFullYear()} {site.name} by <a
+              href="https://theopenbootcamp.com"
+              target="_blank"
+              rel="noreferrer"
+              className="font-medium text-ink-2 underline decoration-line-2 underline-offset-4 transition-colors hover:text-ink"
+            >
+              OpenBootcamp. 
+            </a>
+            <span> All Rights Reserved.</span>
         </span>
-        <span>{site.domain}</span>
+       
       </div>
     </footer>
   );

@@ -67,7 +67,7 @@ export default function Nav() {
                 Sign in
               </Link>
               <Button href="/levels/start" className="hidden sm:inline-flex">
-                Start free
+                Start Learning
               </Button>
             </>
           )}
